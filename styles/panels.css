@@ -1,0 +1,255 @@
+/* ============================================================
+   workbench86 Panels - Right panel cards, registers, flags, stack,
+   memory, instruction info, trace, cycle counter
+   ============================================================ */
+
+/* === RIGHT PANEL === */
+.rp {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: var(--bg);
+  min-height: 0;
+  min-width: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--brd) transparent;
+}
+.ci { padding: var(--sp-6); display: flex; flex-direction: column; gap: var(--sp-4); }
+
+/* === CARD SYSTEM === */
+.cd {
+  background: var(--bg2);
+  border: 1px solid var(--brd);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.ch {
+  font-family: var(--sans);
+  font-size: var(--fs-base);
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: var(--text2);
+  padding: var(--sp-3) var(--sp-5);
+  border-bottom: 1px solid var(--brd);
+  background: var(--bg3);
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background var(--tr-fast);
+}
+.ch:hover { background: var(--bg4); }
+.ch::after {
+  content: '\25BE';
+  font-size: 10px;
+  color: var(--text3);
+  transition: transform var(--tr-base);
+}
+.cd.collapsed .ch::after { transform: rotate(-90deg); }
+.cd.collapsed .cb { display: none; }
+.ch .ch-sub {
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--text3);
+  font-size: var(--fs-sm);
+  margin-left: var(--sp-2);
+  font-family: var(--mono);
+}
+.cb { padding: var(--sp-5) var(--sp-5); }
+
+/* === REGISTER GRID === */
+.rg { display: grid; gap: 3px; }
+.rg-gp { grid-template-columns: repeat(4, 1fr); }
+.rg-seg { grid-template-columns: repeat(4, 1fr); }
+.rg-ctl { grid-template-columns: repeat(3, 1fr); }
+.rc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--sp-2) var(--sp-1);
+  border-radius: var(--r);
+  transition: all var(--tr-slow);
+  background: var(--bg);
+  border: 1px solid transparent;
+}
+.rc:hover { border-color: var(--brd); }
+.rc.chg { background: var(--blu-l); border-color: rgba(91,164,230,.2); }
+.rc-flash { animation: regflash .5s ease-out; }
+@keyframes regflash {
+  0% { background: var(--amb); box-shadow: inset 0 0 8px rgba(229,192,123,.3); }
+  40% { background: var(--amb-l); }
+  100% { background: transparent; }
+}
+.rn { font-family: var(--mono); font-size: var(--fs-xs); color: var(--text3); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+.rv { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--text); letter-spacing: .02em; }
+.rv-split { font-size: var(--fs-sm); color: var(--text2); }
+.rd { font-family: var(--mono); font-size: var(--fs-sm); color: var(--text3); }
+
+/* === FLAGS === */
+.fr { display: flex; gap: 3px; justify-content: center; flex-wrap: wrap; padding: var(--sp-1) 0; }
+.flb {
+  font-family: var(--mono);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  padding: 2px var(--sp-3);
+  border-radius: var(--r);
+  background: var(--bg);
+  border: 1px solid var(--brd);
+  color: var(--text3);
+  transition: all var(--tr-slow);
+  min-width: 30px;
+  text-align: center;
+}
+.flb.fs { background: var(--amb-l); border-color: var(--amb); color: var(--amb); box-shadow: 0 0 8px rgba(229,192,123,.15); }
+
+/* === MEMORY GRID === */
+.mem-input {
+  font-family: var(--mono);
+  font-size: var(--fs-md);
+  padding: 3px 5px;
+  border: 1px solid var(--brd);
+  border-radius: var(--r);
+  background: var(--bg3);
+  color: var(--text);
+  width: 85px;
+}
+.mem-view-wrap { display: flex; gap: var(--sp-4); align-items: flex-start; }
+.mem-view-wrap .mg { flex: 1; }
+.mg {
+  display: grid;
+  grid-template-columns: auto repeat(8, 1fr);
+  gap: 1px;
+  font-family: var(--mono);
+  font-size: var(--fs-sm);
+}
+.ma { color: var(--text3); padding: 1px var(--sp-2) 1px 0; text-align: right; font-weight: 500; }
+.mv {
+  text-align: center;
+  padding: 1px;
+  border-radius: var(--r-sm);
+  color: var(--text3);
+  transition: all .15s;
+}
+.mv.nz { color: var(--text); }
+.mv.pc-m { background: var(--grn-l); color: var(--grn); font-weight: 600; }
+.mv.sp-m { background: var(--amb-l); color: var(--amb); font-weight: 600; }
+.mv.chg { animation: memflash .6s ease-out; }
+@keyframes memflash { 0% { background: var(--amb); color: #fff; } 100% { background: transparent; } }
+.mem-follow { display: flex; gap: var(--sp-1); }
+.mem-follow .b { font-size: var(--fs-xs); padding: var(--sp-1) var(--sp-4); min-width: 0; min-height: 22px; }
+.mem-follow .b.active { background: var(--acc); color: #fff; border-color: var(--acc); }
+
+/* Memory ASCII column */
+.mg-ascii {
+  font-family: var(--mono);
+  font-size: var(--fs-sm);
+  color: var(--cyn);
+  border-left: 1px solid var(--brd);
+  padding-left: var(--sp-3);
+  flex-shrink: 0;
+}
+.ma-ascii { display: block; line-height: 18px; letter-spacing: 2px; }
+.ma-dot { color: var(--text3); opacity: .4; }
+
+/* === PAT DISPLAY === */
+.pat-disp {
+  font-family: var(--mono);
+  font-size: var(--fs-xl);
+  letter-spacing: 3px;
+  background: #080a0e;
+  color: var(--grn);
+  padding: var(--sp-4) var(--sp-6);
+  border-radius: var(--r-md);
+  border: 1px solid var(--brd);
+  text-align: center;
+  min-height: 32px;
+  line-height: 1;
+  box-shadow: var(--shadow-inset);
+}
+.pat-disp-lbl { font-family: var(--mono); font-size: var(--fs-sm); color: var(--text3); text-align: center; margin-top: var(--sp-1); }
+.seg7-wrap { display: flex; gap: var(--sp-2); justify-content: center; padding: var(--sp-3) 0; background: var(--bg); border-radius: var(--r); }
+.seg7-wrap svg { flex-shrink: 0; }
+
+/* === STACK VIEW === */
+.stk {
+  font-family: var(--mono);
+  font-size: var(--fs-sm);
+  max-height: 200px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--brd) transparent;
+}
+.stk-row {
+  display: flex;
+  gap: var(--sp-3);
+  padding: 1px var(--sp-2);
+  border-bottom: 1px solid rgba(255,255,255,.02);
+  transition: background var(--tr-fast);
+}
+.stk-row:hover { background: rgba(255,255,255,.04); }
+.stk-addr { color: var(--text3); min-width: 36px; }
+.stk-val { color: var(--text); font-weight: 500; }
+.stk-cur { color: var(--amb); font-weight: 700; background: var(--amb-l); padding: 0 var(--sp-2); border-radius: var(--r-sm); }
+.stk-nz { color: var(--text); }
+
+/* === INSTRUCTION INFO === */
+.ir-box {
+  font-family: var(--mono);
+  font-size: var(--fs-md);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--bg);
+  border-radius: var(--r);
+  border-left: 3px solid var(--acc);
+  color: var(--acc);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.desc-box {
+  font-family: var(--mono);
+  font-size: var(--fs-sm);
+  color: var(--text);
+  padding: var(--sp-2) var(--sp-4);
+  background: var(--bg);
+  border-radius: var(--r);
+  line-height: 1.5;
+}
+.diff-box {
+  font-family: var(--mono);
+  font-size: var(--fs-sm);
+  color: var(--cyn);
+  padding: var(--sp-2) var(--sp-4);
+  background: var(--bg);
+  border-radius: var(--r);
+}
+.cyc { display: flex; gap: var(--sp-6); font-family: var(--mono); font-size: var(--fs-sm); color: var(--text3); padding: var(--sp-3) 0; }
+.cyc b { color: var(--text); font-weight: 600; letter-spacing: .02em; }
+
+/* === EXECUTION TRACE === */
+.trace {
+  font-family: var(--mono);
+  font-size: var(--fs-sm);
+  max-height: 120px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.trace-row {
+  display: flex;
+  gap: var(--sp-3);
+  padding: 1px var(--sp-1);
+  border-bottom: 1px solid rgba(255,255,255,.03);
+  transition: background var(--tr-fast);
+}
+.trace-row:hover { background: rgba(255,255,255,.04); }
+.trace-addr { color: var(--text3); min-width: 36px; }
+.trace-op { color: var(--text); flex: 1; }
+.trace-diff { color: var(--amb); font-size: var(--fs-xs); }
+
+/* Light theme overrides */
+:root[data-theme='light'] .pat-disp { background: #f0f0ea; color: var(--grn); border-color: var(--brd); }
+:root[data-theme='light'] .ir-box { color: var(--acc); }
+:root[data-theme='light'] .trace-row:hover { background: rgba(0,0,0,.04); }
+:root[data-theme='light'] .trace-row { border-bottom: 1px solid rgba(0,0,0,.06); }

@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Private working material, never published
+notes/
+
+# Editor and tooling state
+.vscode/
+.idea/
+
+# LaTeX build artifacts
+docs/paper/*.aux
+docs/paper/*.log
+docs/paper/*.out
+docs/paper/*.toc
+docs/paper/*.synctex.gz

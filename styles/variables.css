@@ -1,0 +1,118 @@
+/* ============================================================
+   workbench86 Design Tokens - Colors, typography, spacing, radii
+   ============================================================ */
+
+:root {
+  /* Surface colors - 5-step elevation */
+  --bg: #0d0f14;
+  --bg2: #14161e;
+  --bg3: #1a1d28;
+  --bg4: #222636;
+  --bg5: #2a2e40;
+
+  /* Text hierarchy */
+  --text: #d4d8e4;
+  --text2: #8892aa;
+  --text3: #5c6680;
+
+  /* Borders */
+  --brd: #252a3c;
+  --brd2: #333952;
+
+  /* Accent palette - muted, Google-style */
+  --acc: #ea8685;
+  --acc2: #d47170;
+  --acc-l: rgba(234,134,133,.1);
+  --blu: #8ab4f8;
+  --blu-l: rgba(138,180,248,.1);
+  --grn: #81c995;
+  --grn-l: rgba(129,201,149,.1);
+  --amb: #fdd663;
+  --amb-l: rgba(253,214,99,.08);
+  --red: #f28b82;
+  --red-l: rgba(242,139,130,.1);
+  --pur: #c58af9;
+  --pur-l: rgba(197,138,249,.1);
+  --cyn: #78d9ec;
+  --cyn-l: rgba(120,217,236,.08);
+
+  /* Typography */
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'Source Sans 3', sans-serif;
+  --serif: 'Crimson Pro', serif;
+
+  /* Font sizes - modular scale */
+  --fs-xs: 9px;
+  --fs-sm: 10.5px;
+  --fs-md: 11.5px;
+  --fs-base: 13px;
+  --fs-lg: 14px;
+  --fs-xl: 16px;
+  --fs-2xl: 22px;
+
+  /* Spacing (4px grid) */
+  --sp-1: 2px;
+  --sp-2: 4px;
+  --sp-3: 6px;
+  --sp-4: 8px;
+  --sp-5: 10px;
+  --sp-6: 12px;
+  --sp-8: 16px;
+  --sp-10: 20px;
+  --sp-12: 24px;
+
+  /* Border radius */
+  --r: 4px;
+  --r-sm: 2px;
+  --r-md: 6px;
+  --r-lg: 10px;
+  --r-full: 9999px;
+
+  /* Transitions - slightly slower for polish */
+  --tr-fast: .1s ease;
+  --tr-base: .15s ease;
+  --tr-slow: .25s ease-out;
+
+  /* Shadows - layered for depth */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.3), 0 2px 6px rgba(0,0,0,.15);
+  --shadow-md: 0 2px 4px rgba(0,0,0,.3), 0 6px 16px rgba(0,0,0,.2);
+  --shadow-lg: 0 4px 8px rgba(0,0,0,.3), 0 16px 48px rgba(0,0,0,.25);
+  --shadow-xl: 0 8px 16px rgba(0,0,0,.3), 0 24px 64px rgba(0,0,0,.35);
+  --shadow-inset: inset 0 1px 2px rgba(0,0,0,.25);
+
+  /* Line height */
+  --lh-code: 19px;
+}
+
+/* Light theme overrides */
+:root[data-theme='light'] {
+  --bg: #f6f6f1;
+  --bg2: #ffffff;
+  --bg3: #eeeeea;
+  --bg4: #e4e4de;
+  --bg5: #d8d8d2;
+  --text: #1a1a1a;
+  --text2: #555;
+  --text3: #888;
+  --brd: #d0d0c8;
+  --brd2: #bbb;
+  --acc: #c0392b;
+  --acc2: #a93226;
+  --acc-l: rgba(192,57,43,.08);
+  --blu: #2471a3;
+  --blu-l: rgba(36,113,163,.08);
+  --grn: #27ae60;
+  --grn-l: rgba(39,174,96,.08);
+  --amb: #b7950b;
+  --amb-l: rgba(183,149,11,.08);
+  --red: #c0392b;
+  --red-l: rgba(192,57,43,.08);
+  --pur: #8e44ad;
+  --pur-l: rgba(142,68,173,.08);
+  --cyn: #17a589;
+  --cyn-l: rgba(23,165,137,.08);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md: 0 2px 8px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.06);
+  --shadow-lg: 0 4px 16px rgba(0,0,0,.1), 0 12px 40px rgba(0,0,0,.08);
+  --shadow-inset: inset 0 1px 2px rgba(0,0,0,.06);
+}

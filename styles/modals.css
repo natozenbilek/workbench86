@@ -1,0 +1,154 @@
+/* ============================================================
+   workbench86 Modals - Export/import, guide, ports overlay
+   ============================================================ */
+
+/* === EXPORT MODAL === */
+.exp-ov {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-10);
+  background: rgba(8,10,14,.75);
+  backdrop-filter: blur(8px);
+}
+.exp-ov[hidden] { display: none !important; }
+.exp-pan {
+  max-width: 560px;
+  width: 100%;
+  max-height: 80vh;
+  background: var(--bg2);
+  border: 1px solid var(--brd2);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.exp-hd {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-5) var(--sp-8);
+  border-bottom: 1px solid var(--brd);
+  background: var(--bg3);
+}
+.exp-hd h3 { font-family: var(--serif); font-size: 1rem; font-weight: 600; flex: 1; }
+.exp-body { padding: var(--sp-6) var(--sp-8); overflow-y: auto; flex: 1; }
+.exp-out {
+  font-family: var(--mono);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  background: var(--bg);
+  color: var(--text);
+  padding: var(--sp-5);
+  border-radius: var(--r);
+  border: 1px solid var(--brd);
+  white-space: pre;
+  overflow-x: auto;
+  max-height: 240px;
+  overflow-y: auto;
+  user-select: all;
+  cursor: text;
+  margin-bottom: var(--sp-4);
+}
+.exp-in {
+  font-family: var(--mono);
+  font-size: var(--fs-sm);
+  line-height: 1.4;
+  background: var(--bg);
+  color: var(--text);
+  padding: var(--sp-4);
+  border-radius: var(--r);
+  border: 1px solid var(--brd);
+  width: 100%;
+  min-height: 60px;
+  resize: vertical;
+  margin-bottom: var(--sp-4);
+}
+.exp-sub { font-family: var(--mono); font-size: var(--fs-sm); color: var(--text3); margin: var(--sp-2) 0; }
+.exp-foot { padding: var(--sp-4) var(--sp-8); border-top: 1px solid var(--brd); display: flex; gap: var(--sp-3); justify-content: flex-end; }
+
+/* === GUIDE MODAL === */
+.guide-ov {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-10);
+  background: rgba(8,10,14,.75);
+  backdrop-filter: blur(8px);
+}
+.guide-ov[hidden] { display: none !important; }
+.guide-pan {
+  max-width: 720px;
+  width: 100%;
+  max-height: 85vh;
+  background: var(--bg2);
+  border: 1px solid var(--brd2);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.guide-hd {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-5) var(--sp-8);
+  border-bottom: 1px solid var(--brd);
+  background: var(--bg3);
+}
+.guide-hd h2 { font-family: var(--serif); font-size: 1rem; font-weight: 600; flex: 1; }
+.guide-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--sp-8) 18px;
+  font-size: 12.5px;
+  line-height: 1.65;
+  scrollbar-width: thin;
+  scrollbar-color: var(--brd) transparent;
+}
+.guide-body h3 { font-family: var(--serif); font-size: var(--fs-lg); font-weight: 600; margin: 1rem 0 .4rem; color: var(--text); }
+.guide-body h3:first-child { margin-top: 0; }
+.guide-body h4 { font-size: var(--fs-sm); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--text2); margin: .8rem 0 .3rem; }
+.guide-body table { border-collapse: collapse; width: 100%; font-size: var(--fs-md); margin: .4rem 0; }
+.guide-body th, .guide-body td { border: 1px solid var(--brd); padding: 3px var(--sp-3); text-align: left; }
+.guide-body th { background: var(--bg3); font-family: var(--mono); font-size: var(--fs-sm); font-weight: 600; color: var(--text2); }
+.guide-body code {
+  font-family: var(--mono);
+  font-size: var(--fs-md);
+  padding: 1px 3px;
+  background: var(--bg3);
+  border-radius: var(--r-sm);
+  color: var(--acc);
+}
+.guide-body p { margin: .4rem 0; }
+.guide-note {
+  font-size: var(--fs-md);
+  color: var(--text2);
+  border-left: 3px solid var(--blu);
+  padding: var(--sp-3) var(--sp-5);
+  background: var(--blu-l);
+  margin: var(--sp-4) 0;
+  border-radius: 0 3px 3px 0;
+}
+.guide-tabs { display: flex; gap: var(--sp-2); margin-bottom: var(--sp-5); flex-wrap: wrap; }
+.guide-tab {
+  font-family: var(--mono);
+  font-size: var(--fs-sm);
+  padding: var(--sp-2) var(--sp-5);
+  border: 1px solid var(--brd);
+  border-radius: var(--r);
+  cursor: pointer;
+  background: var(--bg2);
+  color: var(--text2);
+  transition: all var(--tr-base);
+}
+.guide-tab:hover { background: var(--bg3); }
+.guide-tab.on { background: var(--bg3); border-color: var(--text3); color: var(--text); font-weight: 600; }

@@ -1,0 +1,783 @@
+; Amator - Manifest (Aleina & Ates Atilla)
+; A minor, ~130 BPM, transcribed from kolaynota.com sheet music
+; DigiAC2000 piezo toggle: all UPORT1 bits
+;
+; PLAY: SI=half-period delay, DI=cycle count
+; D4=800 E4=710 F4=675 G4=600
+; A4=535 B4=475 C5=450 C#5=425
+;
+; Duration: s=sixteenth e=eighth q=quarter h=half
+        ORG     0100H
+        INCLUDE PATCALLS.INC
+
+        MOV     AL,0FFH
+        OUT     UPORT1CTL,AL
+
+        ; ═══ INTRO: "A A B" hook ═══
+        ; A(e) A(e) B(q) A(e) A(e) A(e) B(e)
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,195
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,98
+        CALL    PLAY
+        ; A(e) G(e) B(q) A(e) A(e) A(e) B(e)
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,600
+        MOV     DI,77
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,195
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,98
+        CALL    PLAY
+        ; A(e) A(e) A(e) B(e) A(e) G(e) B(q)
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,98
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,600
+        MOV     DI,77
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,195
+        CALL    PLAY
+        MOV     BX,50
+        MOV     AH,WTNMS
+        INT     28H
+
+        ; ═══ VERSE 1 ═══
+        ; E(e) E(e) E(e) E(e) E(e) E(e) E(e) F(e) E(e) D(e)
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,675
+        MOV     DI,69
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,800
+        MOV     DI,58
+        CALL    PLAY
+        MOV     BX,30
+        MOV     AH,WTNMS
+        INT     28H
+        ; A(q) A(q)
+        MOV     SI,535
+        MOV     DI,173
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,173
+        CALL    PLAY
+        MOV     BX,30
+        MOV     AH,WTNMS
+        INT     28H
+
+        ; Verse 1, phrase 2
+        ; E(e) E(e) E(e) E(e) E(e) E(e) G(e) F(e) E(e) D(e)
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,600
+        MOV     DI,77
+        CALL    PLAY
+        MOV     SI,675
+        MOV     DI,69
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,800
+        MOV     DI,58
+        CALL    PLAY
+        MOV     BX,30
+        MOV     AH,WTNMS
+        INT     28H
+        ; A(e) A(e) A(e) A(e)
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     BX,40
+        MOV     AH,WTNMS
+        INT     28H
+
+        ; ═══ VERSE 1B ═══
+        ; G(e) A(e) A(q) G(e) G(e) A(e) A(e) B(q)
+        MOV     SI,600
+        MOV     DI,77
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,173
+        CALL    PLAY
+        MOV     SI,600
+        MOV     DI,77
+        CALL    PLAY
+        MOV     SI,600
+        MOV     DI,77
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,195
+        CALL    PLAY
+        MOV     BX,30
+        MOV     AH,WTNMS
+        INT     28H
+        ; A(e) A(e) A(e) A(e) A(e) A(e) A(e)
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        ; A(e) C#(e) C#(e) B(q)
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,425
+        MOV     DI,109
+        CALL    PLAY
+        MOV     SI,425
+        MOV     DI,109
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,195
+        CALL    PLAY
+        MOV     BX,30
+        MOV     AH,WTNMS
+        INT     28H
+        ; E(e) E(e) E(e) D(q)
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,800
+        MOV     DI,116
+        CALL    PLAY
+        MOV     BX,50
+        MOV     AH,WTNMS
+        INT     28H
+
+        ; ═══ PRE-CHORUS ═══
+        ; G(q) A(e) A(e) A(e) A(e) E(q)
+        MOV     SI,600
+        MOV     DI,155
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,131
+        CALL    PLAY
+        MOV     BX,30
+        MOV     AH,WTNMS
+        INT     28H
+        ; Pre-chorus, phrase 2
+        ; A(e) E(e) E(e) E(e) E(q) B(e) G(e) D(q)
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,131
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,98
+        CALL    PLAY
+        MOV     SI,600
+        MOV     DI,77
+        CALL    PLAY
+        MOV     SI,800
+        MOV     DI,116
+        CALL    PLAY
+        MOV     BX,30
+        MOV     AH,WTNMS
+        INT     28H
+        ; Pre-chorus, phrase 3
+        ; G(e) A(e) G(e) G(q) A(e) E(e) G(e) A(e) G(q)
+        MOV     SI,600
+        MOV     DI,77
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,600
+        MOV     DI,77
+        CALL    PLAY
+        MOV     SI,600
+        MOV     DI,155
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,600
+        MOV     DI,77
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,600
+        MOV     DI,155
+        CALL    PLAY
+        MOV     BX,30
+        MOV     AH,WTNMS
+        INT     28H
+        ; Pre-chorus, phrase 4
+        ; G(e) A(e) F(e) E(e) D(e) D(e) D(q)
+        MOV     SI,600
+        MOV     DI,77
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,675
+        MOV     DI,69
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,800
+        MOV     DI,58
+        CALL    PLAY
+        MOV     SI,800
+        MOV     DI,58
+        CALL    PLAY
+        MOV     SI,800
+        MOV     DI,116
+        CALL    PLAY
+        MOV     BX,50
+        MOV     AH,WTNMS
+        INT     28H
+        ; Pre-chorus, phrase 5
+        ; A(e) E(e) E(e) G(e) A(e) A(e) G(q)
+        ; G(e) A(e) F(e) E(e) D(e) D(q)
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,600
+        MOV     DI,77
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,600
+        MOV     DI,155
+        CALL    PLAY
+        MOV     SI,600
+        MOV     DI,77
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,675
+        MOV     DI,69
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,800
+        MOV     DI,58
+        CALL    PLAY
+        MOV     SI,800
+        MOV     DI,116
+        CALL    PLAY
+        MOV     BX,60
+        MOV     AH,WTNMS
+        INT     28H
+
+        ; ═══ CHORUS ═══
+        ; A(s) A(s) A(s) A(s) A(q) B(e) B(e) A(q)
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,173
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,98
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,98
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,173
+        CALL    PLAY
+        ; A(s) A(s) A(s) A(s) A(q) A(e) A(e) A(q) B(e) B(e) G(e) A(q)
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,173
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,173
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,98
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,98
+        CALL    PLAY
+        MOV     SI,600
+        MOV     DI,77
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,173
+        CALL    PLAY
+        MOV     BX,50
+        MOV     AH,WTNMS
+        INT     28H
+
+        ; Chorus repeat
+        ; A(s) A(s) A(s) A(s) A(q) B(e) B(e) A(q)
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,173
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,98
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,98
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,173
+        CALL    PLAY
+        ; A(s) A(s) A(s) A(s) A(q) A(e) A(e) B(e) B(e) G(e) A(h)
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,173
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,98
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,98
+        CALL    PLAY
+        MOV     SI,600
+        MOV     DI,77
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,346
+        CALL    PLAY
+        MOV     BX,80
+        MOV     AH,WTNMS
+        INT     28H
+
+        ; ═══ BRIDGE ═══
+        ; E(e) D(e) D(q) D(e) D(e) E(e) D(q)
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,800
+        MOV     DI,58
+        CALL    PLAY
+        MOV     SI,800
+        MOV     DI,116
+        CALL    PLAY
+        MOV     SI,800
+        MOV     DI,58
+        CALL    PLAY
+        MOV     SI,800
+        MOV     DI,58
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,800
+        MOV     DI,116
+        CALL    PLAY
+        ; C(e) C(e) D(q) E(e) E(e) E(q)
+        MOV     SI,450
+        MOV     DI,103
+        CALL    PLAY
+        MOV     SI,450
+        MOV     DI,103
+        CALL    PLAY
+        MOV     SI,800
+        MOV     DI,116
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,131
+        CALL    PLAY
+        MOV     BX,40
+        MOV     AH,WTNMS
+        INT     28H
+
+        ; Bridge, phrase 2
+        ; A(q) E(e) E(e) B(e) C(q)
+        MOV     SI,535
+        MOV     DI,173
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,98
+        CALL    PLAY
+        MOV     SI,450
+        MOV     DI,206
+        CALL    PLAY
+        MOV     BX,40
+        MOV     AH,WTNMS
+        INT     28H
+
+        ; Bridge, phrase 3
+        ; A(e) G(e) C(e) B(e) A(e) A(q)
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,600
+        MOV     DI,77
+        CALL    PLAY
+        MOV     SI,450
+        MOV     DI,103
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,98
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,173
+        CALL    PLAY
+        ; E(e) E(e) E(e) E(e) E(e) F(e) E(q)
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,675
+        MOV     DI,69
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,131
+        CALL    PLAY
+        MOV     BX,40
+        MOV     AH,WTNMS
+        INT     28H
+
+        ; Bridge, phrase 4
+        ; E(e) E(e) E(e) F(e) E(e) B(e) C(q)
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,675
+        MOV     DI,69
+        CALL    PLAY
+        MOV     SI,710
+        MOV     DI,65
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,98
+        CALL    PLAY
+        MOV     SI,450
+        MOV     DI,206
+        CALL    PLAY
+        MOV     BX,80
+        MOV     AH,WTNMS
+        INT     28H
+
+        ; ═══ FINAL CHORUS ═══
+        ; A(s) A(s) A(s) A(s) A(q) B(e) B(e) A(q)
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,173
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,98
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,98
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,173
+        CALL    PLAY
+        ; A(s) A(s) A(s) A(s) A(q) A(e) A(e) B(e) B(e) G(e) A(h)
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,44
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,173
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,87
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,98
+        CALL    PLAY
+        MOV     SI,475
+        MOV     DI,98
+        CALL    PLAY
+        MOV     SI,600
+        MOV     DI,77
+        CALL    PLAY
+        MOV     SI,535
+        MOV     DI,346
+        CALL    PLAY
+
+        ; ═══ ENDING: A(h) ═══
+        MOV     SI,535
+        MOV     DI,346
+        CALL    PLAY
+
+        ; === END ===
+        MOV     AL,00H
+        OUT     UPORT1,AL
+        MOV     AH,EXIT
+        INT     28H
+
+; ---- PLAY subroutine ----
+; SI = half-period delay (loop count, controls frequency)
+; DI = number of full cycles (controls duration)
+PLAY:   MOV     AL,0FFH
+        OUT     UPORT1,AL
+        MOV     CX,SI
+PL1:    NOP
+        LOOP    PL1
+        MOV     AL,00H
+        OUT     UPORT1,AL
+        MOV     CX,SI
+PL2:    NOP
+        LOOP    PL2
+        DEC     DI
+        JNZ     PLAY
+        RET

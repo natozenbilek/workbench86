@@ -1,0 +1,70 @@
+/* ============================================================
+   workbench86 Terminal - Serial terminal, port monitor
+   ============================================================ */
+
+.term {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--brd);
+  height: 200px;
+  overflow: hidden;
+}
+.term-pane { height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+.term-serial-ctrls {
+  display: flex;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-4);
+  align-items: center;
+  background: var(--bg3);
+  border-bottom: 1px solid var(--brd);
+  flex-shrink: 0;
+}
+.term-serial-ctrls .b { font-size: var(--fs-sm); padding: 3px var(--sp-4); min-height: 22px; }
+.term-output {
+  flex: 1;
+  overflow-y: auto;
+  font-family: var(--mono);
+  font-size: var(--fs-md);
+  color: var(--text2);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--bg);
+  white-space: pre-wrap;
+  scrollbar-width: thin;
+  scrollbar-color: var(--brd) transparent;
+  line-height: 1.5;
+}
+.term-input-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 3px var(--sp-4);
+  background: var(--bg);
+  border-top: 1px solid var(--brd);
+  flex-shrink: 0;
+}
+.term-prompt { font-family: var(--mono); font-size: var(--fs-md); color: var(--text3); }
+.term-prompt { font-family: var(--mono); font-size: var(--fs-md); color: var(--grn); user-select: none; }
+.term-input {
+  flex: 1;
+  font-family: var(--mono);
+  font-size: var(--fs-md);
+  padding: var(--sp-2) var(--sp-2);
+  border: none;
+  background: transparent;
+  color: var(--text);
+  outline: none;
+}
+.log-ln { font: inherit; border: none; background: transparent; color: var(--blu); text-decoration: underline; cursor: pointer; padding: 0; }
+
+/* === PORT MONITOR === */
+.port-mon { overflow-y: auto; padding: var(--sp-2) var(--sp-4); background: var(--bg); height: 100%; }
+.pm-tbl { font-family: var(--mono); font-size: var(--fs-sm); width: 100%; border-collapse: collapse; }
+.pm-tbl th { text-align: left; color: var(--text3); font-weight: 500; padding: var(--sp-1) var(--sp-4); border-bottom: 1px solid var(--brd); }
+.pm-tbl td { padding: var(--sp-1) var(--sp-4); color: var(--text2); }
+.pm-val { color: var(--acc); font-weight: 600; }
+.pm-bin { color: var(--blu); letter-spacing: 1px; }
+
+/* Light theme overrides */
+:root[data-theme='light'] .term-output { background: var(--bg); color: var(--text2); }
+:root[data-theme='light'] .term-input { color: var(--text); }

@@ -1,0 +1,262 @@
+[
+  {
+    "name": "PA01: Subtract byte",
+    "file": "assignments/pa01-subtract-byte.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA02: Add bytes",
+    "file": "assignments/pa02-add-bytes.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA03: Copy registers",
+    "file": "assignments/pa03-copy-registers.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA04: Add 4 bytes",
+    "file": "assignments/pa04-add-4-bytes.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA05: MUL and DIV",
+    "file": "assignments/pa05-mul-and-div.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA06: Zero check",
+    "file": "assignments/pa06-zero-check.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA07: Fill memory",
+    "file": "assignments/pa07-fill-memory.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA08: Sequential fill",
+    "file": "assignments/pa08-sequential-fill.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA09: Copy string",
+    "file": "assignments/pa09-copy-string.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA10: Compare with 7F",
+    "file": "assignments/pa10-compare-with-7f.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA11: Find largest",
+    "file": "assignments/pa11-find-largest.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA12: Bit inspection",
+    "file": "assignments/pa12-bit-inspection.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA13: Rotate until bit clear",
+    "file": "assignments/pa13-rotate-until-bit-clear.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA14: Add + Port output",
+    "file": "assignments/pa14-add-port-output.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA15: Binary count + LED",
+    "file": "assignments/pa15-binary-count-led.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA16: Count + motor disc",
+    "file": "assignments/pa16-count-motor-disc.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA17: Ultrasonic proximity",
+    "file": "assignments/pa17-ultrasonic-proximity.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA19: Pot controls motor",
+    "file": "assignments/pa19-pot-controls-motor.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA20: PUSHA/POPA",
+    "file": "assignments/pa20-pusha-popa.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA21: Hex counter display",
+    "file": "assignments/pa21-hex-counter-display.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA22: Display addition",
+    "file": "assignments/pa22-display-addition.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA23: Piezo on S key",
+    "file": "assignments/pa23-piezo-on-s-key.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA24: Organ / piano (keypad)",
+    "file": "assignments/pa24-organ-keypad.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA25: NMI vector setup",
+    "file": "assignments/pa25-nmi-vector-setup.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA26: IRQ2 counter",
+    "file": "assignments/pa26-irq2-counter.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA27: Display + interrupts",
+    "file": "assignments/pa27-display-interrupts.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA28: Timer piezo 1kHz",
+    "file": "assignments/pa28-timer-piezo-1khz.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "PA29: Motor speed display",
+    "file": "assignments/pa29-motor-speed-display.asm",
+    "category": "assignments"
+  },
+  {
+    "name": "Bubble Sort",
+    "file": "demos/bubble-sort.asm",
+    "category": "demos"
+  },
+  {
+    "name": "Subroutine demo",
+    "file": "demos/subroutine-demo.asm",
+    "category": "demos"
+  },
+  {
+    "name": "REP STOSB demo",
+    "file": "demos/rep-stosb-demo.asm",
+    "category": "demos"
+  },
+  {
+    "name": "REP MOVSB demo",
+    "file": "demos/rep-movsb-demo.asm",
+    "category": "demos"
+  },
+  {
+    "name": "Fibonacci",
+    "file": "demos/fibonacci.asm",
+    "category": "demos"
+  },
+  {
+    "name": "Factorial 6!",
+    "file": "demos/factorial-6.asm",
+    "category": "demos"
+  },
+  {
+    "name": "String reverse",
+    "file": "demos/string-reverse.asm",
+    "category": "demos"
+  },
+  {
+    "name": "Hex to ASCII display",
+    "file": "demos/hex-to-ascii-display.asm",
+    "category": "demos"
+  },
+  {
+    "name": "Countdown display",
+    "file": "demos/countdown-display.asm",
+    "category": "demos"
+  },
+  {
+    "name": "HW: LED Knight Rider",
+    "file": "hardware/hw-led-knight-rider.asm",
+    "category": "hardware"
+  },
+  {
+    "name": "HW: LED Dice",
+    "file": "hardware/hw-led-dice.asm",
+    "category": "hardware"
+  },
+  {
+    "name": "HW: LED all on",
+    "file": "hardware/hw-led-all-on.asm",
+    "category": "hardware"
+  },
+  {
+    "name": "HW: LED all off",
+    "file": "hardware/hw-led-all-off.asm",
+    "category": "hardware"
+  },
+  {
+    "name": "HW: LED blink",
+    "file": "hardware/hw-led-blink.asm",
+    "category": "hardware"
+  },
+  {
+    "name": "HW: LED chase",
+    "file": "hardware/hw-led-chase.asm",
+    "category": "hardware"
+  },
+  {
+    "name": "HW: Binary counter",
+    "file": "hardware/hw-binary-counter.asm",
+    "category": "hardware"
+  },
+  {
+    "name": "HW: Hello serial",
+    "file": "hardware/hw-hello-serial.asm",
+    "category": "hardware"
+  },
+  {
+    "name": "HW: Piezo beep",
+    "file": "hardware/hw-piezo-beep.asm",
+    "category": "hardware"
+  },
+  {
+    "name": "Keyboard Display: NEZIH",
+    "file": "scripts/keyboard-display-nezih.asm",
+    "category": "scripts"
+  },
+  {
+    "name": "Display Test",
+    "file": "scripts/display-test.asm",
+    "category": "scripts"
+  },
+  {
+    "name": "Song: Zamansizdik (Manifest)",
+    "file": "scripts/zamansizdik-manifest.asm",
+    "category": "scripts"
+  },
+  {
+    "name": "Song: Amator (Manifest)",
+    "file": "scripts/amator-manifest.asm",
+    "category": "scripts"
+  },
+  {
+    "name": "Piezo Test",
+    "file": "scripts/piezo-test.asm",
+    "category": "scripts"
+  },
+  {
+    "name": "Port Bit Scanner",
+    "file": "scripts/port-bit-scanner.asm",
+    "category": "scripts"
+  }
+]

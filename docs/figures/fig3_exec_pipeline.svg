@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 360" font-family="Helvetica,Arial,sans-serif" font-size="12">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#333"/>
+    </marker>
+    <linearGradient id="b1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff7e0"/>
+      <stop offset="1" stop-color="#ffe2a0"/>
+    </linearGradient>
+  </defs>
+
+  <text x="460" y="24" text-anchor="middle" font-weight="700" font-size="16">execOne() — Single-Step Execution Pipeline</text>
+
+  <!-- Pipeline boxes -->
+  <g>
+    <rect x="20"  y="60" width="120" height="64" rx="6" fill="url(#b1)" stroke="#c08020"/>
+    <text x="80"  y="86"  text-anchor="middle" font-weight="700">1. Interrupt</text>
+    <text x="80"  y="104" text-anchor="middle" font-size="11">timerTick()</text>
+    <text x="80"  y="118" text-anchor="middle" font-size="11">checkInterrupts()</text>
+
+    <rect x="160" y="60" width="120" height="64" rx="6" fill="url(#b1)" stroke="#c08020"/>
+    <text x="220" y="86"  text-anchor="middle" font-weight="700">2. Prefix Eat</text>
+    <text x="220" y="104" text-anchor="middle" font-size="11">26/2E/36/3E</text>
+    <text x="220" y="118" text-anchor="middle" font-size="11">F2 / F3 (REP)</text>
+
+    <rect x="300" y="60" width="120" height="64" rx="6" fill="url(#b1)" stroke="#c08020"/>
+    <text x="360" y="86"  text-anchor="middle" font-weight="700">3. Fetch Opcode</text>
+    <text x="360" y="104" text-anchor="middle" font-size="11">fetchByte()</text>
+    <text x="360" y="118" text-anchor="middle" font-size="11">IP++</text>
+
+    <rect x="440" y="60" width="160" height="64" rx="6" fill="url(#b1)" stroke="#c08020"/>
+    <text x="520" y="86"  text-anchor="middle" font-weight="700">4. Decode + Dispatch</text>
+    <text x="520" y="104" text-anchor="middle" font-size="11">if/else cascade over</text>
+    <text x="520" y="118" text-anchor="middle" font-size="11">opcode bit-pattern</text>
+
+    <rect x="620" y="60" width="140" height="64" rx="6" fill="url(#b1)" stroke="#c08020"/>
+    <text x="690" y="86"  text-anchor="middle" font-weight="700">5. Execute</text>
+    <text x="690" y="104" text-anchor="middle" font-size="11">ALU / load / store /</text>
+    <text x="690" y="118" text-anchor="middle" font-size="11">branch / IO / INT</text>
+
+    <rect x="780" y="60" width="120" height="64" rx="6" fill="url(#b1)" stroke="#c08020"/>
+    <text x="840" y="86"  text-anchor="middle" font-weight="700">6. Retire</text>
+    <text x="840" y="104" text-anchor="middle" font-size="11">flags update</text>
+    <text x="840" y="118" text-anchor="middle" font-size="11">cy++ ic++ snapshot</text>
+  </g>
+
+  <!-- Arrows -->
+  <line x1="140" y1="92" x2="158" y2="92" stroke="#333" marker-end="url(#arr)"/>
+  <line x1="280" y1="92" x2="298" y2="92" stroke="#333" marker-end="url(#arr)"/>
+  <line x1="420" y1="92" x2="438" y2="92" stroke="#333" marker-end="url(#arr)"/>
+  <line x1="600" y1="92" x2="618" y2="92" stroke="#333" marker-end="url(#arr)"/>
+  <line x1="760" y1="92" x2="778" y2="92" stroke="#333" marker-end="url(#arr)"/>
+
+  <!-- Dispatch detail -->
+  <text x="460" y="170" text-anchor="middle" font-weight="700" font-size="14">Dispatch Cascade (opcode-map adjacent)</text>
+
+  <g transform="translate(40,190)">
+    <rect width="160" height="32" fill="#e7f5ec" stroke="#3a8b53"/>
+    <text x="80" y="20" text-anchor="middle">stringOps[op]?</text>
+    <text x="170" y="20" font-size="11">A4..AF</text>
+
+    <rect y="40" width="160" height="32" fill="#e7f5ec" stroke="#3a8b53"/>
+    <text x="80" y="60" text-anchor="middle">(op &amp; 0xC4)==0?</text>
+    <text x="170" y="60" font-size="11">ALU rm/r</text>
+
+    <rect y="80" width="160" height="32" fill="#e7f5ec" stroke="#3a8b53"/>
+    <text x="80" y="100" text-anchor="middle">op in 80..83?</text>
+    <text x="170" y="100" font-size="11">ALU imm</text>
+
+    <rect y="120" width="160" height="32" fill="#dfe9fa" stroke="#3b6abf"/>
+    <text x="80" y="140" text-anchor="middle">40..4F?</text>
+    <text x="170" y="140" font-size="11">INC/DEC r16</text>
+
+    <rect y="160" width="160" height="32" fill="#dfe9fa" stroke="#3b6abf"/>
+    <text x="80" y="180" text-anchor="middle">50..5F?</text>
+    <text x="170" y="180" font-size="11">PUSH/POP r16</text>
+  </g>
+
+  <g transform="translate(290,190)">
+    <rect width="160" height="32" fill="#fff3da" stroke="#c08020"/>
+    <text x="80" y="20" text-anchor="middle">70..7F?</text>
+    <text x="170" y="20" font-size="11">Jcc rel8 ×16</text>
+
+    <rect y="40" width="160" height="32" fill="#fff3da" stroke="#c08020"/>
+    <text x="80" y="60" text-anchor="middle">88..8E?</text>
+    <text x="170" y="60" font-size="11">MOV r/rm/seg</text>
+
+    <rect y="80" width="160" height="32" fill="#fff3da" stroke="#c08020"/>
+    <text x="80" y="100" text-anchor="middle">B0..BF?</text>
+    <text x="170" y="100" font-size="11">MOV reg,imm</text>
+
+    <rect y="120" width="160" height="32" fill="#fff3da" stroke="#c08020"/>
+    <text x="80" y="140" text-anchor="middle">D0..D3?</text>
+    <text x="170" y="140" font-size="11">shift/rotate group</text>
+
+    <rect y="160" width="160" height="32" fill="#fff3da" stroke="#c08020"/>
+    <text x="80" y="180" text-anchor="middle">E0..E3?</text>
+    <text x="170" y="180" font-size="11">LOOP / JCXZ</text>
+  </g>
+
+  <g transform="translate(540,190)">
+    <rect width="160" height="32" fill="#fde9e6" stroke="#c04040"/>
+    <text x="80" y="20" text-anchor="middle">CD?</text>
+    <text x="170" y="20" font-size="11">INT (28H special)</text>
+
+    <rect y="40" width="160" height="32" fill="#fde9e6" stroke="#c04040"/>
+    <text x="80" y="60" text-anchor="middle">CF?</text>
+    <text x="170" y="60" font-size="11">IRET</text>
+
+    <rect y="80" width="160" height="32" fill="#fde9e6" stroke="#c04040"/>
+    <text x="80" y="100" text-anchor="middle">F6 / F7?</text>
+    <text x="170" y="100" font-size="11">MUL/DIV/NOT/NEG/TEST</text>
+
+    <rect y="120" width="160" height="32" fill="#fde9e6" stroke="#c04040"/>
+    <text x="80" y="140" text-anchor="middle">FE / FF?</text>
+    <text x="170" y="140" font-size="11">INC/DEC/CALL/JMP rm</text>
+
+    <rect y="160" width="160" height="32" fill="#fde9e6" stroke="#c04040"/>
+    <text x="80" y="180" text-anchor="middle">F4?</text>
+    <text x="170" y="180" font-size="11">HLT</text>
+  </g>
+
+  <g transform="translate(740,250)">
+    <rect width="160" height="48" fill="#f3f3f3" stroke="#888"/>
+    <text x="80" y="22" text-anchor="middle" font-weight="700">else</text>
+    <text x="80" y="40" text-anchor="middle" font-size="11">"Unknown opcode"</text>
+  </g>
+</svg>
