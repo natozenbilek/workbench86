@@ -1,4 +1,4 @@
-; PA26 — Count on Port 1, increment on IR2
+; PA26: Count on Port 1, increment on IR2
         INCLUDE PATCALLS.INC
 I22VCT  EQU     0088H
         ORG     0700H

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="wbfig" viewBox="0 0 1152 360" width="1152" height="360" role="img" aria-labelledby="d-frame-p-tr-t d-frame-p-tr-d" lang="tr">
+<title id="d-frame-p-tr-t">P harfi hatta</title>
+<desc id="d-frame-p-tr-d">Üstte P = 0x50 = 0101 0000. Bir ok sağdaki 0000'dan ilk data hücresine iniyor: sağdan başlar. Dalga şekli: boşta 1, start 0, data 0 0 0 0 1 0 1 0, iki stop 1, boşta 1. Altında 0'dan 1,146 ms'ye bir cetvel; ilk aralık 104 µs, toplam 11 × 104,2 µs = 1,146 ms. Sağ altta: PAT: 4 karakter = 4,58 ms; 8 / 11 bit veri: %72,7.</desc>
+<defs><style>
+.wbfig .tx{font-family:'Atkinson Hyperlegible Next','Source Sans 3','Segoe UI',Arial,sans-serif}
+.wbfig .tm{font-family:'JetBrains Mono','IBM Plex Mono',Consolas,Menlo,monospace;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+.wbfig .f-amb{fill:var(--amb,#7d6608)}
+.wbfig .f-amb-l{fill:var(--amb-l,rgba(183,149,11,.08))}
+.wbfig .f-bg2{fill:var(--bg2,#ffffff)}
+.wbfig .f-pur{fill:var(--pur,#8e44ad)}
+.wbfig .f-pur-l{fill:var(--pur-l,rgba(142,68,173,.08))}
+.wbfig .f-text{fill:var(--text,#1a1a1a)}
+.wbfig .f-text3{fill:var(--text3,#6b6b6b)}
+.wbfig .s-amb{stroke:var(--amb,#7d6608)}
+.wbfig .s-brd{stroke:var(--brd,#d0d0c8)}
+.wbfig .s-pur{stroke:var(--pur,#8e44ad)}
+.wbfig .s-text{stroke:var(--text,#1a1a1a)}
+.wbfig .s-text3{stroke:var(--text3,#6b6b6b)}
+</style></defs>
+<rect class="wb-panel f-bg2 s-brd" x="1" y="1" width="1150" height="358" rx="14" stroke-width="2"/>
+<text class="tm f-text" x="40" y="50" font-size="28" font-weight="700">P = 0x50 = 0101 0000</text>
+<text class="tx f-text3" x="196" y="158" font-size="22" font-weight="600" text-anchor="middle">boşta</text>
+<rect class="f-amb-l s-amb" x="234" y="100" width="68" height="96" rx="3" stroke-width="2"/>
+<rect class="f-pur-l s-pur" x="306" y="100" width="68" height="96" rx="3" stroke-width="2"/>
+<text class="tm f-pur" x="340" y="160" font-size="28" font-weight="700" text-anchor="middle">0</text>
+<rect class="f-pur-l s-pur" x="378" y="100" width="68" height="96" rx="3" stroke-width="2"/>
+<text class="tm f-pur" x="412" y="160" font-size="28" font-weight="700" text-anchor="middle">0</text>
+<rect class="f-pur-l s-pur" x="450" y="100" width="68" height="96" rx="3" stroke-width="2"/>
+<text class="tm f-pur" x="484" y="160" font-size="28" font-weight="700" text-anchor="middle">0</text>
+<rect class="f-pur-l s-pur" x="522" y="100" width="68" height="96" rx="3" stroke-width="2"/>
+<text class="tm f-pur" x="556" y="160" font-size="28" font-weight="700" text-anchor="middle">0</text>
+<rect class="f-pur-l s-pur" x="594" y="100" width="68" height="96" rx="3" stroke-width="2"/>
+<text class="tm f-pur" x="628" y="160" font-size="28" font-weight="700" text-anchor="middle">1</text>
+<rect class="f-pur-l s-pur" x="666" y="100" width="68" height="96" rx="3" stroke-width="2"/>
+<text class="tm f-pur" x="700" y="160" font-size="28" font-weight="700" text-anchor="middle">0</text>
+<rect class="f-pur-l s-pur" x="738" y="100" width="68" height="96" rx="3" stroke-width="2"/>
+<text class="tm f-pur" x="772" y="160" font-size="28" font-weight="700" text-anchor="middle">1</text>
+<rect class="f-pur-l s-pur" x="810" y="100" width="68" height="96" rx="3" stroke-width="2"/>
+<text class="tm f-pur" x="844" y="160" font-size="28" font-weight="700" text-anchor="middle">0</text>
+<rect class="f-amb-l s-amb" x="882" y="100" width="68" height="96" rx="3" stroke-width="2"/>
+<rect class="f-amb-l s-amb" x="954" y="100" width="68" height="96" rx="3" stroke-width="2"/>
+<text class="tx f-text3" x="1060" y="158" font-size="22" font-weight="600" text-anchor="middle">boşta</text>
+<path class="s-text3" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 6" d="M160,120 L232,120"/>
+<path class="s-text" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M232,120 L232,178 L304,178 L304,178 L376,178 L376,178 L448,178 L448,178 L520,178 L520,178 L592,178 L592,120 L664,120 L664,178 L736,178 L736,120 L808,120 L808,178 L880,178 L880,120 L952,120 L952,120 L1024,120"/>
+<path class="s-text3" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 6" d="M1024,120 L1096,120"/>
+<text class="tx f-amb" x="268" y="158" font-size="22" font-weight="700" text-anchor="middle">start</text>
+<text class="tx f-amb" x="916" y="158" font-size="22" font-weight="700" text-anchor="middle">stop</text>
+<text class="tx f-amb" x="988" y="158" font-size="22" font-weight="700" text-anchor="middle">stop</text>
+<path class="s-text3" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M148,96 L148,198"/>
+<text class="tm f-text3" x="138" y="128" font-size="22" font-weight="700" text-anchor="end">1</text>
+<text class="tm f-text3" x="138" y="186" font-size="22" font-weight="700" text-anchor="end">0</text>
+<path class="s-pur" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M372,62 C380,84 340,80 340,98"/>
+<path class="s-pur" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M331.5,82.1 L340,98 L348.5,82.1"/>
+<text class="tx f-pur" x="400" y="84" font-size="24" font-weight="700">sağdan başlar</text>
+<text class="tm f-text" x="1132" y="36" font-size="22" font-weight="600" text-anchor="end">PAT: 4 karakter = 4,58 ms</text>
+<text class="tm f-text" x="1132" y="64" font-size="22" font-weight="600" text-anchor="end">8 / 11 bit veri: %72,7</text>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M232,230 L1024,230"/>
+<path class="s-text" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M232,222 L232,238"/>
+<path class="s-text" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M304,222 L304,238"/>
+<path class="s-text" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M376,222 L376,238"/>
+<path class="s-text" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M448,222 L448,238"/>
+<path class="s-text" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M520,222 L520,238"/>
+<path class="s-text" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M592,222 L592,238"/>
+<path class="s-text" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M664,222 L664,238"/>
+<path class="s-text" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M736,222 L736,238"/>
+<path class="s-text" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M808,222 L808,238"/>
+<path class="s-text" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M880,222 L880,238"/>
+<path class="s-text" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M952,222 L952,238"/>
+<path class="s-text" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M1024,222 L1024,238"/>
+<text class="tm f-text3" x="222" y="238" font-size="22" font-weight="600" text-anchor="end">0</text>
+<text class="tm f-pur" x="268" y="262" font-size="22" font-weight="700" text-anchor="middle">104 µs</text>
+<text class="tm f-text" x="1034" y="238" font-size="22" font-weight="700">1,146 ms</text>
+<path class="s-pur" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M232,276 L232,286 L1024,286 L1024,276"/>
+<text class="tm f-pur" x="628" y="322" font-size="28" font-weight="700" text-anchor="middle">11 × 104,2 µs = 1,146 ms</text>
+</svg>

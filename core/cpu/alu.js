@@ -1,5 +1,5 @@
 // ============================================================
-// workbench86 CPU - ALU Operations & Condition Code Testing
+// workbench86 CPU: ALU Operations & Condition Code Testing
 // ============================================================
 
 // === ALU HELPER ===

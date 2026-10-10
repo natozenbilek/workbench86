@@ -1,4 +1,4 @@
-; LED Dice — random-ish dice pattern on Port 2
+; LED Dice: random-ish dice pattern on Port 2
 ; Rolls through patterns rapidly, press RESET to stop
         ORG     0100H
         INCLUDE PATCALLS.INC

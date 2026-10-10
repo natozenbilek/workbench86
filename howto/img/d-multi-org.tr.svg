@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="wbfig" viewBox="0 0 1152 420" width="1152" height="420" role="img" aria-labelledby="d-multi-org-tr-t d-multi-org-tr-d" lang="tr">
+<title id="d-multi-org-tr-t">Birden çok ORG</title>
+<desc id="d-multi-org-tr-d">Segment 0080'de 0500'den 0700'e bir bellek cetveli. 0500'de mavi blok: pa29 ana program, ORG 0500H. Bloğun sonundan 0600'e kadar taralı boşluk, gönderilmez. 0600'de ikinci mavi blok: timer handler, ORG 0600H. Üstte sayfanın satırları: TX: C 0080:0500, 200 ms, TX: C 0080:0600, en sonda TX: G 0080:0500 ve bir ok ilk bloğun başına. Altta vektör tablosu 0000:0094'ten ikinci bloğa yeşil bir ok: timer vektörü → 0080:0600. Toplam yaklaşık 142 byte. Henüz kartta denenmedi.</desc>
+<defs><style>
+.wbfig .tx{font-family:'Atkinson Hyperlegible Next','Source Sans 3','Segoe UI',Arial,sans-serif}
+.wbfig .tm{font-family:'JetBrains Mono','IBM Plex Mono',Consolas,Menlo,monospace;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+.wbfig .f-amb{fill:var(--amb,#7d6608)}
+.wbfig .f-amb-l{fill:var(--amb-l,rgba(183,149,11,.08))}
+.wbfig .f-bg2{fill:var(--bg2,#ffffff)}
+.wbfig .f-bg3{fill:var(--bg3,#eeeeea)}
+.wbfig .f-blu{fill:var(--blu,#2471a3)}
+.wbfig .f-blu-l{fill:var(--blu-l,rgba(36,113,163,.08))}
+.wbfig .f-grn{fill:var(--grn,#1d7a45)}
+.wbfig .f-grn-l{fill:var(--grn-l,rgba(39,174,96,.08))}
+.wbfig .f-text{fill:var(--text,#1a1a1a)}
+.wbfig .f-text3{fill:var(--text3,#6b6b6b)}
+.wbfig .s-amb{stroke:var(--amb,#7d6608)}
+.wbfig .s-blu{stroke:var(--blu,#2471a3)}
+.wbfig .s-brd{stroke:var(--brd,#d0d0c8)}
+.wbfig .s-brd2{stroke:var(--brd2,#bbbbbb)}
+.wbfig .s-grn{stroke:var(--grn,#1d7a45)}
+.wbfig .s-text{stroke:var(--text,#1a1a1a)}
+.wbfig .s-text3{stroke:var(--text3,#6b6b6b)}
+</style><pattern id="mhatch-tr" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="12" class="s-text3" stroke-width="2.5"/></pattern></defs>
+<rect class="wb-panel f-bg2 s-brd" x="1" y="1" width="1150" height="418" rx="14" stroke-width="2"/>
+<rect class="f-bg3 s-brd2" x="110" y="196" width="960" height="70" rx="0" stroke-width="2"/>
+<rect x="310.6" y="196" width="279.4" height="70" fill="url(#mhatch-tr)" opacity=".55"/>
+<rect class="f-bg2 s-brd2" x="338.7" y="216" width="223.3" height="32" rx="4" stroke-width="1.5"/>
+<text class="tx f-text3" x="450.3" y="239" font-size="22" font-weight="700" text-anchor="middle">boşluk, gönderilmez</text>
+<rect class="f-blu-l s-blu" x="110" y="196" width="200.6" height="70" rx="2" stroke-width="3"/>
+<text class="tx f-text" x="120" y="226" font-size="22" font-weight="700">pa29 ana</text>
+<text class="tx f-text" x="120" y="254" font-size="22" font-weight="700">program</text>
+<rect class="f-blu-l s-blu" x="590" y="196" width="65.6" height="70" rx="2" stroke-width="3"/>
+<text class="tx f-text" x="667.6" y="226" font-size="22" font-weight="700">timer handler</text>
+<text class="tm f-blu" x="667.6" y="254" font-size="22" font-weight="600">ORG 0600H</text>
+<text class="tm f-blu" x="110" y="334" font-size="22" font-weight="600">ORG 0500H</text>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M110,266 L110,278"/>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M590,266 L590,278"/>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M1070,266 L1070,278"/>
+<text class="tm f-text" x="110" y="302" font-size="22" font-weight="700" text-anchor="middle">0500</text>
+<text class="tm f-text" x="590" y="302" font-size="22" font-weight="700" text-anchor="middle">0600</text>
+<text class="tm f-text" x="1070" y="302" font-size="22" font-weight="700" text-anchor="middle">0700</text>
+<text class="tm f-grn" x="100" y="240" font-size="22" font-weight="700" text-anchor="end">0080:</text>
+<text class="tx f-text3" x="110" y="36" font-size="24" font-weight="600">toplam yaklaşık 142 byte</text>
+<rect class="f-amb-l s-amb" x="858.9" y="14" width="277.1" height="34" rx="17" stroke-width="2"/>
+<text class="tx f-amb" x="997.5" y="38" font-size="22" font-weight="700" text-anchor="middle">henüz kartta denenmedi</text>
+<text class="tm f-blu" x="110" y="92" font-size="24" font-weight="700">TX: C 0080:0500</text>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M124,102 L124,192"/>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M118.4,181.4 L124,192 L129.6,181.4"/>
+<text class="tm f-blu" x="590" y="92" font-size="24" font-weight="700">TX: C 0080:0600</text>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M604,102 L604,192"/>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M598.4,181.4 L604,192 L609.6,181.4"/>
+<text class="tm f-amb" x="466" y="72" font-size="22" font-weight="700" text-anchor="middle">200 ms</text>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M356,84 L576,84"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M567.2,88.7 L576,84 L567.2,79.3"/>
+<text class="tm f-blu" x="230" y="150" font-size="24" font-weight="700">TX: G 0080:0500</text>
+<path class="s-blu" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M222,142 C170,140 144,160 140,190"/>
+<path class="s-blu" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M132.3,169.4 L140,190 L152.8,172.1"/>
+<rect class="f-grn-l s-grn" x="760" y="330" width="376" height="46" rx="6" stroke-width="3"/>
+<text class="tx f-text" x="948" y="361" font-size="22" font-weight="700" text-anchor="middle">vektör tablosu, 0000:0094</text>
+<path class="s-grn" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M800,330 C740,290 650,316 620,270"/>
+<path class="s-grn" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M635.8,278.7 L620,270 L621.6,287.9"/>
+<text class="tm f-grn" x="948" y="406" font-size="22" font-weight="700" text-anchor="middle">timer vektörü → 0080:0600</text>
+</svg>

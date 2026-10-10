@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="wbfig" viewBox="0 0 672 400" width="672" height="400" role="img" aria-labelledby="d-port-list-en-t d-port-list-en-d" lang="en">
+<title id="d-port-list-en-t">The browser's port list</title>
+<desc id="d-port-list-en-d">The browser's serial port window: the line "wants to connect to a serial port" at the top and two ports under it. USB-SERIAL CH340 (COM3) is selected and marked "the converter's port"; the other is Communications Port (COM1). Connect and Cancel buttons at the bottom right. Under the window: No driver, no port in the list.</desc>
+<defs><style>
+.wbfig .tx{font-family:'Atkinson Hyperlegible Next','Source Sans 3','Segoe UI',Arial,sans-serif}
+.wbfig .tm{font-family:'JetBrains Mono','IBM Plex Mono',Consolas,Menlo,monospace;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+.wbfig .f-bg2{fill:var(--bg2,#ffffff)}
+.wbfig .f-bg3{fill:var(--bg3,#eeeeea)}
+.wbfig .f-blu{fill:var(--blu,#2471a3)}
+.wbfig .f-cyn{fill:var(--cyn,#117864)}
+.wbfig .f-cyn-l{fill:var(--cyn-l,rgba(23,165,137,.08))}
+.wbfig .f-red{fill:var(--red,#c0392b)}
+.wbfig .f-text{fill:var(--text,#1a1a1a)}
+.wbfig .f-text3{fill:var(--text3,#6b6b6b)}
+.wbfig .s-brd{stroke:var(--brd,#d0d0c8)}
+.wbfig .s-brd2{stroke:var(--brd2,#bbbbbb)}
+.wbfig .s-cyn{stroke:var(--cyn,#117864)}
+</style></defs>
+<rect class="wb-panel f-bg2 s-brd" x="1" y="1" width="670" height="398" rx="14" stroke-width="2"/>
+<rect class="f-bg3 s-brd2" x="20" y="16" width="632" height="268" rx="10" stroke-width="2"/>
+<text class="tm f-text" x="40" y="56" font-size="22" font-weight="600">... wants to connect to a serial port</text>
+<rect class="f-cyn-l s-cyn" x="40" y="78" width="592" height="54" rx="6" stroke-width="5"/>
+<text class="tm f-text" x="60" y="113" font-size="22" font-weight="700">USB-SERIAL CH340 (COM3)</text>
+<text class="tx f-cyn" x="618" y="113" font-size="22" font-weight="700" text-anchor="end">the converter's port</text>
+<rect class="f-bg2 s-brd2" x="40" y="140" width="592" height="54" rx="6" stroke-width="2"/>
+<text class="tm f-text3" x="60" y="175" font-size="22" font-weight="600">Communications Port (COM1)</text>
+<rect class="f-blu" x="392" y="216" width="120" height="46" rx="6"/>
+<text class="tm f-bg2" x="452" y="246" font-size="22" font-weight="700" text-anchor="middle">Connect</text>
+<rect class="f-bg2 s-brd2" x="524" y="216" width="108" height="46" rx="6" stroke-width="2"/>
+<text class="tm f-text" x="578" y="246" font-size="22" font-weight="700" text-anchor="middle">Cancel</text>
+<text class="tx f-red" x="336" y="344" font-size="24" font-weight="600" text-anchor="middle">No driver, no port in the list.</text>
+</svg>

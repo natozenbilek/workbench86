@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="wbfig" viewBox="0 0 1152 420" width="1152" height="420" role="img" aria-labelledby="d-fresh-pat-tr-t d-fresh-pat-tr-d" lang="tr">
+<title id="d-fresh-pat-tr-t">Ekrandaki eski PAT: ve yeni PAT:</title>
+<desc id="d-fresh-pat-tr-d">Aynı zaman ekseninde iki satır. Üst satır, geçerli: terminalde soluk, eski bir PAT: var (eski, sayılmaz). Upload'a basılınca sayfa CR LF gönderir ve 2 s bekler; bu pencerenin içinde yeni bir PAT: gelir (yeni, kabul), ardından [OK] PAT:. Alt satır, eksik: aynı eski PAT:, aynı CR LF ve 2 s, ama pencere boş; ardından [WARN] No PAT: prompt. ve Error U01; karta başka bir şey gitmez.</desc>
+<defs><style>
+.wbfig .tx{font-family:'Atkinson Hyperlegible Next','Source Sans 3','Segoe UI',Arial,sans-serif}
+.wbfig .tm{font-family:'JetBrains Mono','IBM Plex Mono',Consolas,Menlo,monospace;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+.wbfig .f-amb{fill:var(--amb,#7d6608)}
+.wbfig .f-amb-l{fill:var(--amb-l,rgba(183,149,11,.08))}
+.wbfig .f-bg2{fill:var(--bg2,#ffffff)}
+.wbfig .f-bg3{fill:var(--bg3,#eeeeea)}
+.wbfig .f-blu{fill:var(--blu,#2471a3)}
+.wbfig .f-grn{fill:var(--grn,#1d7a45)}
+.wbfig .f-grn-l{fill:var(--grn-l,rgba(39,174,96,.08))}
+.wbfig .f-red{fill:var(--red,#c0392b)}
+.wbfig .f-text3{fill:var(--text3,#6b6b6b)}
+.wbfig .s-amb{stroke:var(--amb,#7d6608)}
+.wbfig .s-blu{stroke:var(--blu,#2471a3)}
+.wbfig .s-brd{stroke:var(--brd,#d0d0c8)}
+.wbfig .s-brd2{stroke:var(--brd2,#bbbbbb)}
+.wbfig .s-grn{stroke:var(--grn,#1d7a45)}
+.wbfig .s-text3{stroke:var(--text3,#6b6b6b)}
+</style></defs>
+<rect class="wb-panel f-bg2 s-brd" x="1" y="1" width="1150" height="418" rx="14" stroke-width="2"/>
+<text class="tx f-grn" x="24" y="104" font-size="28" font-weight="700">geçerli</text>
+<rect class="f-bg3 s-brd2" x="170" y="60" width="966" height="74" rx="6" stroke-width="2"/>
+<g opacity=".45">
+<rect class="f-grn-l s-grn" x="190" y="76" width="84" height="42" rx="4" stroke-width="2"/>
+<text class="tm f-grn" x="232" y="104" font-size="24" font-weight="700" text-anchor="middle">PAT:</text>
+</g>
+<text class="tx f-text3" x="232" y="160" font-size="22" font-weight="600" text-anchor="middle">eski, sayılmaz</text>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M330,48 L330,146"/>
+<text class="tx f-blu" x="330" y="40" font-size="24" font-weight="700" text-anchor="middle">Upload'a basıldı</text>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M360,128 L360,72"/>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M365.6,82.6 L360,72 L354.4,82.6"/>
+<text class="tm f-blu" x="372" y="160" font-size="22" font-weight="700">CR LF</text>
+<rect class="f-amb-l s-amb" x="400" y="64" width="340" height="66" rx="4" stroke-width="2" stroke-dasharray="6 4"/>
+<text class="tm f-amb" x="570" y="40" font-size="24" font-weight="700" text-anchor="middle">2 s</text>
+<rect class="f-grn-l s-grn" x="520" y="74" width="100" height="46" rx="4" stroke-width="5"/>
+<text class="tm f-grn" x="570" y="105" font-size="26" font-weight="700" text-anchor="middle">PAT:</text>
+<text class="tx f-grn" x="570" y="160" font-size="22" font-weight="700" text-anchor="middle">yeni, kabul</text>
+<text class="tm f-grn" x="770" y="105" font-size="24" font-weight="700">[OK] PAT:</text>
+<text class="tx f-red" x="24" y="290" font-size="28" font-weight="700">eksik</text>
+<rect class="f-bg3 s-brd2" x="170" y="246" width="966" height="74" rx="6" stroke-width="2"/>
+<g opacity=".45">
+<rect class="f-grn-l s-grn" x="190" y="262" width="84" height="42" rx="4" stroke-width="2"/>
+<text class="tm f-grn" x="232" y="290" font-size="24" font-weight="700" text-anchor="middle">PAT:</text>
+</g>
+<text class="tx f-text3" x="232" y="346" font-size="22" font-weight="600" text-anchor="middle">eski, sayılmaz</text>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M330,234 L330,332"/>
+<text class="tx f-blu" x="330" y="226" font-size="24" font-weight="700" text-anchor="middle">Upload'a basıldı</text>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M360,314 L360,258"/>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M365.6,268.6 L360,258 L354.4,268.6"/>
+<text class="tm f-blu" x="372" y="346" font-size="22" font-weight="700">CR LF</text>
+<rect class="f-amb-l s-amb" x="400" y="250" width="340" height="66" rx="4" stroke-width="2" stroke-dasharray="6 4"/>
+<text class="tm f-amb" x="570" y="226" font-size="24" font-weight="700" text-anchor="middle">2 s</text>
+<text class="tm f-amb" x="760" y="278" font-size="22" font-weight="700">[WARN] No PAT: prompt.</text>
+<text class="tm f-red" x="760" y="306" font-size="22" font-weight="700">Error U01</text>
+<text class="tx f-text3" x="760" y="346" font-size="22" font-weight="600">karta başka bir şey gitmez</text>
+<path class="s-text3" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M170,398 L1130,398"/>
+<path class="s-text3" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M1119.4,403.6 L1130,398 L1119.4,392.4"/>
+<text class="tx f-text3" x="1112" y="388" font-size="22" font-weight="600" text-anchor="end">zaman</text>
+</svg>

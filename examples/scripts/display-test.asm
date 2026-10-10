@@ -1,4 +1,4 @@
-; Display Test — 7-segment display demo
+; Display Test: 7-segment display demo
 ; Writes text and counts on the PAT Display
         ORG     0100H
         INCLUDE PATCALLS.INC

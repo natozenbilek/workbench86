@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="wbfig" viewBox="0 0 1152 440" width="1152" height="440" role="img" aria-labelledby="d-error30-tr-t d-error30-tr-d" lang="tr">
+<title id="d-error30-tr-t">ERROR 30</title>
+<desc id="d-error30-tr-d">İki panel. Solda, kod olmayan adres: segment 0080'in belleği; 0100'de yazılan kod (18 byte), 0500 ve 0800 boş ve kırmızı taralı. Mavi bir ok G 0080:0500'den 0500'e gidiyor: 1. G, kod yazılmamış bir adrese. Yeşil bir ok kesme vektöründen 0800'e gidiyor: 2. vektör, kod yüklenmemiş bir adrese. Altında ERROR 30 : Invalid Opcode Exception, === FAILED ... === ve Error B01. Sağda, doğru: kod 0500'de, TX: C 0080:0500 ve TX: G 0080:0500 aynı yeri gösteriyor; C ve G aynı adreste.</desc>
+<defs><style>
+.wbfig .tx{font-family:'Atkinson Hyperlegible Next','Source Sans 3','Segoe UI',Arial,sans-serif}
+.wbfig .tm{font-family:'JetBrains Mono','IBM Plex Mono',Consolas,Menlo,monospace;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+.wbfig .f-bg2{fill:var(--bg2,#ffffff)}
+.wbfig .f-bg3{fill:var(--bg3,#eeeeea)}
+.wbfig .f-blu{fill:var(--blu,#2471a3)}
+.wbfig .f-blu-l{fill:var(--blu-l,rgba(36,113,163,.08))}
+.wbfig .f-grn{fill:var(--grn,#1d7a45)}
+.wbfig .f-red{fill:var(--red,#c0392b)}
+.wbfig .f-red-l{fill:var(--red-l,rgba(192,57,43,.08))}
+.wbfig .f-text{fill:var(--text,#1a1a1a)}
+.wbfig .f-text3{fill:var(--text3,#6b6b6b)}
+.wbfig .s-bg2{stroke:var(--bg2,#ffffff)}
+.wbfig .s-blu{stroke:var(--blu,#2471a3)}
+.wbfig .s-brd{stroke:var(--brd,#d0d0c8)}
+.wbfig .s-brd2{stroke:var(--brd2,#bbbbbb)}
+.wbfig .s-grn{stroke:var(--grn,#1d7a45)}
+.wbfig .s-red{stroke:var(--red,#c0392b)}
+</style><pattern id="ehatch-tr" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="12" class="s-red" stroke-width="3"/></pattern></defs>
+<rect class="wb-panel f-bg2 s-brd" x="1" y="1" width="1150" height="438" rx="14" stroke-width="2"/>
+<path class="s-brd2" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M640,20 L640,420"/>
+<text class="tx f-red" x="24" y="44" font-size="28" font-weight="700">kod olmayan adres</text>
+<rect class="f-bg3 s-brd2" x="90" y="64" width="230" height="290" rx="4" stroke-width="2"/>
+<text class="tm f-text" x="80" y="116" font-size="22" font-weight="700" text-anchor="end">0100</text>
+<rect class="f-blu-l s-blu" x="98" y="80" width="214" height="60" rx="4" stroke-width="3"/>
+<text class="tx f-text" x="205" y="106" font-size="22" font-weight="700" text-anchor="middle">yazılan kod</text>
+<text class="tx f-text" x="205" y="132" font-size="22" font-weight="600" text-anchor="middle">(18 byte)</text>
+<text class="tm f-text" x="80" y="216" font-size="22" font-weight="700" text-anchor="end">0500</text>
+<rect class="f-red-l s-red" x="98" y="180" width="214" height="60" rx="4" stroke-width="3" stroke-dasharray="8 5"/>
+<rect x="98" y="180" width="214" height="60" fill="url(#ehatch-tr)" opacity=".5"/>
+<text class="tm f-text" x="80" y="316" font-size="22" font-weight="700" text-anchor="end">0800</text>
+<rect class="f-red-l s-red" x="98" y="280" width="214" height="60" rx="4" stroke-width="3" stroke-dasharray="8 5"/>
+<rect x="98" y="280" width="214" height="60" fill="url(#ehatch-tr)" opacity=".5"/>
+<text class="tm f-text3" x="205" y="166" font-size="22" font-weight="700" text-anchor="middle">...</text>
+<text class="tm f-text3" x="205" y="266" font-size="22" font-weight="700" text-anchor="middle">...</text>
+<text class="tm f-blu" x="340" y="216" font-size="22" font-weight="700">G 0080:0500</text>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M336,208 L322,208"/>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M332.6,202.4 L322,208 L332.6,213.6"/>
+<text class="tx f-text3" x="340" y="244" font-size="22" font-weight="600">1. G, kod yazılmamış</text>
+<text class="tx f-text3" x="340" y="270" font-size="22" font-weight="600">bir adrese</text>
+<text class="tx f-grn" x="340" y="316" font-size="22" font-weight="700">kesme vektörü</text>
+<path class="s-grn" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M336,308 L322,308"/>
+<path class="s-grn" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M332.6,302.4 L322,308 L332.6,313.6"/>
+<text class="tx f-text3" x="340" y="342" font-size="22" font-weight="600">2. vektör, kod</text>
+<text class="tx f-text3" x="340" y="368" font-size="22" font-weight="600">yüklenmemiş bir adrese</text>
+<text class="tm f-red" x="24" y="396" font-size="22" font-weight="700">ERROR 30 : Invalid Opcode Exception</text>
+<text class="tm f-red" x="24" y="424" font-size="22" font-weight="700" xml:space="preserve">=== FAILED ... ===   Error B01</text>
+<text class="tx f-grn" x="664" y="44" font-size="28" font-weight="700">doğru</text>
+<rect class="f-bg3 s-brd2" x="730" y="64" width="200" height="290" rx="4" stroke-width="2"/>
+<text class="tm f-text" x="720" y="116" font-size="22" font-weight="700" text-anchor="end">0100</text>
+<rect class="f-bg2 s-brd2" x="738" y="80" width="184" height="60" rx="4" stroke-width="2"/>
+<text class="tm f-text" x="720" y="216" font-size="22" font-weight="700" text-anchor="end">0500</text>
+<rect class="f-blu-l s-blu" x="738" y="180" width="184" height="60" rx="4" stroke-width="3"/>
+<text class="tx f-text" x="830" y="206" font-size="22" font-weight="700" text-anchor="middle">yazılan kod</text>
+<text class="tx f-text" x="830" y="232" font-size="22" font-weight="600" text-anchor="middle">(18 byte)</text>
+<text class="tm f-text" x="720" y="316" font-size="22" font-weight="700" text-anchor="end">0800</text>
+<rect class="f-bg2 s-brd2" x="738" y="280" width="184" height="60" rx="4" stroke-width="2"/>
+<text class="tm f-text3" x="830" y="166" font-size="22" font-weight="700" text-anchor="middle">...</text>
+<text class="tm f-text3" x="830" y="266" font-size="22" font-weight="700" text-anchor="middle">...</text>
+<rect class="s-blu" x="738" y="180" width="184" height="60" rx="4" fill="none" stroke-width="5"/>
+<text class="tm f-blu" x="944" y="196" font-size="22" font-weight="700">TX: C 0080:0500</text>
+<text class="tm f-blu" x="944" y="230" font-size="22" font-weight="700">TX: G 0080:0500</text>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M940,202 L926,184"/>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M935.1,188.1 L926,184 L927.7,193.9"/>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M940,226 L926,186"/>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M933.3,192.8 L926,186 L924.5,195.9"/>
+<circle class="f-grn" cx="676" cy="392" r="16"/>
+<path class="s-bg2" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M668,392 l6,7 l11,-13"/>
+<text class="tx f-grn" x="702" y="400" font-size="24" font-weight="700">C ve G aynı adreste</text>
+</svg>

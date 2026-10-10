@@ -5,7 +5,7 @@
     { label: 'Step',               key: '',           run: () => doStep() },
     { label: 'Step Back',          key: '',           run: () => doStepBack() },
     { label: 'Step Forward',       key: '',           run: () => doStepForward() },
-    { label: 'Reset',              key: '',           run: () => doReset() },
+    { label: 'Reset',              key: '',           run: () => (typeof simLocked === 'function' && simLocked()) ? simLockedNotice() : doReset() },
     { label: 'Toggle Theme',       key: '',           run: () => toggleTheme() },
     { label: 'Open Ports',         key: '',           run: () => openPorts() },
     { label: 'Export/Import',      key: '',           run: () => openExport() },
@@ -13,6 +13,9 @@
     { label: 'Connect Device',     key: '',           run: () => serialConnect() },
     { label: 'Upload Program',     key: '',           run: () => uploadProgram() },
     { label: 'New File',           key: '',           run: () => newEmptyFile() },
+    { label: 'Open File from Computer', key: '',      run: () => document.getElementById('openFile').click() },
+    { label: 'Download Current File',   key: 'Ctrl+S', run: () => downloadCurrent() },
+    { label: 'Make a Copy of Current File', key: '',  run: () => activeTabKey ? duplicateFile(activeTabKey) : sLog('Open a file first.', 1) },
     { label: 'Close Tab',          key: '',           run: () => closeTab(activeTabKey) },
     { label: 'Collapse All Panels',key: '',           run: () => document.querySelectorAll('.cd').forEach(el => el.classList.add('collapsed')) },
     { label: 'Expand All Panels',  key: '',           run: () => document.querySelectorAll('.cd').forEach(el => el.classList.remove('collapsed')) },
@@ -73,7 +76,6 @@
     input.addEventListener('input', render);
     input.addEventListener('keydown', onKey);
     overlay.addEventListener('mousedown', e => { if (e.target === overlay) close(); });
-    injectStyles();
   }
 
   function close() {
@@ -87,21 +89,6 @@
     if (e.key === 'ArrowDown') { e.preventDefault(); setActive((activeIdx + 1) % (filtered.length || 1)); }
     else if (e.key === 'ArrowUp') { e.preventDefault(); setActive((activeIdx - 1 + (filtered.length || 1)) % (filtered.length || 1)); }
     else if (e.key === 'Enter') { e.preventDefault(); execute(activeIdx); }
-  }
-
-  function injectStyles() {
-    if (document.getElementById('cmd-palette-styles')) return;
-    const s = document.createElement('style');
-    s.id = 'cmd-palette-styles';
-    s.textContent = `
-      .cmd-palette{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:600;display:flex;align-items:flex-start;justify-content:center;padding-top:12vh}
-      .cmd-palette-box{width:min(560px,90vw);background:var(--bg2,#1e1e2e);border:1px solid var(--border,#3a3a5c);border-radius:8px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.6)}
-      .cmd-palette-input{width:100%;box-sizing:border-box;padding:12px 16px;font-size:15px;border:none;border-bottom:1px solid var(--border,#3a3a5c);background:transparent;color:var(--fg,#cdd6f4);outline:none}
-      .cmd-palette-list{max-height:320px;overflow-y:auto}
-      .cmd-palette-item{display:flex;align-items:center;justify-content:space-between;padding:9px 16px;cursor:pointer;color:var(--fg,#cdd6f4);font-size:14px;user-select:none}
-      .cmd-palette-item.active{background:var(--accent,#3a3a6c)}
-      .cmd-palette-key{font-size:11px;padding:2px 6px;border-radius:4px;background:var(--bg3,#2a2a3e);color:var(--fg2,#a6adc8);border:1px solid var(--border,#3a3a5c);white-space:nowrap;margin-left:12px}`;
-    document.head.appendChild(s);
   }
 
   document.addEventListener('keydown', e => {

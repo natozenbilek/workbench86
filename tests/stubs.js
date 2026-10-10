@@ -10,6 +10,9 @@ var window = {};
 var performance = { now: function () { return 0; } };
 var __ed = { value: '' };
 var __log = [];
+// Listeners the engine registers on document (the keyboard queue), so a test can
+// fire an event at them with fireDocEvent().
+var __docListeners = {};
 
 var document = {
   getElementById: function (id) {
@@ -20,7 +23,9 @@ var document = {
       addEventListener: function () {}, appendChild: function () {}, setAttribute: function () {}
     };
   },
-  addEventListener: function () {},
+  addEventListener: function (type, fn) {
+    (__docListeners[type] = __docListeners[type] || []).push(fn);
+  },
   querySelector: function () { return null; },
   querySelectorAll: function () { return []; },
   createElement: function () {
@@ -64,6 +69,12 @@ function step(maxSteps) {
   var n = 0, cap = maxSteps || 5000;
   while (!halt && n < cap) { execOne(); n++; }
   return n;
+}
+
+// Call every document listener of one event type, as a browser would. The event
+// is a plain object, for example { key: 'Enter' }.
+function fireDocEvent(type, ev) {
+  (__docListeners[type] || []).forEach(function (fn) { fn(ev); });
 }
 
 // Read a byte through a segment and offset.

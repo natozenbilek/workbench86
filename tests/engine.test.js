@@ -76,8 +76,25 @@ check('real hex target still assembles', assemble('JMP 0100H\nHLT').ok, true);
 
 // Segment register PUSH and POP were missing, which broke a shipped example.
 check('PUSH DS assembles', assemble('PUSH DS\nHLT').ok, true);
+check('PUSH DS is 1E', asmLines[0].bytes, [0x1E]);
 check('POP DS assembles', assemble('POP DS\nHLT').ok, true);
+check('POP DS is 1F', asmLines[0].bytes, [0x1F]);
 check('POP CS is rejected', assemble('POP CS\nHLT').ok, false);
+
+// MOV mem,imm dropped an explicit DS: on BP-based addresses, where SS is the default.
+// On the board SS=0F80 and DS=0080, so the byte went to the stack segment.
+assemble('MOV BYTE PTR DS:[BP+2],5\nHLT');
+check('MOV DS:[BP+2],imm8 keeps 3E', asmLines[0].bytes, [0x3E, 0xC6, 0x46, 0x02, 0x05]);
+assemble('MOV WORD PTR DS:[BP],1234H\nHLT');
+check('MOV DS:[BP],imm16 keeps 3E', asmLines[0].bytes, [0x3E, 0xC7, 0x46, 0x00, 0x34, 0x12]);
+assemble('MOV BYTE PTR SS:[BP+2],5\nHLT');
+check('MOV SS:[BP+2],imm8 has no prefix', asmLines[0].bytes, [0xC6, 0x46, 0x02, 0x05]);
+assemble('MOV BYTE PTR DS:[BX],5\nHLT');
+check('MOV DS:[BX],imm8 has no prefix', asmLines[0].bytes, [0xC6, 0x07, 0x05]);
+assemble('MOV BYTE PTR ES:[BX],5\nHLT');
+check('MOV ES:[BX],imm8 keeps 26', asmLines[0].bytes, [0x26, 0xC6, 0x07, 0x05]);
+assemble('MOV AX,0F80H\nMOV SS,AX\nMOV BP,10H\nMOV BYTE PTR DS:[BP],77H\nHLT'); step();
+check('MOV DS:[BP],imm writes to DS, not SS', [peek(0x80, 0x10), peek(0xF80, 0x10)], [0x77, 0x00]);
 
 // RET with an immediate silently assembled as a plain RET.
 assemble('MOV AX,1234H\nPUSH AX\nMOV BX,5\nPUSH BX\nCALL SUB1\nHLT\nSUB1: RET 2'); step();
@@ -106,5 +123,19 @@ check('IRQ without a vector leaves IF set', (FLAGS >> 9) & 1, 1);
 assemble('MOV AL,0FFH\nOUT UPORT1CTL,AL\nMOV AL,02H\nOUT UPORT1,AL\n' +
          'MOV AL,00H\nOUT UPORT1,AL\nHLT'); step();
 check('ADC starts on the WR falling edge', [adcBusy, adcConvCount], [true, 3]);
+
+// Enter queued 0DH from keydown and then 'E' (45H), the first letter of "Enter",
+// from keypress. A browser fires keydown and then keypress for Enter and for a letter.
+keyQueue = [];
+fireDocEvent('keydown', { key: 'Enter' }); fireDocEvent('keypress', { key: 'Enter' });
+fireDocEvent('keydown', { key: 'a' });     fireDocEvent('keypress', { key: 'a' });
+fireDocEvent('keydown', { key: 'Shift' });
+check('Enter queues only 0DH, a letter queues itself', keyQueue, [0x0D, 0x61]);
+assemble('MOV AH,GETIN\nINT 28H\nMOV BL,AL\nINT 28H\nMOV BH,AL\nHLT');
+keyQueue = [];
+fireDocEvent('keydown', { key: 'Enter' }); fireDocEvent('keypress', { key: 'Enter' });
+step();
+check('GETIN after Enter reads 0DH, then no key', BX, 0xFF0D);
+keyQueue = [];
 
 report('engine');

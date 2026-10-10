@@ -1,4 +1,4 @@
-; PA28 — Timer-driven piezo at 1kHz
+; PA28: Timer-driven piezo at 1kHz
         INCLUDE PATCALLS.INC
 INT25V  EQU     0094H
         ORG     0300H

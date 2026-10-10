@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="wbfig" viewBox="0 0 1152 340" width="1152" height="340" role="img" aria-labelledby="d-frame-8n2-tr-t d-frame-8n2-tr-d" lang="tr">
+<title id="d-frame-8n2-tr-t">8N2 frame'i</title>
+<desc id="d-frame-8n2-tr-d">Bir karakterin frame'i, mantık seviyesi olarak soldan sağa: hat boşta 1'de, sonra start bit (0), sonra D0'dan D7'ye 8 data bit, sonra 2 stop bit (1), sonra yine boşta. Üstte parantezler: 1, 8 ve 2; hepsinin üstünde 11 bit = 1 karakter. Data hücrelerinin altında D0 önce gider (en düşük bit). Çizilen voltaj değil, mantık seviyesidir.</desc>
+<defs><style>
+.wbfig .tx{font-family:'Atkinson Hyperlegible Next','Source Sans 3','Segoe UI',Arial,sans-serif}
+.wbfig .tm{font-family:'JetBrains Mono','IBM Plex Mono',Consolas,Menlo,monospace;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+.wbfig .f-amb{fill:var(--amb,#7d6608)}
+.wbfig .f-amb-l{fill:var(--amb-l,rgba(183,149,11,.08))}
+.wbfig .f-bg2{fill:var(--bg2,#ffffff)}
+.wbfig .f-pur{fill:var(--pur,#8e44ad)}
+.wbfig .f-pur-l{fill:var(--pur-l,rgba(142,68,173,.08))}
+.wbfig .f-text{fill:var(--text,#1a1a1a)}
+.wbfig .f-text3{fill:var(--text3,#6b6b6b)}
+.wbfig .s-amb{stroke:var(--amb,#7d6608)}
+.wbfig .s-brd{stroke:var(--brd,#d0d0c8)}
+.wbfig .s-pur{stroke:var(--pur,#8e44ad)}
+.wbfig .s-text{stroke:var(--text,#1a1a1a)}
+.wbfig .s-text3{stroke:var(--text3,#6b6b6b)}
+</style></defs>
+<rect class="wb-panel f-bg2 s-brd" x="1" y="1" width="1150" height="338" rx="14" stroke-width="2"/>
+<rect class="f-amb-l s-amb" x="266" y="108" width="68" height="104" rx="3" stroke-width="2"/>
+<rect class="f-pur-l s-pur" x="338" y="108" width="68" height="104" rx="3" stroke-width="2"/>
+<text class="tm f-pur" x="372" y="240" font-size="22" font-weight="700" text-anchor="middle">D0</text>
+<rect class="f-pur-l s-pur" x="410" y="108" width="68" height="104" rx="3" stroke-width="2"/>
+<text class="tm f-pur" x="444" y="240" font-size="22" font-weight="700" text-anchor="middle">D1</text>
+<rect class="f-pur-l s-pur" x="482" y="108" width="68" height="104" rx="3" stroke-width="2"/>
+<text class="tm f-pur" x="516" y="240" font-size="22" font-weight="700" text-anchor="middle">D2</text>
+<rect class="f-pur-l s-pur" x="554" y="108" width="68" height="104" rx="3" stroke-width="2"/>
+<text class="tm f-pur" x="588" y="240" font-size="22" font-weight="700" text-anchor="middle">D3</text>
+<rect class="f-pur-l s-pur" x="626" y="108" width="68" height="104" rx="3" stroke-width="2"/>
+<text class="tm f-pur" x="660" y="240" font-size="22" font-weight="700" text-anchor="middle">D4</text>
+<rect class="f-pur-l s-pur" x="698" y="108" width="68" height="104" rx="3" stroke-width="2"/>
+<text class="tm f-pur" x="732" y="240" font-size="22" font-weight="700" text-anchor="middle">D5</text>
+<rect class="f-pur-l s-pur" x="770" y="108" width="68" height="104" rx="3" stroke-width="2"/>
+<text class="tm f-pur" x="804" y="240" font-size="22" font-weight="700" text-anchor="middle">D6</text>
+<rect class="f-pur-l s-pur" x="842" y="108" width="68" height="104" rx="3" stroke-width="2"/>
+<text class="tm f-pur" x="876" y="240" font-size="22" font-weight="700" text-anchor="middle">D7</text>
+<rect class="f-amb-l s-amb" x="914" y="108" width="68" height="104" rx="3" stroke-width="2"/>
+<rect class="f-amb-l s-amb" x="986" y="108" width="68" height="104" rx="3" stroke-width="2"/>
+<text class="tx f-text3" x="192" y="240" font-size="24" font-weight="600" text-anchor="middle">boşta</text>
+<text class="tx f-text3" x="1092" y="240" font-size="24" font-weight="600" text-anchor="middle">boşta</text>
+<path class="s-text3" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 6" d="M120,128 L192,128 L192,128 L264,128"/>
+<path class="s-text" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M264,128 L264,196 L336,196 L336,128 L408,128 L408,196 L480,196 L480,196 L552,196 L552,128 L624,128 L624,128 L696,128 L696,196 L768,196 L768,128 L840,128 L840,196 L912,196 L912,128 L984,128 L984,128 L1056,128"/>
+<path class="s-text3" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 6" d="M1056,128 L1128,128"/>
+<path class="s-amb" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" d="M264,196 L336,196"/>
+<text class="tx f-amb" x="300" y="168" font-size="24" font-weight="700" text-anchor="middle">start</text>
+<text class="tx f-amb" x="948" y="168" font-size="22" font-weight="700" text-anchor="middle">stop</text>
+<text class="tx f-amb" x="1020" y="168" font-size="22" font-weight="700" text-anchor="middle">stop</text>
+<path class="s-text3" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M108,104 L108,216"/>
+<text class="tm f-text3" x="98" y="136" font-size="22" font-weight="700" text-anchor="end">1</text>
+<text class="tm f-text3" x="98" y="204" font-size="22" font-weight="700" text-anchor="end">0</text>
+<text class="tx f-text3" x="30" y="168" font-size="22" font-weight="600" text-anchor="middle" transform="rotate(-90 30 168)">mantık seviyesi</text>
+<path class="s-amb" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M267,98 L267,88 L333,88 L333,98"/>
+<text class="tx f-amb" x="300" y="80" font-size="24" font-weight="700" text-anchor="middle">1</text>
+<path class="s-pur" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M339,98 L339,88 L909,88 L909,98"/>
+<text class="tx f-pur" x="624" y="80" font-size="24" font-weight="700" text-anchor="middle">8</text>
+<path class="s-amb" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M915,98 L915,88 L1053,88 L1053,98"/>
+<text class="tx f-amb" x="984" y="80" font-size="24" font-weight="700" text-anchor="middle">2</text>
+<path class="s-text" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M267,54 L267,44 L1053,44 L1053,54"/>
+<text class="tx f-text" x="660" y="36" font-size="24" font-weight="700" text-anchor="middle">11 bit = 1 karakter</text>
+<path class="s-pur" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M342,270 L552,270"/>
+<path class="s-pur" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M541.4,275.6 L552,270 L541.4,264.4"/>
+<text class="tx f-pur" x="566" y="278" font-size="24" font-weight="700">D0 önce (en düşük bit)</text>
+<text class="tx f-text3" x="30" y="322" font-size="22" font-weight="600">voltaj değil, mantık</text>
+</svg>

@@ -1,4 +1,4 @@
-; PA19 — Potentiometer controls motor speed via ADC/DAC
+; PA19: Potentiometer controls motor speed via ADC/DAC
         ORG     0700H
         INCLUDE PATCALLS.INC
 AGAIN:  MOV     AL,00H

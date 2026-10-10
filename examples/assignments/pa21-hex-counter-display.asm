@@ -1,4 +1,4 @@
-; PA21 — Hex count on PAT display
+; PA21: Hex count on PAT display
         ORG     0600H
         INCLUDE PATCALLS.INC
         MOV     AH,CLRSCR

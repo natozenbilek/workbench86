@@ -1,4 +1,4 @@
-; PA08 — Fill 1500H-15FFH with 00H-FFH
+; PA08: Fill 1500H-15FFH with 00H-FFH
         ORG     0500H
         MOV     BX,15FFH
         MOV     AL,0FFH

@@ -1,4 +1,4 @@
-; Bubble sort — ascending order
+; Bubble sort: ascending order
         INCLUDE PATCALLS.INC
         ORG     USRBSE
 START:  XOR     BL,BL

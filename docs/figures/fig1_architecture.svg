@@ -23,7 +23,7 @@
   </defs>
 
   <!-- Title -->
-  <text x="440" y="26" text-anchor="middle" font-weight="700" font-size="16">workbench86 — System Architecture</text>
+  <text x="440" y="26" text-anchor="middle" font-weight="700" font-size="16">workbench86: System Architecture</text>
 
   <!-- Browser container -->
   <rect x="20" y="50" width="700" height="450" rx="10" fill="#fafafa" stroke="#999" stroke-dasharray="4 3"/>
@@ -36,7 +36,7 @@
 
   <rect x="260" y="90" width="200" height="60" rx="6" fill="url(#ui-grad)" stroke="#3b6abf"/>
   <text x="360" y="115" text-anchor="middle" font-weight="700">File Explorer</text>
-  <text x="360" y="135" text-anchor="middle" font-size="11">50 examples + local files</text>
+  <text x="360" y="135" text-anchor="middle" font-size="11">52 examples + local files</text>
 
   <rect x="480" y="90" width="220" height="60" rx="6" fill="url(#ui-grad)" stroke="#3b6abf"/>
   <text x="590" y="115" text-anchor="middle" font-weight="700">Debugger Panel</text>
@@ -53,7 +53,7 @@
 
   <rect x="480" y="180" width="220" height="60" rx="6" fill="#fff" stroke="#999"/>
   <text x="590" y="205" text-anchor="middle" font-weight="700">HLL Transpiler</text>
-  <text x="590" y="225" text-anchor="middle" font-size="11">C / Py / Go / Java → ASM</text>
+  <text x="590" y="225" text-anchor="middle" font-size="11">C / C++ / Py / Go / Java → ASM</text>
 
   <!-- CPU Core -->
   <rect x="40" y="270" width="660" height="80" rx="8" fill="url(#cpu-grad)" stroke="#c08020" stroke-width="1.5"/>
@@ -68,7 +68,7 @@
 
   <rect x="260" y="380" width="200" height="60" rx="6" fill="url(#io-grad)" stroke="#3a8b53"/>
   <text x="360" y="405" text-anchor="middle" font-weight="700">256-Port I/O</text>
-  <text x="360" y="425" text-anchor="middle" font-size="11">MUART 8256 @ 0x80–0x9E</text>
+  <text x="360" y="425" text-anchor="middle" font-size="11">MUART 8256 @ 0x80 to 0x9E</text>
 
   <rect x="480" y="380" width="220" height="60" rx="6" fill="#fff" stroke="#666"/>
   <text x="590" y="405" text-anchor="middle" font-weight="700">Interrupt Controller</text>
@@ -93,7 +93,7 @@
 
   <rect x="740" y="380" width="120" height="80" rx="6" fill="url(#hw-grad)" stroke="#c04040"/>
   <text x="800" y="408" text-anchor="middle" font-weight="700">Physical</text>
-  <text x="800" y="424" text-anchor="middle" font-weight="700">PAT-286</text>
+  <text x="800" y="424" text-anchor="middle" font-weight="700">DIGIAC 2000</text>
   <text x="800" y="440" text-anchor="middle" font-size="11">trainer board</text>
 
   <!-- Arrows -->

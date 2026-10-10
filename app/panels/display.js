@@ -1,5 +1,5 @@
 // ============================================================
-// workbench86 Panels Display - 7-segment renderer, memory ASCII
+// workbench86 Panels Display: 7-segment renderer, memory ASCII
 // ============================================================
 
 // === 7-SEGMENT DISPLAY ===
@@ -48,13 +48,13 @@ function render7SegInline(char, x, y, scale) {
   let s = SEGS[char.toUpperCase()] || SEGS[char] || SEGS[' '];
   let on = 'var(--grn)', off = '#1a1d24';
   let segs = [
-    [3,1,12,2.5],  // a - top
-    [14,3,2.5,11], // b - topR
-    [14,16,2.5,11],// c - botR
-    [3,27,12,2.5], // d - bot
-    [2,16,2.5,11], // e - botL
-    [2,3,2.5,11],  // f - topL
-    [3,14,12,2.5]  // g - mid
+    [3,1,12,2.5],  // a: top
+    [14,3,2.5,11], // b: topR
+    [14,16,2.5,11],// c: botR
+    [3,27,12,2.5], // d: bot
+    [2,16,2.5,11], // e: botL
+    [2,3,2.5,11],  // f: topL
+    [3,14,12,2.5]  // g: mid
   ];
   let svg = `<g transform="translate(${x},${y}) scale(${scale})">`;
   for (let i = 0; i < 7; i++) {

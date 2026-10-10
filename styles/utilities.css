@@ -1,5 +1,5 @@
 /* ============================================================
-   workbench86 Utilities - Scroll shadows, tooltips, utility classes,
+   workbench86 Utilities: Scroll shadows, tooltips, utility classes,
    inline style replacements, resize handles, command palette,
    search bar, status bar, breadcrumb, loading states
    ============================================================ */
@@ -95,6 +95,7 @@ body.resizing * { cursor: col-resize !important; }
 .sb-error { color: var(--red); }
 .sb-success { color: var(--grn); }
 .sb-log { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.sb-left { flex: 1; min-width: 0; }   /* long messages end in an ellipsis instead of pushing the right items out */
 
 /* === BREADCRUMB === */
 .breadcrumb {
@@ -119,6 +120,7 @@ body.resizing * { cursor: col-resize !important; }
 /* === HEADER OVERFLOW MENU === */
 .hd-overflow {
   position: relative;
+  display: none;
 }
 .hd-overflow-btn {
   font-size: 16px;
@@ -150,6 +152,7 @@ body.resizing * { cursor: col-resize !important; }
   font-size: var(--fs-md);
 }
 .hd-overflow-menu .b:hover { background: var(--bg4); }
+.hd-overflow-menu a.b { line-height: normal; }
 
 /* === COMMAND PALETTE === */
 .cmd-palette {
@@ -276,6 +279,10 @@ body.resizing * { cursor: col-resize !important; }
   z-index: 50;
 }
 [data-tip]:hover::after { opacity: 1; }
+/* Header and sim-bar tips open below the button: above it they are cut off by the window
+   top or by the debug panel's scroll box. The last header item opens to the left. */
+.hd [data-tip]::after, .sim-bar [data-tip]::after { bottom: auto; top: calc(100% + 6px); }
+.hd-r > [data-tip]:last-child::after { left: auto; right: 0; transform: none; }
 
 /* === LOADING SPINNER === */
 .bp.loading { position: relative; color: transparent; pointer-events: none; }
@@ -323,7 +330,6 @@ body.resizing * { cursor: col-resize !important; }
   color: var(--text3);
   font-family: var(--sans);
   font-size: var(--fs-sm);
-  font-style: italic;
   padding: var(--sp-6) var(--sp-4);
   text-align: center;
   line-height: 1.6;
@@ -336,16 +342,10 @@ body.resizing * { cursor: col-resize !important; }
 .flex-spacer { flex: 1; }
 .hd-home-link { text-decoration: none; display: inline-flex; align-items: center; }
 .hex-import-actions { display: flex; gap: 6px; margin-top: 4px; align-items: center; }
-.trace-empty { color: var(--text3); font-size: 9px; }
+.trace-empty { color: var(--text3); font-size: var(--fs-xs); }
 
 /* === FILE BROWSER ICONS === */
-.fb-icon {
-  font-size: 12px;
-  width: 16px;
-  text-align: center;
-  flex-shrink: 0;
-  opacity: .7;
-}
+.fb-icon { width: 16px; height: 16px; flex-shrink: 0; }
 .fb-icon-folder { color: var(--amb); }
 .fb-icon-asm { color: var(--blu); }
 .fb-icon-c { color: var(--grn); }
@@ -357,13 +357,16 @@ body.resizing * { cursor: col-resize !important; }
 
 /* === KEYBOARD NAV === */
 .panel-focused { box-shadow: inset 0 0 0 2px var(--blu); }
-.fb-focused { background: var(--blu-l) !important; outline: 1px solid var(--blu); outline-offset: -1px; }
+/* Outline for keyboard focus only. .fb-kbd marks focus moved by Alt+1 or the arrow keys,
+   which Chrome does not count as keyboard focus when a modifier key is held. */
+.fb-file:focus, .fb-folder-hd:focus { outline: 2px solid var(--blu); outline-offset: -2px; }
+.fb-file:focus:not(:focus-visible):not(.fb-kbd), .fb-folder-hd:focus:not(:focus-visible):not(.fb-kbd) { outline: none; }
 
 /* === RESPONSIVE IMPROVEMENTS === */
 @media (max-width: 1024px) {
   .hd-overflow-group { display: none; }
   .hd-overflow { display: block !important; }
-  .status-bar { font-size: 8px; padding: 0 var(--sp-4); }
+  .status-bar { padding: 0 var(--sp-4); }
 }
 @media (max-width: 768px) {
   .hd { height: 44px; padding: 0 var(--sp-4); gap: var(--sp-3); }

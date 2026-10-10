@@ -1,7 +1,7 @@
-; PA15 — Binary count on D0-D7 LEDs (Port 2)
+; PA15: Binary count on D0-D7 LEDs (Port 2)
         ORG     0500H
         INCLUDE PATCALLS.INC
-        ; Init MUART — Port 2 output mode
+        ; Init MUART: Port 2 output mode
         MOV     AL,0FFH
         OUT     UCRREG1,AL
         OUT     UCRREG2,AL

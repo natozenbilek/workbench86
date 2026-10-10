@@ -1,4 +1,4 @@
-; Piezo buzzer test — continuous beep on physical DigiAC2000
+; Piezo buzzer test: continuous beep on physical DigiAC2000
 ; Tests UPORT1 bit 5 toggle (piezo pin)
 ; If no sound, try changing the bit (0-7)
         ORG     0100H
@@ -22,7 +22,7 @@
         MOV     AH,WRCHAR
         INT     28H
 
-        ; Toggle ALL bits of UPORT1 — one of them is the piezo
+        ; Toggle ALL bits of UPORT1 (one of them is the piezo)
         MOV     DX,500          ; 500 full cycles (~1 second)
 BEEP:   MOV     AL,0FFH         ; all bits high
         OUT     UPORT1,AL

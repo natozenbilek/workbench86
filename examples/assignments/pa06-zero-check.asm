@@ -1,4 +1,4 @@
-; PA06 — If DS:1200H is zero, store 33H; else 55H
+; PA06: If DS:1200H is zero, store 33H; else 55H
         ORG     0200H
         MOV     AX,DS:1200H
         OR      AX,0000H

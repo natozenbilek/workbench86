@@ -1,5 +1,5 @@
 // ============================================================
-// workbench86 Transpiler Bridge - UI integration for transpiler
+// workbench86 Transpiler Bridge: UI integration for transpiler
 // ============================================================
 
 function compileIfC() {
@@ -16,19 +16,12 @@ function compileIfC() {
     if (cur) cur.content = cSrc;
   }
 
-  // Generate .asm file in tree (don't switch tabs)
-  let existing = openTabs.find(t => t.key === asmKey);
-  if (existing) { existing.content = asmCode; }
-  else { openTabs.push({key: asmKey, content: asmCode}); }
+  // Generate the .asm file in the tree, open it in its tab and assemble it there.
+  // doAssemble only works while an .asm tab is active, and Upload and Run sends what
+  // that tab assembles. On assembler errors doAssemble's message stays in the log.
+  // replace: a second translation must overwrite the .asm tab that is already open.
   addDynamicFile(asmKey, asmCode, 'generated');
-
-  // Temporarily switch to .asm to assemble, then switch back
-  let savedEditor = document.getElementById('ed').value;
-  document.getElementById('ed').value = asmCode;
-  doAssemble();
-  document.getElementById('ed').value = savedEditor;
-  updLn(); updateHighlight();
-  renderTabs();
-  sLog('Translated \u2192 ' + asmKey + ' & assembled', 0);
+  openFileInTab(asmKey, asmCode, null, true);
+  if (doAssemble() === true) sLog('Translated \u2192 ' + asmKey + ' & assembled', 0);
   return true;
 }

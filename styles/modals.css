@@ -1,5 +1,5 @@
 /* ============================================================
-   workbench86 Modals - Export/import, guide, ports overlay
+   workbench86 Modals: Export/import, guide, ports overlay
    ============================================================ */
 
 /* === EXPORT MODAL === */
@@ -109,7 +109,7 @@
   flex: 1;
   overflow-y: auto;
   padding: var(--sp-8) 18px;
-  font-size: 12.5px;
+  font-size: var(--fs-base);
   line-height: 1.65;
   scrollbar-width: thin;
   scrollbar-color: var(--brd) transparent;

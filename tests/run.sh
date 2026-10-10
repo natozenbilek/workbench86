@@ -18,30 +18,26 @@ trap 'rm -rf "$TMP"' EXIT
 # equivalent of __dirname, so it is injected here.
 printf 'var TEST_ROOT = "%s";\n' "$ROOT" > "$TMP/root.js"
 
-# Load order matters: core.js first, then everything that depends on it.
-ENGINE="$TMP/root.js
-$ROOT/tests/stubs.js
-$ROOT/core/cpu/core.js
-$ROOT/core/cpu/decode.js
-$ROOT/core/cpu/alu.js
-$ROOT/core/io/state.js
-$ROOT/core/io/ports.js
-$ROOT/core/cpu/int28.js
-$ROOT/core/cpu/exec.js
-$ROOT/core/assembler/parser.js
-$ROOT/core/assembler/encoder.js"
+# The engine files are named relative to the repo root, and every path is
+# quoted, so a space in the path to the repo does not split them.
+cd "$ROOT"
 
 if [ -n "$1" ]; then
-  SUITES="$ROOT/tests/$1.test.js"
+  set -- "tests/$1.test.js"
 else
-  SUITES=$(ls "$ROOT"/tests/*.test.js)
+  set -- tests/*.test.js
 fi
 
 STATUS=0
-for suite in $SUITES; do
+for suite in "$@"; do
   name=$(basename "$suite" .test.js)
-  # shellcheck disable=SC2086
-  cat $ENGINE "$suite" > "$TMP/$name.js"
+  # Load order matters: core.js first, then everything that depends on it.
+  cat "$TMP/root.js" tests/stubs.js \
+      core/cpu/core.js core/cpu/decode.js core/cpu/alu.js \
+      core/io/state.js core/io/ports.js \
+      core/cpu/int28.js core/cpu/exec.js \
+      core/assembler/parser.js core/assembler/encoder.js \
+      "$suite" > "$TMP/$name.js"
   if command -v node >/dev/null 2>&1; then
     out=$(node "$TMP/$name.js")
   else

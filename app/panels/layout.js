@@ -1,5 +1,5 @@
 // ============================================================
-// workbench86 Panels Layout - Right panel HTML generator
+// workbench86 Panels Layout: Right panel HTML generator
 // ============================================================
 
 function initCollapsibleCards() {
@@ -24,9 +24,9 @@ function buildRightPanel() {
       <span>Instr: <b id="inN">0</b></span>
     </div>
     <div class="cd cd-hero" role="region" aria-label="Current instruction"><div class="ch">Current instruction</div><div class="cb">
-      <div class="ir-box" id="irD">&mdash;</div>
-      <div class="desc-box desc-gap" id="desc">&mdash;</div>
-      <div class="diff-box desc-gap" id="diffBox">&mdash;</div>
+      <div class="ir-box" id="irD">(none)</div>
+      <div class="desc-box desc-gap" id="desc">(none)</div>
+      <div class="diff-box desc-gap" id="diffBox">(none)</div>
     </div></div>
     <div class="cd" role="region" aria-label="General purpose registers"><div class="ch" role="button" aria-expanded="true">General purpose registers</div><div class="cb">
       <div class="rg rg-gp" id="rgGP"></div>
@@ -40,7 +40,7 @@ function buildRightPanel() {
     <div class="cd" role="region" aria-label="Flags"><div class="ch" role="button" aria-expanded="true">Flags</div><div class="cb">
       <div class="fr" id="flG"></div>
     </div></div>
-    <div class="cd collapsed" role="region" aria-label="PAT Display"><div class="ch" role="button" aria-expanded="false">PAT Display <span class="ch-sub">INT 28H output</span></div><div class="cb">
+    <div class="cd" role="region" aria-label="PAT Display"><div class="ch" role="button" aria-expanded="true">PAT Display <span class="ch-sub">INT 28H output</span></div><div class="cb">
       <div class="seg7-wrap" id="seg7Wrap"></div>
       <div class="pat-disp-lbl">7-segment display</div>
     </div></div>
@@ -75,4 +75,9 @@ function buildRightPanel() {
       <div class="io-timeline" id="ioTimeline"></div>
       <div class="io-log" id="ioLog"><div class="empty-state">No I/O activity yet.</div></div>
     </div></div>`;
+
+  // Enter in the address box does what the View button does.
+  document.getElementById('memAddr').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') { e.preventDefault(); renderMem(); }
+  });
 }

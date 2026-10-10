@@ -1,4 +1,4 @@
-; PA27 — Display "NO INT", change on IR0/IR1
+; PA27: Display "NO INT", change on IR0/IR1
         INCLUDE PATCALLS.INC
         ORG     2000H
 BUFFER: DB      "NO INT",00H

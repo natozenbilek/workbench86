@@ -1,4 +1,4 @@
-; PA20 — Add AX+BX+CX+DX, save at 1000H, restore regs
+; PA20: Add AX+BX+CX+DX, save at 1000H, restore regs
         ORG     0200H
         INCLUDE PATCALLS.INC
         PUSHF

@@ -1,12 +1,12 @@
 // ============================================================
-// workbench86 Render I/O - I/O log, timeline, port monitor
+// workbench86 Render I/O: I/O log, timeline, port monitor
 // (The SVG "applications module" peripheral panel was removed in v15;
 //  peripheral state still backs the simulation and is visible
 //  through the I/O Log, I/O Timeline and the 7-segment INT 28H
 //  display. The buttons that used to drive objectNear / opticalBlocked
 //  were part of that panel and were removed with it. The state
 //  variables themselves are still read by ports.js and stay at their
-//  reset values - false for objectNear, false for opticalBlocked —
+//  reset values, false for objectNear and false for opticalBlocked,
 //  unless a future UI re-introduces a toggle.)
 // ============================================================
 
@@ -44,7 +44,7 @@ function renderPortMonitor() {
 function renderIOLog() {
   let el = document.getElementById('ioLog');
   if (!el) return;
-  if (!ioLog.length) { el.textContent = '—'; return; }
+  if (!ioLog.length) { el.innerHTML = '<div class="empty-state">No I/O activity yet.</div>'; return; }
   const pn = {0x80:'CREG1',0x82:'CREG2',0x84:'CREG3',0x86:'MODE',0x88:'P1CTL',0x8A:'IRQEN',0x8C:'IRQADR',0x90:'PORT1',0x92:'PORT2',0x94:'TMR1',0x40:'PIC'};
   let html = ioLog.slice(-30).map(e => {
     let name = pn[e.port] || hex8(e.port);

@@ -1,5 +1,5 @@
 // ============================================================
-// workbench86 Highlighter Render - Syntax highlighting functions
+// workbench86 Highlighter Render: Syntax highlighting functions
 // ============================================================
 
 function currentFileType() {

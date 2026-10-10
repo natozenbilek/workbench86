@@ -1,5 +1,5 @@
 // ============================================================
-// workbench86 Transpiler Compiler - C/Python/Go/Java → ASM
+// workbench86 Transpiler Compiler: C/Python/Go/Java → ASM
 // ============================================================
 
 function compileCtoASM(code) {

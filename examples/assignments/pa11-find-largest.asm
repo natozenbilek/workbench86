@@ -1,4 +1,4 @@
-; PA11 — Find largest of 3 words
+; PA11: Find largest of 3 words
         ORG     0500H
         MOV     AX,DS:2500H
         CMP     AX,DS:2600H

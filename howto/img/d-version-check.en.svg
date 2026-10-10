@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="wbfig" viewBox="0 0 1152 360" width="1152" height="360" role="img" aria-labelledby="d-version-check-en-t d-version-check-en-d" lang="en">
+<title id="d-version-check-en-t">Checking the build</title>
+<desc id="d-version-check-en-d">Two terminals side by side. On the left v18, with a green check: TX: C 0080:0500 and TX: G 0080:0500; the 0080: parts green, the 0500 parts blue. Under them: not yet seen on a board. On the right, with a red cross, the old build from the cache: C 0500 (no 0080:) and C 0100 (whatever the ORG), both struck through. Centred at the bottom, the first line of the Copy log: workbench86 v18 | ...</desc>
+<defs><style>
+.wbfig .tx{font-family:'Atkinson Hyperlegible Next','Source Sans 3','Segoe UI',Arial,sans-serif}
+.wbfig .tm{font-family:'JetBrains Mono','IBM Plex Mono',Consolas,Menlo,monospace;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+.wbfig .f-amb{fill:var(--amb,#7d6608)}
+.wbfig .f-amb-l{fill:var(--amb-l,rgba(183,149,11,.08))}
+.wbfig .f-bg2{fill:var(--bg2,#ffffff)}
+.wbfig .f-bg3{fill:var(--bg3,#eeeeea)}
+.wbfig .f-blu{fill:var(--blu,#2471a3)}
+.wbfig .f-grn{fill:var(--grn,#1d7a45)}
+.wbfig .f-red{fill:var(--red,#c0392b)}
+.wbfig .f-text{fill:var(--text,#1a1a1a)}
+.wbfig .f-text3{fill:var(--text3,#6b6b6b)}
+.wbfig .s-amb{stroke:var(--amb,#7d6608)}
+.wbfig .s-bg2{stroke:var(--bg2,#ffffff)}
+.wbfig .s-brd{stroke:var(--brd,#d0d0c8)}
+.wbfig .s-grn{stroke:var(--grn,#1d7a45)}
+.wbfig .s-red{stroke:var(--red,#c0392b)}
+</style></defs>
+<rect class="wb-panel f-bg2 s-brd" x="1" y="1" width="1150" height="358" rx="14" stroke-width="2"/>
+<rect class="f-bg3 s-grn" x="20" y="20" width="540" height="240" rx="8" stroke-width="5"/>
+<circle class="f-grn" cx="52" cy="56" r="16"/>
+<path class="s-bg2" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M44,56 l6,7 l11,-13"/>
+<text class="tm f-grn" x="78" y="66" font-size="28" font-weight="700">v18</text>
+<text class="tm f-text" x="44" y="124" font-size="26" font-weight="700" xml:space="preserve"><tspan class="f-text">TX: C </tspan><tspan class="f-grn">0080:</tspan><tspan class="f-blu">0500</tspan></text>
+<text class="tm f-text" x="44" y="170" font-size="26" font-weight="700" xml:space="preserve"><tspan class="f-text">TX: G </tspan><tspan class="f-grn">0080:</tspan><tspan class="f-blu">0500</tspan></text>
+<rect class="f-amb-l s-amb" x="44" y="206" width="272.5" height="34" rx="17" stroke-width="2"/>
+<text class="tx f-amb" x="180.2" y="230" font-size="22" font-weight="700" text-anchor="middle">not yet seen on a board</text>
+<rect class="f-bg3 s-red" x="592" y="20" width="540" height="240" rx="8" stroke-width="3"/>
+<circle class="f-red" cx="624" cy="56" r="16"/>
+<path class="s-bg2" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M617,49 l14,14 M631,49 l-14,14"/>
+<text class="tx f-red" x="650" y="66" font-size="26" font-weight="700">old build from the cache</text>
+<text class="tm f-text3" x="616" y="132" font-size="24" font-weight="600">C 0500 (no 0080:)</text>
+<path class="s-red" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M610,124 L866.8,124"/>
+<text class="tm f-text3" x="616" y="188" font-size="24" font-weight="600">C 0100 (whatever the ORG)</text>
+<path class="s-red" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M610,180 L982,180"/>
+<text class="tm f-text" x="576" y="312" font-size="22" font-weight="700" text-anchor="middle">workbench86 v18 | ...</text>
+<text class="tx f-text3" x="576" y="344" font-size="24" font-weight="600" text-anchor="middle">first line of the Copy log</text>
+</svg>

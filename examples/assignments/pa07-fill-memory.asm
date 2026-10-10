@@ -1,4 +1,4 @@
-; PA07 — Fill 1400H-14FFH with 77H
+; PA07: Fill 1400H-14FFH with 77H
         ORG     0400H
         MOV     BX,14FFH
 NEXT:   MOV     BYTE PTR [BX],77H

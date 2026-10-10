@@ -1,4 +1,4 @@
-; LED chase — shift light from D0 to D7
+; LED chase: shift light from D0 to D7
         ORG     0100H
         INCLUDE PATCALLS.INC
         ; MUART init

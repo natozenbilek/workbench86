@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="wbfig" viewBox="0 0 1152 360" width="1152" height="360" role="img" aria-labelledby="d-tx-rx-gnd-en-t d-tx-rx-gnd-en-d" lang="en">
+<title id="d-tx-rx-gnd-en-t">TX, RX and GND</title>
+<desc id="d-tx-rx-gnd-en-d">On the left the laptop side (converter), the pins of the DE-9 plug: 3 TX, 2 RX, 5 GND. On the right the board: TX, RX, GND. The laptop's TX goes to the board's RX on a blue wire, the board's TX to the laptop's RX on a green wire; the two wires cross in the middle, where a purple ring marks "TX → RX". The two GND pins are joined by a straight wire: the shared zero.</desc>
+<defs><style>
+.wbfig .tx{font-family:'Atkinson Hyperlegible Next','Source Sans 3','Segoe UI',Arial,sans-serif}
+.wbfig .tm{font-family:'JetBrains Mono','IBM Plex Mono',Consolas,Menlo,monospace;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+.wbfig .f-bg2{fill:var(--bg2,#ffffff)}
+.wbfig .f-cyn-l{fill:var(--cyn-l,rgba(23,165,137,.08))}
+.wbfig .f-grn-l{fill:var(--grn-l,rgba(39,174,96,.08))}
+.wbfig .f-pur{fill:var(--pur,#8e44ad)}
+.wbfig .f-text{fill:var(--text,#1a1a1a)}
+.wbfig .f-text3{fill:var(--text3,#6b6b6b)}
+.wbfig .s-blu{stroke:var(--blu,#2471a3)}
+.wbfig .s-brd{stroke:var(--brd,#d0d0c8)}
+.wbfig .s-cyn{stroke:var(--cyn,#117864)}
+.wbfig .s-grn{stroke:var(--grn,#1d7a45)}
+.wbfig .s-pur{stroke:var(--pur,#8e44ad)}
+.wbfig .s-text{stroke:var(--text,#1a1a1a)}
+</style></defs>
+<rect class="wb-panel f-bg2 s-brd" x="1" y="1" width="1150" height="358" rx="14" stroke-width="2"/>
+<rect class="f-cyn-l s-cyn" x="40" y="40" width="300" height="260" rx="6" stroke-width="3"/>
+<text class="tx f-text" x="190" y="76" font-size="24" font-weight="700" text-anchor="middle">laptop side</text>
+<text class="tx f-text" x="190" y="104" font-size="24" font-weight="600" text-anchor="middle">(converter)</text>
+<rect class="f-grn-l s-grn" x="812" y="40" width="300" height="260" rx="6" stroke-width="3"/>
+<text class="tx f-text" x="962" y="90" font-size="24" font-weight="700" text-anchor="middle">board</text>
+<text class="tm f-text" x="300" y="158" font-size="24" font-weight="700" text-anchor="end">3 TX</text>
+<circle class="f-text" cx="340" cy="150" r="7"/>
+<text class="tm f-text" x="852" y="158" font-size="24" font-weight="700">TX</text>
+<circle class="f-text" cx="812" cy="150" r="7"/>
+<text class="tm f-text" x="300" y="208" font-size="24" font-weight="700" text-anchor="end">2 RX</text>
+<circle class="f-text" cx="340" cy="200" r="7"/>
+<text class="tm f-text" x="852" y="208" font-size="24" font-weight="700">RX</text>
+<circle class="f-text" cx="812" cy="200" r="7"/>
+<text class="tm f-text" x="300" y="270" font-size="24" font-weight="700" text-anchor="end">5 GND</text>
+<circle class="f-text" cx="340" cy="262" r="7"/>
+<text class="tm f-text" x="852" y="270" font-size="24" font-weight="700">GND</text>
+<circle class="f-text" cx="812" cy="262" r="7"/>
+<text class="tx f-text3" x="190" y="334" font-size="22" font-weight="600" text-anchor="middle">DE-9 plug, computer side</text>
+<path class="s-blu" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M347,150 L420,150 L732,200 L805,200"/>
+<path class="s-blu" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M792.6,206.6 L805,200 L792.6,193.4"/>
+<path class="s-grn" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M805,150 L732,150 L420,200 L347,200"/>
+<path class="s-grn" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M359.4,193.4 L347,200 L359.4,206.6"/>
+<path class="s-text" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M347,262 L805,262"/>
+<text class="tx f-text" x="576" y="250" font-size="24" font-weight="700" text-anchor="middle">shared zero</text>
+<circle class="s-pur" cx="576" cy="175" r="30" fill="none" stroke-width="5"/>
+<text class="tm f-pur" x="576" y="126" font-size="24" font-weight="700" text-anchor="middle">TX → RX</text>
+</svg>

@@ -1,4 +1,4 @@
-; PA13 — Rotate DS:1400H right until bit 12 clear
+; PA13: Rotate DS:1400H right until bit 12 clear
         ORG     0400H
         MOV     WORD PTR DS:1400H,0F800H
 CHECK:  ROR     WORD PTR DS:1400H,1

@@ -1,5 +1,5 @@
 // ============================================================
-// workbench86 Main Editor - Editor setup, theme, export/import,
+// workbench86 Main Editor: Editor setup, theme, export/import,
 // shortcuts, breakpoints, motor animation, init
 // ============================================================
 
@@ -36,21 +36,19 @@ function updateBreadcrumb(fileKey) {
   if (!bc) return;
   if (!fileKey) { bc.hidden = true; return; }
   bc.hidden = false;
-  let parts = fileKey.split('/');
-  if (parts.length === 1) {
-    // Check if file belongs to a folder
-    let folder = '';
-    if (EX && EX[fileKey]) {
-      if (fileKey.startsWith('PA')) folder = 'assignments';
-      else if (fileKey.startsWith('HW:')) folder = 'hardware';
-      else folder = 'demos';
-    }
-    if (folder) parts = [folder, fileKey];
-  }
-  bc.innerHTML = parts.map((p, i) =>
-    (i > 0 ? '<span class="bc-sep">›</span>' : '') +
-    '<span class="bc-item">' + p + '</span>'
-  ).join('');
+  // Same folder and file names as the Explorer shows
+  let parts = [fileLabel(fileKey)];
+  let df = dynamicFiles.find(f => f.name === fileKey);
+  let ef = EXTRA_FILES.find(f => f.name === fileKey);
+  if (typeof EX_META !== 'undefined' && EX_META[fileKey]) parts.unshift(EX_META[fileKey].category);
+  else if (EX && EX[fileKey]) parts.unshift(fileKey.startsWith('PA') ? 'assignments' : fileKey.startsWith('HW:') ? 'hardware' : 'demos');
+  else if (df) parts.unshift(df.folder === 'local' ? 'My files' : df.folder);
+  else if (ef) parts.unshift('languages', ef.folder);
+  bc.textContent = '';
+  parts.forEach((p, i) => {
+    if (i > 0) { let sep = document.createElement('span'); sep.className = 'bc-sep'; sep.textContent = '\u203A'; bc.appendChild(sep); }
+    let item = document.createElement('span'); item.className = 'bc-item'; item.textContent = p; bc.appendChild(item);
+  });
 }
 
 // === STATUS BAR POSITION ===
@@ -81,7 +79,7 @@ ed.addEventListener('keydown', function(e) {
 });
 
 function scrollToLine(lineNum) {
-  let lineH = 19;
+  let lineH = parseFloat(getComputedStyle(ed).lineHeight) || 20;
   let target = (lineNum - 1) * lineH;
   ed.scrollTop = Math.max(0, target - ed.clientHeight / 3);
   syncScroll();
@@ -107,14 +105,16 @@ function updLn() {
 }
 
 // === THEME TOGGLE ===
-let currentTheme = localStorage.getItem('workbench86_theme') || 'dark';
+// Storage can throw when site data is blocked; the theme then just is not remembered.
+let currentTheme = 'dark';
+try { currentTheme = localStorage.getItem('workbench86_theme') || 'dark'; } catch (_) {}
 function applyTheme(t) {
   currentTheme = t;
   if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
   else document.documentElement.removeAttribute('data-theme');
   let btn = document.getElementById('themeBtn');
   if (btn) btn.textContent = t === 'light' ? 'Light' : 'Dark';
-  localStorage.setItem('workbench86_theme', t);
+  try { localStorage.setItem('workbench86_theme', t); } catch (_) {}
 }
 function toggleTheme() { applyTheme(currentTheme === 'dark' ? 'light' : 'dark'); }
 
@@ -196,21 +196,14 @@ function openLocalFile(input) {
   if (!file) return;
   let reader = new FileReader();
   reader.onload = function(e) {
-    let content = e.target.result;
+    let content = String(e.target.result).replace(/\r\n?/g, '\n');
     let name = file.name;
-    if (activeTabKey) {
-      let cur = openTabs.find(t => t.key === activeTabKey);
-      if (cur) cur.content = document.getElementById('ed').value;
-    }
+    syncActiveTab();
+    let same = dynamicFiles.find(f => f.name === name);
+    if (same && same.content !== content &&
+        !confirm('Replace ' + name + ' in My files with the file from this computer?')) return;
     addDynamicFile(name, content, 'local');
-    let existing = openTabs.find(t => t.key === name);
-    if (existing) { existing.content = content; }
-    else { openTabs.push({key: name, content: content}); }
-    activeTabKey = name;
-    document.getElementById('ed').value = content;
-    updLn(); updateHighlight();
-    renderTabs();
-    highlightFileInTree(name);
+    openFileInTab(name, content, null, true);
     sLog('Opened: ' + name, 0);
   };
   reader.readAsText(file);
@@ -218,7 +211,10 @@ function openLocalFile(input) {
 }
 
 // === UNDO / REDO ===
+// One history for the text in #ed. It is reset whenever a tab, example or file is
+// loaded into the editor, so undo never brings back another tab's text.
 let editorHistory = [], editorFuture = [], historyPaused = false;
+let historyTimer = null;
 function pushEditorHistory() {
   if (historyPaused) return;
   let val = ed.value, pos = ed.selectionStart;
@@ -227,7 +223,19 @@ function pushEditorHistory() {
   if (editorHistory.length > 200) editorHistory.shift();
   editorFuture = [];
 }
+function resetEditorHistory() {
+  clearTimeout(historyTimer);
+  editorHistory = [{ val: ed.value, pos: 0 }];
+  editorFuture = [];
+}
+// Record what is in the editor now (typing in the last 300 ms, Tab, Replace) first,
+// so undo and redo start from the text on screen.
+function flushEditorHistory() {
+  clearTimeout(historyTimer);
+  pushEditorHistory();
+}
 function editorUndo() {
+  flushEditorHistory();
   if (editorHistory.length < 2) return;
   editorFuture.push(editorHistory.pop());
   let state = editorHistory[editorHistory.length - 1];
@@ -238,6 +246,7 @@ function editorUndo() {
   updLn(); updateHighlight();
 }
 function editorRedo() {
+  flushEditorHistory();
   if (!editorFuture.length) return;
   let state = editorFuture.pop();
   editorHistory.push(state);
@@ -248,7 +257,6 @@ function editorRedo() {
   updLn(); updateHighlight();
 }
 // Capture history on input (debounced)
-let historyTimer = null;
 ed.addEventListener('input', function() {
   clearTimeout(historyTimer);
   historyTimer = setTimeout(pushEditorHistory, 300);
@@ -270,6 +278,7 @@ function openShortcuts() {
       <table class="shortcuts-table">
         <tr><th colspan="2" class="shortcut-section">Editor</th></tr>
         <tr><td><kbd>Ctrl+Enter</kbd></td><td>Assemble &amp; Load</td></tr>
+        <tr><td><kbd>Ctrl+S</kbd></td><td>Download the open file</td></tr>
         <tr><td><kbd>Ctrl+Z</kbd></td><td>Undo</td></tr>
         <tr><td><kbd>Ctrl+Y</kbd></td><td>Redo</td></tr>
         <tr><td><kbd>Ctrl+F</kbd></td><td>Find / Replace</td></tr>
@@ -285,6 +294,7 @@ function openShortcuts() {
         <tr><td><kbd>Alt+3</kbd></td><td>Focus Debug Panel</td></tr>
         <tr><td><kbd>↑ ↓</kbd></td><td>Navigate files / scroll panel</td></tr>
         <tr><td><kbd>Enter</kbd></td><td>Open selected file</td></tr>
+        <tr><td><kbd>F2</kbd> / <kbd>Del</kbd></td><td>Rename / delete a file in My files</td></tr>
         <tr><th colspan="2" class="shortcut-section">Debug</th></tr>
         <tr><td><kbd>Click line #</kbd></td><td>Toggle breakpoint</td></tr>
       </table>
@@ -320,8 +330,12 @@ document.addEventListener('keydown', function(e) {
     let portsOv = document.getElementById('portsOv');
     if (portsOv && !portsOv.hidden) { closePorts(); return; }
   }
-  if ((e.ctrlKey || e.metaKey) && e.key === 'z') { e.preventDefault(); editorUndo(); return; }
-  if ((e.ctrlKey || e.metaKey) && e.key === 'y') { e.preventDefault(); editorRedo(); return; }
+  // Undo/redo only for the code editor; other inputs keep the browser's own undo.
+  if ((e.ctrlKey || e.metaKey) && document.activeElement === ed) {
+    let k = e.key.toLowerCase();
+    if (k === 'z' && !e.shiftKey) { e.preventDefault(); editorUndo(); return; }
+    if (k === 'y' || (k === 'z' && e.shiftKey)) { e.preventDefault(); editorRedo(); return; }
+  }
   if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') { e.preventDefault(); assembleWithLoading(); }
 });
 

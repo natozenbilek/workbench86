@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="wbfig" viewBox="0 0 1152 420" width="1152" height="420" role="img" aria-labelledby="d-sim-then-board-tr-t d-sim-then-board-tr-d" lang="tr">
+<title id="d-sim-then-board-tr-t">Kart yokken ve kart varken</title>
+<desc id="d-sim-then-board-tr-d">İki sütun. Solda, kart yokken: kartın girişlerini kullanmayan programlar simülatörde baştan sona çalışır, timer varsa hız Max. Kartın girişlerini kullanan programlar için üç adım: yaz, Assemble, Step, Back, sonra Download. Download'dan sağ sütuna bir ok: aynı .asm. Sağda, kart varken, yukarıdan aşağı: Device, PAT RESET, yeni PAT:, Upload and Run, sonucu kartta gör. En alttan sol sütuna dönen kırmızı bir ok: sorun çıkarsa simülatöre dön.</desc>
+<defs><style>
+.wbfig .tx{font-family:'Atkinson Hyperlegible Next','Source Sans 3','Segoe UI',Arial,sans-serif}
+.wbfig .tm{font-family:'JetBrains Mono','IBM Plex Mono',Consolas,Menlo,monospace;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+.wbfig .f-acc{fill:var(--acc,#c0392b)}
+.wbfig .f-amb{fill:var(--amb,#7d6608)}
+.wbfig .f-amb-l{fill:var(--amb-l,rgba(183,149,11,.08))}
+.wbfig .f-bg2{fill:var(--bg2,#ffffff)}
+.wbfig .f-blu{fill:var(--blu,#2471a3)}
+.wbfig .f-blu-l{fill:var(--blu-l,rgba(36,113,163,.08))}
+.wbfig .f-grn{fill:var(--grn,#1d7a45)}
+.wbfig .f-grn-l{fill:var(--grn-l,rgba(39,174,96,.08))}
+.wbfig .f-red{fill:var(--red,#c0392b)}
+.wbfig .f-text{fill:var(--text,#1a1a1a)}
+.wbfig .s-amb{stroke:var(--amb,#7d6608)}
+.wbfig .s-blu{stroke:var(--blu,#2471a3)}
+.wbfig .s-brd{stroke:var(--brd,#d0d0c8)}
+.wbfig .s-grn{stroke:var(--grn,#1d7a45)}
+.wbfig .s-red{stroke:var(--red,#c0392b)}
+.wbfig .s-text{stroke:var(--text,#1a1a1a)}
+</style></defs>
+<rect class="wb-panel f-bg2 s-brd" x="1" y="1" width="1150" height="418" rx="14" stroke-width="2"/>
+<text class="tx f-blu" x="24" y="40" font-size="28" font-weight="700">Kart yokken</text>
+<rect class="f-blu-l s-blu" x="20" y="58" width="580" height="136" rx="8" stroke-width="5"/>
+<text class="tx f-text" x="40" y="94" font-size="24" font-weight="700">kartın girişlerini kullanmayan programlar</text>
+<text class="tx f-text" x="40" y="128" font-size="24" font-weight="600">simülatörde baştan sona</text>
+<rect class="f-amb-l s-amb" x="40" y="146" width="204.2" height="34" rx="17" stroke-width="2"/>
+<text class="tx f-amb" x="142.1" y="170" font-size="22" font-weight="700" text-anchor="middle">timer varsa Max</text>
+<rect class="f-blu-l s-blu" x="20" y="214" width="580" height="132" rx="8" stroke-width="3"/>
+<text class="tx f-text" x="40" y="250" font-size="24" font-weight="700">kartın girişlerini kullanan programlar</text>
+<rect class="f-bg2 s-blu" x="40" y="276" width="74" height="50" rx="6" stroke-width="2"/>
+<text class="tx f-text" x="77" y="309" font-size="24" font-weight="700" text-anchor="middle">yaz</text>
+<rect class="f-bg2 s-blu" x="148" y="276" width="280" height="50" rx="6" stroke-width="2"/>
+<text class="tm f-text" x="288" y="309" font-size="22" font-weight="700" text-anchor="middle">Assemble, Step, Back</text>
+<rect class="f-bg2 s-blu" x="462" y="276" width="124" height="50" rx="6" stroke-width="2"/>
+<text class="tm f-text" x="524" y="309" font-size="22" font-weight="700" text-anchor="middle">Download</text>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M116,301 L144,301"/>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M135.2,305.7 L144,301 L135.2,296.3"/>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M430,301 L458,301"/>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M449.2,305.7 L458,301 L449.2,296.3"/>
+<text class="tx f-grn" x="700" y="40" font-size="28" font-weight="700">Kart varken</text>
+<rect class="f-blu-l s-blu" x="740" y="58" width="280" height="48" rx="8" stroke-width="3"/>
+<text class="tm f-text" x="880" y="91" font-size="22" font-weight="700" text-anchor="middle">Device</text>
+<rect class="f-acc s-text" x="760" y="128" width="240" height="48" rx="24" stroke-width="3"/>
+<text class="tx f-bg2" x="880" y="161" font-size="24" font-weight="700" text-anchor="middle">PAT RESET</text>
+<rect class="f-grn-l s-grn" x="740" y="198" width="280" height="48" rx="8" stroke-width="3"/>
+<text class="tx f-text" x="880" y="231" font-size="24" font-weight="700" text-anchor="middle">yeni PAT:</text>
+<rect class="f-blu-l s-blu" x="740" y="268" width="280" height="48" rx="8" stroke-width="3"/>
+<text class="tm f-text" x="880" y="301" font-size="22" font-weight="700" text-anchor="middle">Upload and Run</text>
+<rect class="f-grn-l s-grn" x="740" y="338" width="280" height="48" rx="8" stroke-width="3"/>
+<text class="tx f-text" x="880" y="371" font-size="24" font-weight="700" text-anchor="middle">sonucu kartta gör</text>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M880,108 L880,126"/>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M875.3,117.2 L880,126 L884.7,117.2"/>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M880,178 L880,196"/>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M875.3,187.2 L880,196 L884.7,187.2"/>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M880,248 L880,266"/>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M875.3,257.2 L880,266 L884.7,257.2"/>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M880,318 L880,336"/>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M875.3,327.2 L880,336 L884.7,327.2"/>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M588,301 L664,301 L664,82 L736,82"/>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M723.6,88.6 L736,82 L723.6,75.4"/>
+<text class="tm f-blu" x="652" y="192" font-size="22" font-weight="700" text-anchor="middle" transform="rotate(-90 652 192)">aynı .asm</text>
+<path class="s-red" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M738,372 C640,400 500,400 420,350"/>
+<path class="s-red" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M438,351.3 L420,350 L429,365.6"/>
+<text class="tx f-red" x="300" y="398" font-size="22" font-weight="700" text-anchor="middle">sorun çıkarsa simülatöre dön</text>
+</svg>

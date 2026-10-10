@@ -1,4 +1,4 @@
-; PA05 — (E7H * C3H) / B9H
+; PA05: (E7H * C3H) / B9H
         ORG     0300H
         MOV     AX,0E7H
         MOV     BX,0C3H

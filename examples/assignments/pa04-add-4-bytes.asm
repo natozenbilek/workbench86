@@ -1,4 +1,4 @@
-; PA04 — Add bytes at 4000H..4003H, store at 4004H
+; PA04: Add bytes at 4000H..4003H, store at 4004H
         ORG     0200H
         MOV     SI,4000H
         MOV     AL,[SI]

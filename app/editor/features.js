@@ -1,19 +1,25 @@
 // ============================================================
-// workbench86 Editor Features - Ghost autocomplete, tooltips UI,
+// workbench86 Editor Features: Ghost autocomplete, tooltips UI,
 // occurrence highlight, current-line bar, watch, ports, welcome
 // ============================================================
 
 // === CHARACTER WIDTH MEASUREMENT ===
+// Read from the editor's computed style, so a size change in the CSS or a fallback
+// font (Consolas when IBM Plex Mono does not load) keeps hover help and the
+// current-line bar on the right column and line.
 let _charWidth = 0;
-let _lineHeight = 19;
+let _lineHeight = 20;
 let _padTop = 8, _padLeft = 10;
 
 function measureCharWidth() {
-  let canvas = document.createElement('canvas');
-  let ctx = canvas.getContext('2d');
-  ctx.font = '11px "IBM Plex Mono", monospace';
+  let cs = getComputedStyle(ed);
+  let ctx = document.createElement('canvas').getContext('2d');
+  ctx.font = cs.fontSize + ' ' + cs.fontFamily;
   _charWidth = ctx.measureText('M').width;
-  if (_charWidth < 4) _charWidth = 6.6;
+  if (!(_charWidth >= 4)) _charWidth = 7.8;
+  _lineHeight = parseFloat(cs.lineHeight) || 20;
+  _padTop = parseFloat(cs.paddingTop) || 8;
+  _padLeft = parseFloat(cs.paddingLeft) || 10;
 }
 
 function getWordAtPos(text, lineNum, charIdx) {
@@ -316,7 +322,10 @@ function buildPortsModal() {
     `<div class="exp-foot"><button class="b" onclick="readPortValues()">Read Current</button><button class="b b-blu" onclick="writePortValues()">Write</button></div></div>`;
 }
 
-function openPorts() { document.getElementById('portsOv').hidden = false; readPortValues(); }
+function openPorts() {
+  if (typeof simLocked === 'function' && simLocked()) { sLog('Ports edits the simulator only, never the board. Disconnect (or Simulate anyway) to use it.', 1); return; }
+  document.getElementById('portsOv').hidden = false; readPortValues();
+}
 function closePorts() { document.getElementById('portsOv').hidden = true; }
 
 function readPortValues() {

@@ -4,14 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>workbench86</title>
+<meta name="description" content="workbench86, the bench for the DIGIAC 2000 lab trainer, in a browser: an 8086 assembler, a simulator you can step back through, and upload to the board over Web Serial.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="workbench86">
+<meta property="og:description" content="The bench for the DIGIAC 2000 lab trainer, in a browser: an 8086 assembler, a simulator you can step back through, and upload to the board over Web Serial.">
+<meta property="og:url" content="https://natozenbilek.github.io/workbench86/">
+<meta property="og:image" content="https://natozenbilek.github.io/workbench86/docs/screenshots/overview.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles/variables.css?v=17">
-<link rel="stylesheet" href="styles/base.css?v=17">
-<link rel="stylesheet" href="styles/editor.css?v=17">
-<link rel="stylesheet" href="styles/panels.css?v=17">
-<link rel="stylesheet" href="styles/modals.css?v=17">
-<link rel="stylesheet" href="styles/terminal.css?v=17">
-<link rel="stylesheet" href="styles/utilities.css?v=17">
+<link rel="stylesheet" href="styles/variables.css?v=18">
+<link rel="stylesheet" href="styles/base.css?v=18">
+<link rel="stylesheet" href="styles/editor.css?v=18">
+<link rel="stylesheet" href="styles/panels.css?v=18">
+<link rel="stylesheet" href="styles/modals.css?v=18">
+<link rel="stylesheet" href="styles/terminal.css?v=18">
+<link rel="stylesheet" href="styles/utilities.css?v=18">
 </head>
 <body>
 <header class="hd" role="banner">
@@ -28,10 +37,12 @@
       <button class="b b-out" onclick="openPorts()" data-tip="MUART Port Settings">Ports</button>
       <button class="b b-out" onclick="openExport()" data-tip="Export/Import hex">Export</button>
       <button class="b b-out" onclick="openGuide()" data-tip="ISA Reference (F1)">Guide</button>
+      <a href="howto/" class="b b-out hd-home-link" data-tip="Step by step guide">How to use</a>
     </span>
     <span class="hd-overflow">
-      <button class="b b-out hd-overflow-btn" onclick="toggleOverflowMenu()" data-tip="More actions">&#8942;</button>
+      <button class="b b-out hd-overflow-btn" onclick="toggleOverflowMenu()" data-tip="More actions" aria-label="More actions">&#8942;</button>
       <div class="hd-overflow-menu" id="overflowMenu">
+        <a href="howto/" class="b hd-home-link">How to use</a>
         <button class="b" onclick="openPorts();toggleOverflowMenu()">Ports</button>
         <button class="b" onclick="openExport();toggleOverflowMenu()">Export / Import</button>
         <button class="b" onclick="openGuide();toggleOverflowMenu()">ISA Guide</button>
@@ -44,15 +55,14 @@
   <!-- LEFT PANEL: FILE BROWSER -->
   <aside class="lp" role="navigation" aria-label="File browser">
     <div class="file-browser">
-      <div class="file-browser-hd">
-        <span>Explorer</span>
-        <div class="fb-hd-btns">
-          <button class="b fb-new-btn" onclick="newEmptyFile()" data-tip="New file">+</button>
-          <input type="file" id="openFile" accept=".asm,.c,.cpp,.py,.java,.go,.txt" style="display:none" onchange="openLocalFile(this)">
-          <button class="b fb-open-btn" onclick="document.getElementById('openFile').click()" data-tip="Open file from PC">&#8593;</button>
-        </div>
+      <div class="file-browser-hd">Explorer</div>
+      <div class="fb-toolbar" role="toolbar" aria-label="File actions">
+        <button type="button" class="fb-tool" onclick="newEmptyFile()" title="Create a new .asm file in My files"><span data-icon="newFile"></span>New</button>
+        <button type="button" class="fb-tool" onclick="document.getElementById('openFile').click()" title="Open a file from this computer"><span data-icon="folderOpen"></span>Open</button>
+        <button type="button" class="fb-tool" id="fbDownloadBtn" onclick="downloadCurrent()" title="Download the open file to this computer (Ctrl+S)" disabled><span data-icon="download"></span>Download</button>
+        <input type="file" id="openFile" accept=".asm,.inc,.c,.cpp,.py,.java,.go,.txt" hidden onchange="openLocalFile(this)">
       </div>
-      <div class="fb-tree" id="fbTree" role="tree"></div>
+      <div class="fb-tree" id="fbTree" role="tree" aria-label="Files"></div>
     </div>
   </aside>
 
@@ -79,10 +89,12 @@
           <h2>work<b>bench</b>86</h2>
           <p class="ew-sub">A real-mode 8086 workbench for the DIGIAC 2000 lab trainer</p>
           <div class="ew-actions">
-            <div class="ew-hint">Open a file from the Explorer panel</div>
-            <div class="ew-hint">Ctrl+Enter to assemble &amp; load</div>
-            <div class="ew-hint">Ctrl+Shift+P for command palette</div>
-            <div class="ew-hint">F1 for ISA reference guide</div>
+            <button type="button" class="ew-action" onclick="newEmptyFile()"><span data-icon="newFile"></span>New file</button>
+            <button type="button" class="ew-action" onclick="document.getElementById('openFile').click()"><span data-icon="folderOpen"></span>Open a file from this computer</button>
+            <button type="button" class="ew-action" onclick="loadExByKey('PA01: Subtract byte')"><span data-icon="asm"></span>Start with assignment PA01</button>
+            <div class="ew-hint">Ctrl+S downloads the open file</div>
+            <div class="ew-hint">Ctrl+Enter assembles</div>
+            <div class="ew-hint">F1 opens the ISA guide</div>
           </div>
         </div>
       </div>
@@ -123,16 +135,20 @@
       <div class="sim-ctrls">
         <button class="b bp" id="asmBtn" onclick="assembleWithLoading()" data-tip="Assemble (Ctrl+Enter)">&#9654; Assemble</button>
         <div class="sep"></div>
-        <button class="b b-out" id="stepBackBtn" onclick="doStepBack()" data-tip="Step back">&#8592;</button>
-        <button class="b b-out" onclick="doStep()" data-tip="Step forward">Step</button>
-        <button class="b b-out" id="stepFwdBtn" onclick="doStepForward()" data-tip="Step forward">&#8594;</button>
+        <button class="b b-out" id="stepBackBtn" onclick="doStepBack()" data-tip="Step back (undo one instruction)" aria-label="Step back">&#8592;</button>
+        <button class="b b-out" id="stepBtn" onclick="doStep()" data-tip="Execute one instruction">Step</button>
+        <button class="b b-out" id="stepFwdBtn" onclick="doStepForward()" data-tip="Redo a step undone with Back" aria-label="Fwd, redo step">&#8594;</button>
         <button class="b bg" id="runBtn" onclick="doToggleRun()" data-tip="Run/Pause">Run</button>
-        <button class="b b-out" onclick="doReset()" data-tip="Reset CPU">Reset</button>
+        <button class="b b-out" id="simResetBtn" onclick="doReset()" data-tip="Reset CPU">Reset</button>
       </div>
       <select id="spd" onchange="updSpd()" aria-label="Execution speed">
         <option value="5">5 Hz</option><option value="20" selected>20 Hz</option>
         <option value="100">100 Hz</option><option value="500">500 Hz</option><option value="9999">Max</option>
       </select>
+    </div>
+    <div class="sim-lock-banner" id="simLockBanner" role="status" aria-live="polite" hidden>
+      <span><b>Board connected.</b> Your program runs on the board, not in this panel. The simulator is paused and does not show the board's registers or memory.</span>
+      <button class="b" onclick="simulateAnyway()">Simulate anyway</button>
     </div>
     <div class="ci" id="rpContent"></div>
   </aside>
@@ -167,7 +183,7 @@
   <div class="guide-pan">
     <div class="guide-hd">
       <h2>workbench86 Reference Guide</h2>
-      <span class="sb-item" style="font-size:11px">F1 &middot; Esc closes</span>
+      <span class="sb-item" style="font-size:var(--fs-xs)">F1 &middot; Esc closes</span>
       <button class="b" onclick="closeGuide()">Close</button>
     </div>
     <div class="guide-body" id="guideBody"></div>
@@ -178,39 +194,39 @@
 <div id="portsOv" class="exp-ov" hidden role="dialog" aria-label="Port settings"></div>
 
 <!-- Core -->
-<script src="core/cpu/core.js?v=17"></script>
-<script src="core/cpu/int28.js?v=17"></script>
-<script src="core/cpu/decode.js?v=17"></script>
-<script src="core/cpu/alu.js?v=17"></script>
-<script src="core/cpu/exec.js?v=17"></script>
-<script src="core/assembler/parser.js?v=17"></script>
-<script src="core/assembler/encoder.js?v=17"></script>
-<script src="core/io/state.js?v=17"></script>
-<script src="core/io/ports.js?v=17"></script>
-<script src="core/transpiler/compiler.js?v=17"></script>
-<script src="core/transpiler/bridge.js?v=17"></script>
+<script src="core/cpu/core.js?v=18"></script>
+<script src="core/cpu/int28.js?v=18"></script>
+<script src="core/cpu/decode.js?v=18"></script>
+<script src="core/cpu/alu.js?v=18"></script>
+<script src="core/cpu/exec.js?v=18"></script>
+<script src="core/assembler/parser.js?v=18"></script>
+<script src="core/assembler/encoder.js?v=18"></script>
+<script src="core/io/state.js?v=18"></script>
+<script src="core/io/ports.js?v=18"></script>
+<script src="core/transpiler/compiler.js?v=18"></script>
+<script src="core/transpiler/bridge.js?v=18"></script>
 <!-- App -->
-<script src="app/examples.js?v=17"></script>
-<script src="app/files/core.js?v=17"></script>
-<script src="app/files/tree.js?v=17"></script>
-<script src="app/guide/data.js?v=17"></script>
-<script src="app/guide/ui.js?v=17"></script>
-<script src="app/serial/core.js?v=17"></script>
-<script src="app/serial/upload.js?v=17"></script>
-<script src="app/highlighter/constants.js?v=17"></script>
-<script src="app/highlighter/render.js?v=17"></script>
-<script src="app/panels/layout.js?v=17"></script>
-<script src="app/panels/display.js?v=17"></script>
-<script src="app/render/core.js?v=17"></script>
-<script src="app/render/io.js?v=17"></script>
-<script src="app/main/sim.js?v=17"></script>
-<script src="app/main/editor.js?v=17"></script>
-<script src="app/editor/tooltips.js?v=17"></script>
-<script src="app/editor/features.js?v=17"></script>
+<script src="app/examples.js?v=18"></script>
+<script src="app/files/core.js?v=18"></script>
+<script src="app/files/tree.js?v=18"></script>
+<script src="app/guide/data.js?v=18"></script>
+<script src="app/guide/ui.js?v=18"></script>
+<script src="app/serial/core.js?v=18"></script>
+<script src="app/serial/upload.js?v=18"></script>
+<script src="app/highlighter/constants.js?v=18"></script>
+<script src="app/highlighter/render.js?v=18"></script>
+<script src="app/panels/layout.js?v=18"></script>
+<script src="app/panels/display.js?v=18"></script>
+<script src="app/render/core.js?v=18"></script>
+<script src="app/render/io.js?v=18"></script>
+<script src="app/main/sim.js?v=18"></script>
+<script src="app/main/editor.js?v=18"></script>
+<script src="app/editor/tooltips.js?v=18"></script>
+<script src="app/editor/features.js?v=18"></script>
 <!-- UI enhancements -->
-<script src="app/ui/resize-handles.js?v=17"></script>
-<script src="app/ui/keyboard-nav.js?v=17"></script>
-<script src="app/ui/command-palette.js?v=17"></script>
-<script src="app/ui/search-replace.js?v=17"></script>
+<script src="app/ui/resize-handles.js?v=18"></script>
+<script src="app/ui/keyboard-nav.js?v=18"></script>
+<script src="app/ui/command-palette.js?v=18"></script>
+<script src="app/ui/search-replace.js?v=18"></script>
 </body>
 </html>

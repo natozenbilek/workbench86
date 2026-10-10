@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="wbfig" viewBox="0 0 672 400" width="672" height="400" role="img" aria-labelledby="d-baudot-32-en-t d-baudot-32-en-d" lang="en">
+<title id="d-baudot-32-en-t">Five units, 32 symbols</title>
+<desc id="d-baudot-32-en-d">Five squares in a row at the top, each one 0 or 1, with multiplication signs between them. Under them: 2 × 2 × 2 × 2 × 2 = 32. Further down, eight small squares and 2⁸ = 256: 8 data bits per character. At the bottom: five units give 32 symbols.</desc>
+<defs><style>
+.wbfig .tx{font-family:'Atkinson Hyperlegible Next','Source Sans 3','Segoe UI',Arial,sans-serif}
+.wbfig .tm{font-family:'JetBrains Mono','IBM Plex Mono',Consolas,Menlo,monospace;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+.wbfig .f-bg2{fill:var(--bg2,#ffffff)}
+.wbfig .f-bg3{fill:var(--bg3,#eeeeea)}
+.wbfig .f-pur{fill:var(--pur,#8e44ad)}
+.wbfig .f-pur-l{fill:var(--pur-l,rgba(142,68,173,.08))}
+.wbfig .f-text{fill:var(--text,#1a1a1a)}
+.wbfig .f-text3{fill:var(--text3,#6b6b6b)}
+.wbfig .s-brd{stroke:var(--brd,#d0d0c8)}
+.wbfig .s-pur{stroke:var(--pur,#8e44ad)}
+.wbfig .s-text3{stroke:var(--text3,#6b6b6b)}
+</style></defs>
+<rect class="wb-panel f-bg2 s-brd" x="1" y="1" width="670" height="398" rx="14" stroke-width="2"/>
+<rect class="f-pur-l s-pur" x="56" y="24" width="80" height="92" rx="6" stroke-width="3"/>
+<path class="s-pur" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M64,70 L128,70"/>
+<text class="tm f-pur" x="96" y="58" font-size="28" font-weight="700" text-anchor="middle">0</text>
+<text class="tm f-pur" x="96" y="104" font-size="28" font-weight="700" text-anchor="middle">1</text>
+<text class="tx f-text" x="156" y="80" font-size="28" font-weight="700" text-anchor="middle">×</text>
+<rect class="f-pur-l s-pur" x="176" y="24" width="80" height="92" rx="6" stroke-width="3"/>
+<path class="s-pur" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M184,70 L248,70"/>
+<text class="tm f-pur" x="216" y="58" font-size="28" font-weight="700" text-anchor="middle">0</text>
+<text class="tm f-pur" x="216" y="104" font-size="28" font-weight="700" text-anchor="middle">1</text>
+<text class="tx f-text" x="276" y="80" font-size="28" font-weight="700" text-anchor="middle">×</text>
+<rect class="f-pur-l s-pur" x="296" y="24" width="80" height="92" rx="6" stroke-width="3"/>
+<path class="s-pur" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M304,70 L368,70"/>
+<text class="tm f-pur" x="336" y="58" font-size="28" font-weight="700" text-anchor="middle">0</text>
+<text class="tm f-pur" x="336" y="104" font-size="28" font-weight="700" text-anchor="middle">1</text>
+<text class="tx f-text" x="396" y="80" font-size="28" font-weight="700" text-anchor="middle">×</text>
+<rect class="f-pur-l s-pur" x="416" y="24" width="80" height="92" rx="6" stroke-width="3"/>
+<path class="s-pur" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M424,70 L488,70"/>
+<text class="tm f-pur" x="456" y="58" font-size="28" font-weight="700" text-anchor="middle">0</text>
+<text class="tm f-pur" x="456" y="104" font-size="28" font-weight="700" text-anchor="middle">1</text>
+<text class="tx f-text" x="516" y="80" font-size="28" font-weight="700" text-anchor="middle">×</text>
+<rect class="f-pur-l s-pur" x="536" y="24" width="80" height="92" rx="6" stroke-width="3"/>
+<path class="s-pur" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M544,70 L608,70"/>
+<text class="tm f-pur" x="576" y="58" font-size="28" font-weight="700" text-anchor="middle">0</text>
+<text class="tm f-pur" x="576" y="104" font-size="28" font-weight="700" text-anchor="middle">1</text>
+<text class="tx f-pur" x="336" y="176" font-size="36" font-weight="700" text-anchor="middle">2 × 2 × 2 × 2 × 2 = 32</text>
+<rect class="f-bg3 s-text3" x="40" y="226" width="40" height="40" rx="4" stroke-width="2"/>
+<path class="s-text3" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M46,246 L74,246"/>
+<rect class="f-bg3 s-text3" x="88" y="226" width="40" height="40" rx="4" stroke-width="2"/>
+<path class="s-text3" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M94,246 L122,246"/>
+<rect class="f-bg3 s-text3" x="136" y="226" width="40" height="40" rx="4" stroke-width="2"/>
+<path class="s-text3" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M142,246 L170,246"/>
+<rect class="f-bg3 s-text3" x="184" y="226" width="40" height="40" rx="4" stroke-width="2"/>
+<path class="s-text3" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M190,246 L218,246"/>
+<rect class="f-bg3 s-text3" x="232" y="226" width="40" height="40" rx="4" stroke-width="2"/>
+<path class="s-text3" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M238,246 L266,246"/>
+<rect class="f-bg3 s-text3" x="280" y="226" width="40" height="40" rx="4" stroke-width="2"/>
+<path class="s-text3" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M286,246 L314,246"/>
+<rect class="f-bg3 s-text3" x="328" y="226" width="40" height="40" rx="4" stroke-width="2"/>
+<path class="s-text3" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M334,246 L362,246"/>
+<rect class="f-bg3 s-text3" x="376" y="226" width="40" height="40" rx="4" stroke-width="2"/>
+<path class="s-text3" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M382,246 L410,246"/>
+<text class="tx f-text3" x="440" y="258" font-size="30" font-weight="700"><tspan class="f-text3">2</tspan></text>
+<text class="tx f-text3" x="459" y="240" font-size="22" font-weight="700">8</text>
+<text class="tx f-text3" x="476" y="258" font-size="30" font-weight="700">= 256</text>
+<text class="tx f-text3" x="40" y="304" font-size="24" font-weight="600">8 data bits per character</text>
+<text class="tx f-text" x="336" y="364" font-size="28" font-weight="700" text-anchor="middle">five units give 32 symbols</text>
+</svg>

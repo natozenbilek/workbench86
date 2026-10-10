@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="wbfig" viewBox="0 0 1152 440" width="1152" height="440" role="img" aria-labelledby="d-outcomes-en-t d-outcomes-en-d" lang="en">
+<title id="d-outcomes-en-t">The G command and three outcomes</title>
+<desc id="d-outcomes-en-d">On the left TX: G 0080:0100. From it an 8 second yellow waiting bar and three arrows. First card, green: PAT: within 8 s gives === SUCCESS ===; programs that end with EXIT, e.g. pa02. Second card, blue and highlighted: silence for 8 s gives --- Program is running on the board. Press PAT RESET before the next upload.; programs that end in a loop, e.g. hw-led-all-on, pill BOARD RUNNING. Third card, red: an ERROR line gives === FAILED: the board reported ERROR 30 : Invalid Opcode Exception === and Error B01.</desc>
+<defs><style>
+.wbfig .tx{font-family:'Atkinson Hyperlegible Next','Source Sans 3','Segoe UI',Arial,sans-serif}
+.wbfig .tm{font-family:'JetBrains Mono','IBM Plex Mono',Consolas,Menlo,monospace;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+.wbfig .f-amb{fill:var(--amb,#7d6608)}
+.wbfig .f-amb-l{fill:var(--amb-l,rgba(183,149,11,.08))}
+.wbfig .f-bg2{fill:var(--bg2,#ffffff)}
+.wbfig .f-blu{fill:var(--blu,#2471a3)}
+.wbfig .f-blu-l{fill:var(--blu-l,rgba(36,113,163,.08))}
+.wbfig .f-grn{fill:var(--grn,#1d7a45)}
+.wbfig .f-grn-l{fill:var(--grn-l,rgba(39,174,96,.08))}
+.wbfig .f-red{fill:var(--red,#c0392b)}
+.wbfig .f-red-l{fill:var(--red-l,rgba(192,57,43,.08))}
+.wbfig .f-text{fill:var(--text,#1a1a1a)}
+.wbfig .f-text3{fill:var(--text3,#6b6b6b)}
+.wbfig .s-amb{stroke:var(--amb,#7d6608)}
+.wbfig .s-blu{stroke:var(--blu,#2471a3)}
+.wbfig .s-brd{stroke:var(--brd,#d0d0c8)}
+.wbfig .s-grn{stroke:var(--grn,#1d7a45)}
+.wbfig .s-red{stroke:var(--red,#c0392b)}
+</style></defs>
+<rect class="wb-panel f-bg2 s-brd" x="1" y="1" width="1150" height="438" rx="14" stroke-width="2"/>
+<rect class="f-blu-l s-blu" x="16" y="196" width="256" height="52" rx="6" stroke-width="3"/>
+<text class="tm f-blu" x="144" y="230" font-size="24" font-weight="700" text-anchor="middle">TX: G 0080:0100</text>
+<rect class="f-amb-l s-amb" x="278" y="212" width="58" height="20" rx="3" stroke-width="2"/>
+<text class="tm f-amb" x="307" y="200" font-size="22" font-weight="700" text-anchor="middle">8 s</text>
+<rect class="f-grn-l s-grn" x="392" y="12" width="744" height="112" rx="8" stroke-width="3"/>
+<text class="tx f-grn" x="410" y="48" font-size="28" font-weight="700">PAT: within 8 s</text>
+<text class="tm f-text" x="410" y="78" font-size="22" font-weight="600">=== SUCCESS ===</text>
+<text class="tx f-text3" x="410" y="111" font-size="22" font-weight="600">ends with EXIT (INT 28H, AH=4), e.g. pa02</text>
+<path class="s-grn" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M338,222 C362,222 366,68 388,68"/>
+<path class="s-grn" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M375.6,74.6 L388,68 L375.6,61.4"/>
+<rect class="f-blu-l s-blu" x="392" y="132" width="744" height="150" rx="8" stroke-width="5"/>
+<text class="tx f-blu" x="410" y="168" font-size="28" font-weight="700">silence for 8 s</text>
+<text class="tm f-text" x="410" y="198" font-size="22" font-weight="600">--- Program is running on the board.</text>
+<text class="tm f-text" x="410" y="225" font-size="22" font-weight="600">Press PAT RESET before the next upload.</text>
+<text class="tx f-text3" x="410" y="269" font-size="22" font-weight="600">ends in a loop, e.g. hw-led-all-on; label shows BOARD RUNNING</text>
+<path class="s-blu" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M338,222 C362,222 366,207 388,207"/>
+<path class="s-blu" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M375.6,213.6 L388,207 L375.6,200.4"/>
+<rect class="f-red-l s-red" x="392" y="292" width="744" height="140" rx="8" stroke-width="3"/>
+<text class="tx f-red" x="410" y="328" font-size="28" font-weight="700">an ERROR line</text>
+<text class="tm f-text" x="410" y="358" font-size="22" font-weight="600">=== FAILED: the board reported ERROR 30 :</text>
+<text class="tm f-text" x="410" y="385" font-size="22" font-weight="600">Invalid Opcode Exception ===</text>
+<text class="tx f-text3" x="410" y="419" font-size="22" font-weight="600">Error B01</text>
+<path class="s-red" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M338,222 C362,222 366,362 388,362"/>
+<path class="s-red" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M375.6,368.6 L388,362 L375.6,355.4"/>
+</svg>

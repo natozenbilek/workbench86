@@ -1,4 +1,4 @@
-; PA03 — Copy AX,BX,CX,DX to memory
+; PA03: Copy AX,BX,CX,DX to memory
         ORG     0100H
         MOV     SI,3000H
         MOV     [SI],AX

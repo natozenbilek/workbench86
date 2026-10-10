@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="wbfig" viewBox="0 0 1152 500" width="1152" height="500" role="img" aria-labelledby="d-upload-seq-en-t d-upload-seq-en-d" lang="en">
+<title id="d-upload-seq-en-t">The steps of an upload</title>
+<desc id="d-upload-seq-en-d">A sequence diagram. On the left workbench86 (page), on the right the board's ROM monitor. Five steps: 1. the page sends CR LF; if no PAT: comes within 2 s, U01. 2. C 0080:0100; the board echoes the address within 3 s, else U02. 3. for each byte, 18 times, two hex digits such as B0; the board answers with : within 2 s, else [!] and W02 at the end. 4. ESC CR (1B 0D); the board prints PAT: within 3 s; if not, the page sends a blank line and waits 2 s more, else U03. 5. G 0080:0100; PAT:, ERROR or silence within 8 s: three outcomes. A red bar on the right spans steps 2 to 4: U04, the upload stops if the board prints PAT:, ERROR or [FF], and G is not sent.</desc>
+<defs><style>
+.wbfig .tx{font-family:'Atkinson Hyperlegible Next','Source Sans 3','Segoe UI',Arial,sans-serif}
+.wbfig .tm{font-family:'JetBrains Mono','IBM Plex Mono',Consolas,Menlo,monospace;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+.wbfig .f-amb{fill:var(--amb,#7d6608)}
+.wbfig .f-amb-l{fill:var(--amb-l,rgba(183,149,11,.08))}
+.wbfig .f-bg2{fill:var(--bg2,#ffffff)}
+.wbfig .f-blu{fill:var(--blu,#2471a3)}
+.wbfig .f-blu-l{fill:var(--blu-l,rgba(36,113,163,.08))}
+.wbfig .f-grn{fill:var(--grn,#1d7a45)}
+.wbfig .f-grn-l{fill:var(--grn-l,rgba(39,174,96,.08))}
+.wbfig .f-red{fill:var(--red,#c0392b)}
+.wbfig .f-text{fill:var(--text,#1a1a1a)}
+.wbfig .f-text3{fill:var(--text3,#6b6b6b)}
+.wbfig .s-amb{stroke:var(--amb,#7d6608)}
+.wbfig .s-blu{stroke:var(--blu,#2471a3)}
+.wbfig .s-brd{stroke:var(--brd,#d0d0c8)}
+.wbfig .s-grn{stroke:var(--grn,#1d7a45)}
+.wbfig .s-text{stroke:var(--text,#1a1a1a)}
+.wbfig .s-text3{stroke:var(--text3,#6b6b6b)}
+</style></defs>
+<rect class="wb-panel f-bg2 s-brd" x="1" y="1" width="1150" height="498" rx="14" stroke-width="2"/>
+<rect class="f-blu-l s-blu" x="160" y="14" width="280" height="48" rx="6" stroke-width="3"/>
+<text class="tx f-text" x="300" y="46" font-size="24" font-weight="700" text-anchor="middle">workbench86 (page)</text>
+<rect class="f-grn-l s-grn" x="620" y="14" width="280" height="48" rx="6" stroke-width="3"/>
+<text class="tx f-text" x="760" y="46" font-size="24" font-weight="700" text-anchor="middle">ROM monitor (board)</text>
+<path class="s-blu" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6" d="M300,62 L300,476"/>
+<path class="s-grn" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6" d="M760,62 L760,476"/>
+<path class="s-blu" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M304,100 L756,100"/>
+<path class="s-blu" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M743.6,106.6 L756,100 L743.6,93.4"/>
+<text class="tm f-blu" x="314" y="91" font-size="22" font-weight="700">CR LF</text>
+<path class="s-grn" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M756,142 L304,142"/>
+<path class="s-grn" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M316.4,135.4 L304,142 L316.4,148.6"/>
+<text class="tm f-grn" x="746" y="132" font-size="22" font-weight="700" text-anchor="end">PAT:</text>
+<rect class="f-amb-l s-amb" x="286" y="100" width="10" height="42" rx="2" stroke-width="2"/>
+<text class="tm f-amb" x="278" y="129" font-size="22" font-weight="700" text-anchor="end">2 s</text>
+<circle class="f-text" cx="36" cy="121" r="17"/>
+<text class="tx f-bg2" x="36" y="129" font-size="22" font-weight="700" text-anchor="middle">1</text>
+<text class="tm f-red" x="66" y="129" font-size="22" font-weight="700">U01</text>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M304,178 L756,178"/>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M743.6,184.6 L756,178 L743.6,171.4"/>
+<text class="tm f-blu" x="314" y="169" font-size="22" font-weight="700">C 0080:0100</text>
+<path class="s-grn" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M756,220 L304,220"/>
+<path class="s-grn" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M316.4,213.4 L304,220 L316.4,226.6"/>
+<text class="tm f-grn" x="746" y="210" font-size="22" font-weight="700" text-anchor="end">C 0080:0100</text>
+<rect class="f-amb-l s-amb" x="286" y="178" width="10" height="42" rx="2" stroke-width="2"/>
+<text class="tm f-amb" x="278" y="207" font-size="22" font-weight="700" text-anchor="end">3 s</text>
+<circle class="f-text" cx="36" cy="199" r="17"/>
+<text class="tx f-bg2" x="36" y="207" font-size="22" font-weight="700" text-anchor="middle">2</text>
+<text class="tm f-red" x="66" y="207" font-size="22" font-weight="700">U02</text>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M304,256 L756,256"/>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M743.6,262.6 L756,256 L743.6,249.4"/>
+<text class="tm f-blu" x="314" y="247" font-size="22" font-weight="700">B0</text>
+<text class="tx f-text3" x="20" y="318" font-size="22" font-weight="600">for each byte, 18 times</text>
+<path class="s-grn" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M756,298 L304,298"/>
+<path class="s-grn" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M316.4,291.4 L304,298 L316.4,304.6"/>
+<text class="tm f-grn" x="746" y="288" font-size="22" font-weight="700" text-anchor="end">:</text>
+<rect class="f-amb-l s-amb" x="286" y="256" width="10" height="42" rx="2" stroke-width="2"/>
+<text class="tm f-amb" x="278" y="285" font-size="22" font-weight="700" text-anchor="end">2 s</text>
+<circle class="f-text" cx="36" cy="277" r="17"/>
+<text class="tx f-bg2" x="36" y="285" font-size="22" font-weight="700" text-anchor="middle">3</text>
+<text class="tm f-red" x="66" y="285" font-size="22" font-weight="700">[!]</text>
+<text class="tm f-amb" x="117.6" y="285" font-size="22" font-weight="700">W02</text>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M304,334 L756,334"/>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M743.6,340.6 L756,334 L743.6,327.4"/>
+<text class="tm f-blu" x="314" y="325" font-size="22" font-weight="700" xml:space="preserve">ESC CR  (1B 0D)</text>
+<path class="s-grn" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M756,376 L304,376"/>
+<path class="s-grn" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M316.4,369.4 L304,376 L316.4,382.6"/>
+<text class="tm f-grn" x="746" y="366" font-size="22" font-weight="700" text-anchor="end">PAT:</text>
+<rect class="f-amb-l s-amb" x="286" y="334" width="10" height="42" rx="2" stroke-width="2"/>
+<text class="tm f-amb" x="278" y="363" font-size="22" font-weight="700" text-anchor="end">3 s + 2 s</text>
+<circle class="f-text" cx="36" cy="355" r="17"/>
+<text class="tx f-bg2" x="36" y="363" font-size="22" font-weight="700" text-anchor="middle">4</text>
+<text class="tm f-red" x="66" y="363" font-size="22" font-weight="700">U03</text>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M304,412 L756,412"/>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M743.6,418.6 L756,412 L743.6,405.4"/>
+<text class="tm f-blu" x="314" y="403" font-size="22" font-weight="700">G 0080:0100</text>
+<path class="s-text3" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 6" d="M756,454 L304,454"/>
+<path class="s-text3" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M316.4,447.4 L304,454 L316.4,460.6"/>
+<text class="tx f-text" x="746" y="444" font-size="22" font-weight="600" text-anchor="end">PAT:, ERROR or silence within 8 s</text>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M764,433 L1136,433"/>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M1120.1,441.5 L1136,433 L1120.1,424.5"/>
+<text class="tx f-text" x="1136" y="421" font-size="24" font-weight="700" text-anchor="end">three outcomes</text>
+<rect class="f-amb-l s-amb" x="286" y="412" width="10" height="42" rx="2" stroke-width="2"/>
+<text class="tm f-amb" x="278" y="441" font-size="22" font-weight="700" text-anchor="end">8 s</text>
+<circle class="f-text" cx="36" cy="433" r="17"/>
+<text class="tx f-bg2" x="36" y="441" font-size="22" font-weight="700" text-anchor="middle">5</text>
+<rect class="f-red" x="796" y="170" width="8" height="214" rx="3"/>
+<text class="tm f-red" x="820" y="196" font-size="24" font-weight="700">U04</text>
+<text class="tx f-red" x="820" y="230" font-size="24" font-weight="600">stops if the board</text>
+<text class="tx f-red" x="820" y="260" font-size="24" font-weight="600">prints PAT:, ERROR</text>
+<text class="tx f-red" x="820" y="290" font-size="24" font-weight="600">or [FF];</text>
+<text class="tx f-red" x="820" y="320" font-size="24" font-weight="600">G is not sent</text>
+</svg>

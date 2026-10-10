@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="wbfig" viewBox="0 0 1152 400" width="1152" height="400" role="img" aria-labelledby="d-voltage-tr-t d-voltage-tr-d" lang="tr">
+<title id="d-voltage-tr-t">RS-232 voltajları</title>
+<desc id="d-voltage-tr-d">Solda -15 V ile +15 V arası dikey bir voltaj ekseni. +3 ile +15 V arası mor bant: 0 (space). -3 ile +3 V arası taralı sarı bant: geçersiz. -15 ile -3 V arası mor bant: 1 (mark). Üzerinde örnek bir sinyal: boşta -10 V civarında (boşta = 1), start bit +10 V civarında (start = 0). Sağda karşılaştırma: TTL'de 1 yüksek voltaj, RS-232'de 1 eksi voltaj.</desc>
+<defs><style>
+.wbfig .tx{font-family:'Atkinson Hyperlegible Next','Source Sans 3','Segoe UI',Arial,sans-serif}
+.wbfig .tm{font-family:'JetBrains Mono','IBM Plex Mono',Consolas,Menlo,monospace;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+.wbfig .f-amb{fill:var(--amb,#7d6608)}
+.wbfig .f-amb-l{fill:var(--amb-l,rgba(183,149,11,.08))}
+.wbfig .f-bg2{fill:var(--bg2,#ffffff)}
+.wbfig .f-bg3{fill:var(--bg3,#eeeeea)}
+.wbfig .f-pur{fill:var(--pur,#8e44ad)}
+.wbfig .f-pur-l{fill:var(--pur-l,rgba(142,68,173,.08))}
+.wbfig .f-text{fill:var(--text,#1a1a1a)}
+.wbfig .f-text3{fill:var(--text3,#6b6b6b)}
+.wbfig .s-amb{stroke:var(--amb,#7d6608)}
+.wbfig .s-brd{stroke:var(--brd,#d0d0c8)}
+.wbfig .s-brd2{stroke:var(--brd2,#bbbbbb)}
+.wbfig .s-pur{stroke:var(--pur,#8e44ad)}
+.wbfig .s-text{stroke:var(--text,#1a1a1a)}
+.wbfig .s-text3{stroke:var(--text3,#6b6b6b)}
+</style><pattern id="vhatch-tr" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="12" class="s-amb" stroke-width="3"/></pattern></defs>
+<rect class="wb-panel f-bg2 s-brd" x="1" y="1" width="1150" height="398" rx="14" stroke-width="2"/>
+<rect class="f-pur-l s-pur" x="130" y="26" width="630" height="139.2" rx="4" stroke-width="3"/>
+<rect class="f-amb-l" x="130" y="165.2" width="630" height="69.6" rx="0"/>
+<rect x="130" y="165.2" width="630" height="69.60000000000002" fill="url(#vhatch-tr)" opacity=".45"/>
+<rect class="f-pur-l s-pur" x="130" y="234.8" width="630" height="139.2" rx="4" stroke-width="5"/>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M120,20 L120,380"/>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M114,26 L126,26"/>
+<text class="tm f-text" x="108" y="34" font-size="22" font-weight="700" text-anchor="end">+15 V</text>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M114,165.2 L126,165.2"/>
+<text class="tm f-text" x="108" y="173.2" font-size="22" font-weight="700" text-anchor="end">+3 V</text>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M114,200 L126,200"/>
+<text class="tm f-text" x="108" y="208" font-size="22" font-weight="700" text-anchor="end">0 V</text>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M114,234.8 L126,234.8"/>
+<text class="tm f-text" x="108" y="242.8" font-size="22" font-weight="700" text-anchor="end">-3 V</text>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M114,374 L126,374"/>
+<text class="tm f-text" x="108" y="382" font-size="22" font-weight="700" text-anchor="end">-15 V</text>
+<text class="tx f-pur" x="150" y="112" font-size="32" font-weight="700">0 (space)</text>
+<rect class="f-bg2" x="144" y="183" width="110.3" height="30" rx="4"/>
+<text class="tx f-amb" x="150" y="208" font-size="24" font-weight="700">geçersiz</text>
+<text class="tx f-pur" x="150" y="312" font-size="32" font-weight="700">1 (mark)</text>
+<path class="s-text" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M430,316 L580,316 L580,84 L680,84 L680,316 L750,316"/>
+<text class="tx f-text" x="430" y="302" font-size="24" font-weight="700">boşta = 1</text>
+<text class="tx f-text" x="590" y="70" font-size="24" font-weight="700">start = 0</text>
+<rect class="f-bg3 s-brd2" x="790" y="110" width="346" height="190" rx="8" stroke-width="2"/>
+<path class="s-text3" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M814,172 L814,138"/>
+<path class="s-text3" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M818.7,146.8 L814,138 L809.3,146.8"/>
+<text class="tx f-text3" x="836" y="146" font-size="24" font-weight="700">TTL'de 1</text>
+<text class="tx f-text3" x="836" y="176" font-size="24" font-weight="600">yüksek voltaj</text>
+<path class="s-text3" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M814,226 L814,260"/>
+<path class="s-text3" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M809.3,251.2 L814,260 L818.7,251.2"/>
+<text class="tx f-text3" x="836" y="236" font-size="24" font-weight="700">RS-232'de 1</text>
+<text class="tx f-text3" x="836" y="266" font-size="24" font-weight="600">eksi voltaj</text>
+</svg>

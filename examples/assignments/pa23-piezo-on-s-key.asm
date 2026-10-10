@@ -1,4 +1,4 @@
-; PA23 — Sound piezo when S key pressed
+; PA23: Sound piezo when S key pressed
         ORG     0800H
         INCLUDE PATCALLS.INC
 CHECK:  MOV     AH,GETIN

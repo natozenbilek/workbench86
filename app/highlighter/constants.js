@@ -1,5 +1,5 @@
 // ============================================================
-// workbench86 Highlighter Constants - Keyword sets for all languages
+// workbench86 Highlighter Constants: Keyword sets for all languages
 // ============================================================
 
 const HL_KEYWORDS = new Set(['MOV','ADD','SUB','MUL','DIV','IMUL','IDIV','INC','DEC','NEG','NOT','AND','OR','XOR','TEST','CMP','SHL','SHR','SAR','SAL','ROL','ROR','RCL','RCR','PUSH','POP','PUSHF','POPF','CALL','RET','JMP','JE','JNE','JZ','JNZ','JG','JGE','JL','JLE','JA','JAE','JB','JBE','JC','JNC','JS','JNS','JO','JNO','JP','JNP','JCXZ','LOOP','LOOPE','LOOPNE','INT','IRET','HLT','NOP','CLC','STC','CMC','CLD','STD','CLI','STI','XCHG','LEA','CBW','CWD','IN','OUT','MOVS','MOVSB','MOVSW','STOS','STOSB','STOSW','LODS','LODSB','LODSW','CMPS','CMPSB','CMPSW','SCAS','SCASB','SCASW','REP','REPE','REPZ','REPNE','REPNZ','DAA','DAS','AAA','AAS','AAM','AAD','XLAT']);

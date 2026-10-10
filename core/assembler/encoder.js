@@ -1,5 +1,5 @@
 // ============================================================
-// workbench86 Assembler - Instruction encoding
+// workbench86 Assembler: Instruction encoding
 // ============================================================
 
 function assembleInstruction(text, addr, defs, lbls, ln) {
@@ -429,8 +429,7 @@ function assembleMOV(dst, src, defs, lbls, addr) {
   }
   if (dst.type === 'mem' && src.type === 'imm') {
     let wide = dst.wide !== undefined ? dst.wide : 1;
-    let pfx = [];
-    if (dst.segOvr !== undefined && dst.segOvr !== 3) pfx.push([0x26,0x2E,0x36,0x3E][dst.segOvr]);
+    let pfx = segPrefixBytes(dst);   // BP-based: SS is the default, so DS: needs 3E
     let modrm = encodeModRM(0, dst);
     let immBytes = wide ? [src.val & 0xFF, (src.val >> 8) & 0xFF] : [src.val & 0xFF];
     return {bytes: [...pfx, wide ? 0xC7 : 0xC6, ...modrm, ...immBytes]};

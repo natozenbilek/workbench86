@@ -8,7 +8,7 @@
   var MIN_LEFT   = 150;
   var MIN_EDITOR = 200;
   var MIN_RIGHT  = 200;
-  var DEF_LEFT   = 200;
+  var DEF_LEFT   = 220;   // keep in step with base.css .mn; fits New / Open / Download in one row
 
   // ── helpers ────────────────────────────────────────────────
 

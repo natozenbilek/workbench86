@@ -1,4 +1,4 @@
-; PA14 — Add bytes at 1000H and 1100H, output to Port 1
+; PA14: Add bytes at 1000H and 1100H, output to Port 1
         ORG     0300H
         INCLUDE PATCALLS.INC
         MOV     AL,0FFH

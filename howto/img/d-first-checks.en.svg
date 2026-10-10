@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="wbfig" viewBox="0 0 1152 480" width="1152" height="480" role="img" aria-labelledby="d-first-checks-en-t d-first-checks-en-d" lang="en">
+<title id="d-first-checks-en-t">Four quick checks on your first connection</title>
+<desc id="d-first-checks-en-d">A thin red band at the top: PAT RESET before every check. Under it four cards, each with what to do and what to expect. 1: upload hw-led-all-on.asm, TX: C 0080:0100; the LEDs light up, Program is running on the board. 2: the same program with ORG 0200H; expect TX: C 0080:0200 and TX: G 0080:0200, then the LEDs light up again. 3, highlighted: pa29; TX: C 0080:0500, TX: C 0080:0600, TX: G 0080:0500; no error code. 4: PAT RESET three times while connected; a fresh [FF] PAT: each time; a W01 now and then is fine. Checks 2, 3 and 4 are not yet seen on a board.</desc>
+<defs><style>
+.wbfig .tx{font-family:'Atkinson Hyperlegible Next','Source Sans 3','Segoe UI',Arial,sans-serif}
+.wbfig .tm{font-family:'JetBrains Mono','IBM Plex Mono',Consolas,Menlo,monospace;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+.wbfig .f-acc{fill:var(--acc,#c0392b)}
+.wbfig .f-acc-l{fill:var(--acc-l,rgba(192,57,43,.08))}
+.wbfig .f-amb{fill:var(--amb,#7d6608)}
+.wbfig .f-amb-l{fill:var(--amb-l,rgba(183,149,11,.08))}
+.wbfig .f-bg2{fill:var(--bg2,#ffffff)}
+.wbfig .f-blu{fill:var(--blu,#2471a3)}
+.wbfig .f-grn{fill:var(--grn,#1d7a45)}
+.wbfig .f-text{fill:var(--text,#1a1a1a)}
+.wbfig .f-text3{fill:var(--text3,#6b6b6b)}
+.wbfig .s-acc{stroke:var(--acc,#c0392b)}
+.wbfig .s-amb{stroke:var(--amb,#7d6608)}
+.wbfig .s-brd{stroke:var(--brd,#d0d0c8)}
+.wbfig .s-brd2{stroke:var(--brd2,#bbbbbb)}
+.wbfig .s-pur{stroke:var(--pur,#8e44ad)}
+</style></defs>
+<rect class="wb-panel f-bg2 s-brd" x="1" y="1" width="1150" height="478" rx="14" stroke-width="2"/>
+<rect class="f-acc-l s-acc" x="22" y="12" width="1108" height="40" rx="8" stroke-width="2"/>
+<text class="tx f-acc" x="576" y="40" font-size="24" font-weight="700" text-anchor="middle">PAT RESET before every check</text>
+<rect class="f-bg2 s-brd2" x="22" y="66" width="268" height="404" rx="10" stroke-width="2"/>
+<circle class="f-text" cx="56" cy="102" r="22"/>
+<text class="tx f-bg2" x="56" y="112" font-size="28" font-weight="700" text-anchor="middle">1</text>
+<text class="tx f-text3" x="88" y="110" font-size="22" font-weight="700">do</text>
+<text class="tm f-text" x="38" y="150" font-size="22" font-weight="600">hw-led-all-on.asm</text>
+<text class="tm f-blu" x="38" y="180" font-size="22" font-weight="600">TX: C 0080:0100</text>
+<path class="s-brd2" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M36,262 L276,262"/>
+<text class="tx f-text3" x="38" y="292" font-size="22" font-weight="700">expect</text>
+<text class="tx f-text" x="38" y="322" font-size="24" font-weight="700">LEDs light up</text>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M64,343 L67,343"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M58,353.4 L59.5,356"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M46,353.4 L44.5,356"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M40,343 L37,343"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M46,332.6 L44.5,330"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M58,332.6 L59.5,330"/>
+<circle class="f-amb s-amb" cx="52" cy="343" r="8" stroke-width="2"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M92,343 L95,343"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M86,353.4 L87.5,356"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M74,353.4 L72.5,356"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M68,343 L65,343"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M74,332.6 L72.5,330"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M86,332.6 L87.5,330"/>
+<circle class="f-amb s-amb" cx="80" cy="343" r="8" stroke-width="2"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M120,343 L123,343"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M114,353.4 L115.5,356"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M102,353.4 L100.5,356"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M96,343 L93,343"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M102,332.6 L100.5,330"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M114,332.6 L115.5,330"/>
+<circle class="f-amb s-amb" cx="108" cy="343" r="8" stroke-width="2"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M148,343 L151,343"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M142,353.4 L143.5,356"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M130,353.4 L128.5,356"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M124,343 L121,343"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M130,332.6 L128.5,330"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M142,332.6 L143.5,330"/>
+<circle class="f-amb s-amb" cx="136" cy="343" r="8" stroke-width="2"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M176,343 L179,343"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M170,353.4 L171.5,356"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M158,353.4 L156.5,356"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M152,343 L149,343"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M158,332.6 L156.5,330"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M170,332.6 L171.5,330"/>
+<circle class="f-amb s-amb" cx="164" cy="343" r="8" stroke-width="2"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M204,343 L207,343"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M198,353.4 L199.5,356"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M186,353.4 L184.5,356"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M180,343 L177,343"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M186,332.6 L184.5,330"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M198,332.6 L199.5,330"/>
+<circle class="f-amb s-amb" cx="192" cy="343" r="8" stroke-width="2"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M232,343 L235,343"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M226,353.4 L227.5,356"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M214,353.4 L212.5,356"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M208,343 L205,343"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M214,332.6 L212.5,330"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M226,332.6 L227.5,330"/>
+<circle class="f-amb s-amb" cx="220" cy="343" r="8" stroke-width="2"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M260,343 L263,343"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M254,353.4 L255.5,356"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M242,353.4 L240.5,356"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M236,343 L233,343"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M242,332.6 L240.5,330"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M254,332.6 L255.5,330"/>
+<circle class="f-amb s-amb" cx="248" cy="343" r="8" stroke-width="2"/>
+<text class="tm f-text" x="38" y="381" font-size="22" font-weight="600">Program is running</text>
+<text class="tm f-text" x="38" y="410" font-size="22" font-weight="600">on the board</text>
+<rect class="f-bg2 s-brd2" x="302" y="66" width="268" height="404" rx="10" stroke-width="2"/>
+<circle class="f-text" cx="336" cy="102" r="22"/>
+<text class="tx f-bg2" x="336" y="112" font-size="28" font-weight="700" text-anchor="middle">2</text>
+<text class="tx f-text3" x="368" y="110" font-size="22" font-weight="700">do</text>
+<text class="tx f-text" x="318" y="150" font-size="24" font-weight="700">same program,</text>
+<text class="tm f-text" x="318" y="180" font-size="22" font-weight="600">ORG 0200H</text>
+<path class="s-brd2" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M316,262 L556,262"/>
+<text class="tx f-text3" x="318" y="292" font-size="22" font-weight="700">expect</text>
+<text class="tm f-blu" x="318" y="322" font-size="22" font-weight="600">TX: C 0080:0200</text>
+<text class="tm f-blu" x="318" y="351" font-size="22" font-weight="600">TX: G 0080:0200</text>
+<text class="tx f-text" x="318" y="380" font-size="24" font-weight="700">LEDs light up again</text>
+<path class="f-amb-l" d="M302,424 H570 V460 A10,10 0 0 1 560,470 H312 A10,10 0 0 1 302,460 Z"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M302,424 L570,424"/>
+<rect class="s-brd2" x="302" y="66" width="268" height="404" rx="10" fill="none" stroke-width="2"/>
+<text class="tx f-amb" x="436" y="455" font-size="22" font-weight="600" text-anchor="middle">not yet seen on a board</text>
+<rect class="f-bg2 s-pur" x="582" y="66" width="268" height="404" rx="10" stroke-width="5"/>
+<circle class="f-text" cx="616" cy="102" r="22"/>
+<text class="tx f-bg2" x="616" y="112" font-size="28" font-weight="700" text-anchor="middle">3</text>
+<text class="tx f-text3" x="648" y="110" font-size="22" font-weight="700">do</text>
+<text class="tm f-text" x="598" y="150" font-size="22" font-weight="600">pa29</text>
+<text class="tm f-blu" x="598" y="180" font-size="22" font-weight="600">TX: C 0080:0500</text>
+<text class="tm f-blu" x="598" y="210" font-size="22" font-weight="600">TX: C 0080:0600</text>
+<text class="tm f-blu" x="598" y="240" font-size="22" font-weight="600">TX: G 0080:0500</text>
+<path class="s-brd2" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M596,262 L836,262"/>
+<text class="tx f-text3" x="598" y="292" font-size="22" font-weight="700">expect</text>
+<text class="tx f-text" x="598" y="322" font-size="24" font-weight="700">no error code</text>
+<path class="f-amb-l" d="M582,424 H850 V460 A10,10 0 0 1 840,470 H592 A10,10 0 0 1 582,460 Z"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M582,424 L850,424"/>
+<rect class="s-pur" x="582" y="66" width="268" height="404" rx="10" fill="none" stroke-width="5"/>
+<text class="tx f-amb" x="716" y="455" font-size="22" font-weight="600" text-anchor="middle">not yet seen on a board</text>
+<rect class="f-bg2 s-brd2" x="862" y="66" width="268" height="404" rx="10" stroke-width="2"/>
+<circle class="f-text" cx="896" cy="102" r="22"/>
+<text class="tx f-bg2" x="896" y="112" font-size="28" font-weight="700" text-anchor="middle">4</text>
+<text class="tx f-text3" x="928" y="110" font-size="22" font-weight="700">do</text>
+<text class="tx f-text" x="878" y="150" font-size="24" font-weight="700">PAT RESET × 3</text>
+<text class="tx f-text" x="878" y="180" font-size="24" font-weight="700">while connected</text>
+<path class="s-brd2" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M876,262 L1116,262"/>
+<text class="tx f-text3" x="878" y="292" font-size="22" font-weight="700">expect</text>
+<text class="tx f-text" x="878" y="322" font-size="24" font-weight="700">each time a fresh</text>
+<text class="tm f-grn" x="878" y="351" font-size="22" font-weight="600">[FF] PAT:</text>
+<text class="tx f-text3" x="878" y="380" font-size="24" font-weight="700">a W01 now and then</text>
+<text class="tx f-text3" x="878" y="409" font-size="24" font-weight="700">is fine</text>
+<path class="f-amb-l" d="M862,424 H1130 V460 A10,10 0 0 1 1120,470 H872 A10,10 0 0 1 862,460 Z"/>
+<path class="s-amb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M862,424 L1130,424"/>
+<rect class="s-brd2" x="862" y="66" width="268" height="404" rx="10" fill="none" stroke-width="2"/>
+<text class="tx f-amb" x="996" y="455" font-size="22" font-weight="600" text-anchor="middle">not yet seen on a board</text>
+</svg>

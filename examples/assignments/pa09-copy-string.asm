@@ -1,4 +1,4 @@
-; PA09 — Copy null-terminated string from MEM1 to MEM2
+; PA09: Copy null-terminated string from MEM1 to MEM2
         ORG     0200H
 MEM1    EQU     0FFFH
 MEM2    EQU     1FFFH

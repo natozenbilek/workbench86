@@ -1,4 +1,4 @@
-; PA17 — Ultrasonic proximity detector with piezo
+; PA17: Ultrasonic proximity detector with piezo
         ORG     0300H
         INCLUDE PATCALLS.INC
         MOV     AL,60H

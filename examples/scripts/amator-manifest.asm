@@ -1,4 +1,4 @@
-; Amator - Manifest (Aleina & Ates Atilla)
+; Amator, by Manifest (Aleina & Ates Atilla)
 ; A minor, ~130 BPM, transcribed from kolaynota.com sheet music
 ; DigiAC2000 piezo toggle: all UPORT1 bits
 ;

@@ -1,5 +1,5 @@
 // ============================================================
-// workbench86 CPU - Instruction Fetch, Decode, ModR/M, String Ops
+// workbench86 CPU: Instruction Fetch, Decode, ModR/M, String Ops
 // ============================================================
 
 // === INSTRUCTION FETCH & DECODE ===

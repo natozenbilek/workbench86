@@ -1,4 +1,4 @@
-; PA01 — Subtract DS:1000H from 80H, store at DS:2000H
+; PA01: Subtract DS:1000H from 80H, store at DS:2000H
         ORG     0300H
         MOV     AL,80H
         SUB     AL,BYTE PTR DS:1000H

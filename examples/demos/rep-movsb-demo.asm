@@ -1,4 +1,4 @@
-; REP MOVSB — Copy string from SRC to DST
+; REP MOVSB: Copy string from SRC to DST
         ORG     0100H
         INCLUDE PATCALLS.INC
         MOV     AX,DS

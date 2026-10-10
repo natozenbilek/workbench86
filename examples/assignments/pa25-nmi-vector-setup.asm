@@ -1,4 +1,4 @@
-; PA25 — Set NMI vector to F000:6000H
+; PA25: Set NMI vector to F000:6000H
 NMIVCT  EQU     0008H
         ORG     0300H
         MOV     DX,DS

@@ -1,5 +1,5 @@
 // ============================================================
-// workbench86 I/O Ports - Read/write handlers, port logic
+// workbench86 I/O Ports: Read/write handlers, port logic
 // ============================================================
 
 function ioWrite(port, val) {

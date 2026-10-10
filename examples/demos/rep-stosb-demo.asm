@@ -1,4 +1,4 @@
-; REP STOSB — Fill 256 bytes at 2000H with AAH
+; REP STOSB: Fill 256 bytes at 2000H with AAH
         ORG     0100H
         INCLUDE PATCALLS.INC
         MOV     AX,DS

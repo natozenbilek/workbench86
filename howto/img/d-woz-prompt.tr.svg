@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="wbfig" viewBox="0 0 672 400" width="672" height="400" role="img" aria-labelledby="d-woz-prompt-tr-t d-woz-prompt-tr-d" lang="tr">
+<title id="d-woz-prompt-tr-t">İki monitor, iki prompt</title>
+<desc id="d-woz-prompt-tr-d">Yan yana iki küçük ekran. Solda Apple I (1976): ekranda ters bölü ve bir imleç; altında Woz Monitor, 256 byte. Sağda DIGIAC 2000: ekranda PAT: ve bir imleç; altında ROM monitor programı. En altta: RESET'ten sonra ikisi de komut bekler.</desc>
+<defs><style>
+.wbfig .tx{font-family:'Atkinson Hyperlegible Next','Source Sans 3','Segoe UI',Arial,sans-serif}
+.wbfig .tm{font-family:'JetBrains Mono','IBM Plex Mono',Consolas,Menlo,monospace;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+.wbfig .f-bg2{fill:var(--bg2,#ffffff)}
+.wbfig .f-bg3{fill:var(--bg3,#eeeeea)}
+.wbfig .f-blu{fill:var(--blu,#2471a3)}
+.wbfig .f-grn{fill:var(--grn,#1d7a45)}
+.wbfig .f-text{fill:var(--text,#1a1a1a)}
+.wbfig .f-text3{fill:var(--text3,#6b6b6b)}
+.wbfig .s-blu{stroke:var(--blu,#2471a3)}
+.wbfig .s-brd{stroke:var(--brd,#d0d0c8)}
+.wbfig .s-grn{stroke:var(--grn,#1d7a45)}
+</style></defs>
+<rect class="wb-panel f-bg2 s-brd" x="1" y="1" width="670" height="398" rx="14" stroke-width="2"/>
+<text class="tx f-blu" x="176" y="50" font-size="26" font-weight="700" text-anchor="middle">Apple I (1976)</text>
+<rect class="f-bg3 s-blu" x="36" y="68" width="280" height="160" rx="10" stroke-width="3"/>
+<text class="tm f-blu" x="64" y="140" font-size="40" font-weight="700">\</text>
+<rect class="f-blu" x="94" y="112" width="20" height="32" rx="2"/>
+<text class="tx f-text3" x="176" y="266" font-size="22" font-weight="600" text-anchor="middle">Woz Monitor, 256 byte</text>
+<text class="tx f-grn" x="496" y="50" font-size="26" font-weight="700" text-anchor="middle">DIGIAC 2000</text>
+<rect class="f-bg3 s-grn" x="356" y="68" width="280" height="160" rx="10" stroke-width="5"/>
+<text class="tm f-grn" x="384" y="140" font-size="40" font-weight="700">PAT:</text>
+<rect class="f-grn" x="486" y="112" width="20" height="32" rx="2"/>
+<text class="tx f-text3" x="496" y="266" font-size="22" font-weight="600" text-anchor="middle">ROM monitor programı</text>
+<text class="tx f-text" x="336" y="346" font-size="26" font-weight="700" text-anchor="middle">RESET'ten sonra ikisi de komut bekler.</text>
+</svg>

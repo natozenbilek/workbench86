@@ -1,4 +1,4 @@
-; PA02 — Add 4DH + 67H, store at DS:1000H
+; PA02: Add 4DH + 67H, store at DS:1000H
         ORG     0100H
         MOV     AL,4DH
         ADD     AL,67H

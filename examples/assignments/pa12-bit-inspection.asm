@@ -1,4 +1,4 @@
-; PA12 — Check if any of bits 0-3 at DS:1200H are clear
+; PA12: Check if any of bits 0-3 at DS:1200H are clear
         ORG     0300H
         MOV     AL,BYTE PTR DS:1200H
         AND     AL,0FH

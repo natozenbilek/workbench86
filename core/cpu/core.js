@@ -1,5 +1,5 @@
 // ============================================================
-// workbench86 CPU Core - Memory, Registers, Flags, State, Snapshot
+// workbench86 CPU Core: Memory, Registers, Flags, State, Snapshot
 // ============================================================
 
 // === PATCALLS.INC (built-in) ===
@@ -67,7 +67,7 @@ function setSeg(r,v){v&=0xFFFF;switch(r){case 0:ES=v;break;case 1:CS=v;break;cas
 // === EXECUTION STATE ===
 let halt=false, running=false, tmr=null, waitUntil=0;
 let cy=0, ic=0;
-let curInstr='\u2014', curDesc='\u2014', lastDiff='\u2014';
+let curInstr='(none)', curDesc='(none)', lastDiff='(none)';
 let stepPast=[], stepFuture=[];
 let pLen=0, labels={}, asmLines=[], asmOutput=[], instrLines=new Set();
 let progOrg=0x100;
@@ -167,7 +167,7 @@ function captureSnap() {
 function restoreSnap(s) {
   // Undo every memory write made after s was captured. These go through the
   // wrapped wb, so they are journalled into the snapshot that was captured most
-  // recently (the caller always captures the current state first) - undoing that
+  // recently (the caller always captures the current state first), and undoing that
   // journal in turn replays the writes, which is what makes step-forward work.
   if (s.jrnl) { s.jrnl.forEach((prev, addr) => wb(addr, prev)); s.jrnl.clear(); }
   AX=s.AX;BX=s.BX;CX=s.CX;DX=s.DX;SI=s.SI;DI=s.DI;SP=s.SP;BP=s.BP;

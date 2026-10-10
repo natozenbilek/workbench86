@@ -1,4 +1,4 @@
-; PA22 — Display "XX + YY = ZZ" on PAT display
+; PA22: Display "XX + YY = ZZ" on PAT display
         ORG     0700H
         INCLUDE PATCALLS.INC
         MOV     AH,CLRSCR

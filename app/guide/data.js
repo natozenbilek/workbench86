@@ -1,5 +1,5 @@
 // ============================================================
-// workbench86 Guide Data - HTML content for ISA reference tabs
+// workbench86 Guide Data: HTML content for ISA reference tabs
 // ============================================================
 
 const GUIDE_HTML = {
@@ -32,7 +32,7 @@ overview: `<h3>Overview</h3>
 <h4>Serial Upload</h4>
 <p>Connect to a physical DIGIAC 2000 board (the PAT 80286 card) via USB (Chrome/Edge WebSerial). Click <strong>Device</strong> to pair, then <strong>Upload and Run</strong> to send your program.</p>
 
-<p class="guide-note">All PA01&ndash;PA29 practical assignments and demo programs are available in the file explorer.</p>`,
+<p class="guide-note">All PA01 to PA29 practical assignments and demo programs are available in the file explorer.</p>`,
 
 registers: `<h3>Registers</h3>
 
@@ -177,7 +177,7 @@ addressing: `<h3>Addressing &amp; Directives</h3>
 <table><tr><th>Directive</th><th>Syntax</th><th>Description</th></tr>
 <tr><td><code>ORG</code></td><td><code>ORG 0100H</code></td><td>Set assembly origin address (default: 0100H)</td></tr>
 <tr><td><code>EQU</code></td><td><code>NAME EQU value</code></td><td>Define a named constant</td></tr>
-<tr><td><code>DB</code></td><td><code>DB 41H,'Hello',0</code></td><td>Define byte(s) &mdash; numbers, strings, or mixed</td></tr>
+<tr><td><code>DB</code></td><td><code>DB 41H,'Hello',0</code></td><td>Define byte(s): numbers, strings, or mixed</td></tr>
 <tr><td><code>DW</code></td><td><code>DW 1234H, 5678H</code></td><td>Define word(s) (16-bit, little-endian)</td></tr>
 <tr><td><code>INCLUDE</code></td><td><code>INCLUDE PATCALLS.INC</code></td><td>Load all port &amp; function constants</td></tr>
 <tr><td><code>END</code></td><td><code>END</code></td><td>Mark end of source file</td></tr></table>
@@ -203,7 +203,7 @@ addressing: `<h3>Addressing &amp; Directives</h3>
 <tr><td><code>EXIT</code></td><td>04H</td><td>Return to monitor</td></tr>
 <tr><td><code>WRCHAR</code></td><td>0CH</td><td>Write character in AL</td></tr>
 <tr><td><code>WRBYTE</code></td><td>0DH</td><td>Write AL as hex</td></tr>
-<tr><td><code>TONE</code></td><td>15H</td><td>Sound BX Hz for CX ms</td></tr>
+<tr><td><code>TONE</code></td><td>15H</td><td>Sound BX Hz for CX ms (simulator only)</td></tr>
 <tr><td><code>CLRSCR</code></td><td>12H</td><td>Clear display</td></tr></table>`,
 
 io_ports: `<h3>I/O Ports &amp; Peripherals</h3>
@@ -234,12 +234,12 @@ io_ports: `<h3>I/O Ports &amp; Peripherals</h3>
 
 <h4>Peripherals</h4>
 <table><tr><th>Peripheral</th><th>Control</th><th>Notes</th></tr>
-<tr><td><strong>LED Bar (P1)</strong></td><td>PORT1 bits 0&ndash;7</td><td>8 LEDs, active when direction=output</td></tr>
-<tr><td><strong>LED Bar (P2)</strong></td><td>PORT2 bits 0&ndash;7</td><td>Active in DAC mode (MODE=03H)</td></tr>
-<tr><td><strong>DC Motor</strong></td><td>PORT2 (DAC)</td><td>MODE=03H; value 00&ndash;FF &rarr; 0&ndash;3000 RPM</td></tr>
-<tr><td><strong>Potentiometer</strong></td><td>PORT2 (ADC)</td><td>MODE=00H; returns 0&ndash;255</td></tr>
-<tr><td><strong>Piezo</strong></td><td>PORT1 bit 5</td><td>Toggle PZO, or use INT 28H TONE</td></tr>
-<tr><td><strong>Ultrasonic</strong></td><td>PORT1 bits 6&ndash;7</td><td>UTX=transmit, URX=receive</td></tr>
+<tr><td><strong>LED Bar (P1)</strong></td><td>PORT1 bits 0 to 7</td><td>8 LEDs, active when direction=output</td></tr>
+<tr><td><strong>LED Bar (P2)</strong></td><td>PORT2 bits 0 to 7</td><td>Active in DAC mode (MODE=03H)</td></tr>
+<tr><td><strong>DC Motor</strong></td><td>PORT2 (DAC)</td><td>MODE=03H; value 00 to FF &rarr; 0 to 3000 RPM</td></tr>
+<tr><td><strong>Potentiometer</strong></td><td>PORT2 (ADC)</td><td>MODE=00H; returns 0 to 255</td></tr>
+<tr><td><strong>Piezo</strong></td><td>PORT1 bit 5</td><td>On the board, toggle PZO through <code>UPORT1</code> in a delay loop, as the manifest songs in <code>scripts/</code> do. <code>INT 28H</code> <code>TONE</code> works in the simulator only</td></tr>
+<tr><td><strong>Ultrasonic</strong></td><td>PORT1 bits 6 and 7</td><td>UTX=transmit, URX=receive</td></tr>
 <tr><td><strong>Optical Link</strong></td><td>PORT2 read</td><td>Blocked &rarr; attenuated value</td></tr>
 <tr><td><strong>Timer</strong></td><td>UTIMER1 + UIRQEN</td><td>Fires IRQ2 (INT 25H) on overflow</td></tr></table>
 
@@ -249,19 +249,20 @@ io_ports: `<h3>I/O Ports &amp; Peripherals</h3>
 <li>Set <code>UMODEREG</code> = 00H (ADC mode)</li>
 <li>Write PORT1: WR bit high then low &rarr; starts conversion</li>
 <li>Poll PORT1 bit 2 (BSY) until 1 (done)</li>
-<li>Read PORT2 for the result (0&ndash;255)</li>
+<li>Read PORT2 for the result (0 to 255)</li>
 </ol>
 
 <h4>DAC Write Sequence</h4>
 <ol>
 <li>Set <code>UMODEREG</code> = 03H (DAC mode)</li>
 <li>Set <code>UPORT1CTL</code> = 0FFH (all output)</li>
-<li>Write desired value to PORT2 (0&ndash;255)</li>
+<li>Write desired value to PORT2 (0 to 255)</li>
 </ol>
 
 <h4>PAT Monitor Calls (INT 28H)</h4>
 <p>Set <code>AH</code> to the function number, then <code>INT 28H</code>.</p>
 <table><tr><th>AH</th><th>Name</th><th>Action</th></tr>
+<tr><td>02</td><td><code>WRITE</code></td><td>Write CX characters from DS:DI to device BL (see the board notes below)</td></tr>
 <tr><td>04</td><td><code>EXIT</code></td><td>Halt &amp; return to monitor</td></tr>
 <tr><td>0AH</td><td><code>RDCHAR</code></td><td>Read one character &rarr; AL</td></tr>
 <tr><td>0CH</td><td><code>WRCHAR</code></td><td>Write character in AL to display</td></tr>
@@ -271,8 +272,23 @@ io_ports: `<h3>I/O Ports &amp; Peripherals</h3>
 <tr><td>10H</td><td><code>WTNMS</code></td><td>Wait BX milliseconds</td></tr>
 <tr><td>11H</td><td><code>CRLF</code></td><td>Output newline</td></tr>
 <tr><td>12H</td><td><code>CLRSCR</code></td><td>Clear display</td></tr>
-<tr><td>15H</td><td><code>TONE</code></td><td>Piezo at BX Hz for CX ms</td></tr>
-<tr><td>16H</td><td><code>NOTOFF</code></td><td>Stop piezo tone</td></tr></table>
+<tr><td>15H</td><td><code>TONE</code></td><td>Piezo at BX Hz for CX ms. Simulator only: the PAT monitor does not support it</td></tr>
+<tr><td>16H</td><td><code>NOTOFF</code></td><td>Stop piezo tone. Simulator only</td></tr></table>
+
+<h4>Board Notes (April 2026 Lab Sessions)</h4>
+<p class="guide-note">These come from the April 2026 sessions on a real board. They are notes, not verified specs.</p>
+<p><strong>Registers:</strong> on real hardware, INT 28H may clobber registers, especially DX. Save the registers you need before the call.</p>
+<p><strong>TONE and NOTOFF:</strong> the PAT monitor does not support them. They exist only in the simulator. On the board, toggle the piezo through <code>UPORT1</code> in a delay loop.</p>
+<p><strong>WRCHAR while connected:</strong> while the board is connected to the PC, <code>WRCHAR</code> text goes to the serial terminal, not to the 7-segment display.</p>
+<p><strong>EXIT turns the LEDs off:</strong> the monitor resets the MUART ports on <code>EXIT</code>, so LEDs go off when a program exits. A program that must keep LEDs lit ends in a loop (<code>JMP $</code>) and is stopped with PAT RESET.</p>
+<p><strong>Text on the keypad display:</strong> the monitor's <code>WRITE</code> call with device <code>DKD</code> (3):</p>
+<ol>
+<li><code>MOV DI, OFFSET MSG</code> and <code>MOV CX, 5</code> (text and length)</li>
+<li><code>MOV BL, 3</code> (device <code>DKD</code>, the keypad display)</li>
+<li><code>MOV AH, 2</code> (<code>WRITE</code>)</li>
+<li><code>INT 28H</code></li>
+</ol>
+<p><code>KYDBUF</code> (<code>0000:047DH</code>) is the monitor's own display buffer. The April notes wrote this call as <code>INT 40H</code> and said it is the same as <code>INT USER</code>. But in <code>PATCALLS.INC</code>, <code>USER</code> is 40 decimal, which is 28H, so the call is <code>INT 28H</code>. <code>INT 40H</code> is a different interrupt. This route has not been checked on a board yet.</p>
 
 <h4>Timer &amp; Interrupts</h4>
 <ol>

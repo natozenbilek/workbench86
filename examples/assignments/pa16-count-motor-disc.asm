@@ -1,4 +1,4 @@
-; PA16 — Count on Port 2, paused by motor disc
+; PA16: Count on Port 2, paused by motor disc
         ORG     0600H
         INCLUDE PATCALLS.INC
         MOV     AL,00H

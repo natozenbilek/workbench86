@@ -1,5 +1,5 @@
 // ============================================================
-// workbench86 I/O State - Port array, peripheral state, audio, timer
+// workbench86 I/O State: Port array, peripheral state, audio, timer
 // ============================================================
 
 // === I/O PORT ADDRESS MAP ===
@@ -60,10 +60,14 @@ const TIMER_CYCLES_PER_TICK = 50;
 let irqPending=0, irqMask=0xFF;
 
 // Keyboard input queue
+// keypress takes printable characters only. Enter also fires keypress, with e.key
+// "Enter"; it is queued as 0DH by the keydown handler below, so taking the first
+// letter here would add a stray 'E' (45H) after it.
 let keyQueue = [];
 document.addEventListener('keypress', function(e) {
   if (document.activeElement && document.activeElement.id === 'ed') return;
   if (document.activeElement && document.activeElement.tagName === 'INPUT') return;
+  if (!e.key || e.key.length !== 1) return;
   keyQueue.push(e.key.charCodeAt(0) & 0xFF);
 });
 document.addEventListener('keydown', function(e) {

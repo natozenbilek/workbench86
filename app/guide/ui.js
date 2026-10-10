@@ -1,5 +1,5 @@
 // ============================================================
-// workbench86 Guide UI - Modal open/close, tab rendering
+// workbench86 Guide UI: Modal open/close, tab rendering
 // ============================================================
 
 let guideTab = 'overview';

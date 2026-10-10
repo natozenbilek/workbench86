@@ -1,5 +1,5 @@
 /* ============================================================
-   workbench86 Panels - Right panel cards, registers, flags, stack,
+   workbench86 Panels: Right panel cards, registers, flags, stack,
    memory, instruction info, trace, cycle counter
    ============================================================ */
 
@@ -43,7 +43,7 @@
 .ch:hover { background: var(--bg4); }
 .ch::after {
   content: '\25BE';
-  font-size: 10px;
+  font-size: var(--fs-xs);
   color: var(--text3);
   transition: transform var(--tr-base);
 }
@@ -83,8 +83,8 @@
   100% { background: transparent; }
 }
 .rn { font-family: var(--mono); font-size: var(--fs-xs); color: var(--text3); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
-.rv { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--text); letter-spacing: .02em; }
-.rv-split { font-size: var(--fs-sm); color: var(--text2); }
+.rv { font-family: var(--mono); font-size: var(--fs-base); font-weight: 600; color: var(--text); letter-spacing: .02em; }
+.rv-split { font-family: var(--mono); font-size: var(--fs-sm); color: var(--text2); }
 .rd { font-family: var(--mono); font-size: var(--fs-sm); color: var(--text3); }
 
 /* === FLAGS === */
@@ -120,14 +120,16 @@
 .mg {
   display: grid;
   grid-template-columns: auto repeat(8, 1fr);
-  gap: 1px;
+  column-gap: 1px;
+  grid-auto-rows: var(--mem-row);   /* same pitch as the ASCII column next to it */
   font-family: var(--mono);
   font-size: var(--fs-sm);
 }
-.ma { color: var(--text3); padding: 1px var(--sp-2) 1px 0; text-align: right; font-weight: 500; }
+.ma { color: var(--text3); padding: 0 var(--sp-2) 0 0; line-height: var(--mem-row); text-align: right; font-weight: 500; }
 .mv {
   text-align: center;
-  padding: 1px;
+  padding: 0 1px;
+  line-height: var(--mem-row);
   border-radius: var(--r-sm);
   color: var(--text3);
   transition: all .15s;
@@ -139,7 +141,7 @@
 @keyframes memflash { 0% { background: var(--amb); color: #fff; } 100% { background: transparent; } }
 .mem-follow { display: flex; gap: var(--sp-1); }
 .mem-follow .b { font-size: var(--fs-xs); padding: var(--sp-1) var(--sp-4); min-width: 0; min-height: 22px; }
-.mem-follow .b.active { background: var(--acc); color: #fff; border-color: var(--acc); }
+.mem-follow .b.active { background: var(--acc); color: var(--bg); border-color: var(--acc); }
 
 /* Memory ASCII column */
 .mg-ascii {
@@ -150,7 +152,7 @@
   padding-left: var(--sp-3);
   flex-shrink: 0;
 }
-.ma-ascii { display: block; line-height: 18px; letter-spacing: 2px; }
+.ma-ascii { display: block; line-height: var(--mem-row); letter-spacing: 2px; }
 .ma-dot { color: var(--text3); opacity: .4; }
 
 /* === PAT DISPLAY === */
@@ -253,3 +255,18 @@
 :root[data-theme='light'] .ir-box { color: var(--acc); }
 :root[data-theme='light'] .trace-row:hover { background: rgba(0,0,0,.04); }
 :root[data-theme='light'] .trace-row { border-bottom: 1px solid rgba(0,0,0,.06); }
+
+/* === SIM LOCK: board connected === */
+.sim-lock-banner {
+  position: sticky; top: 0; z-index: 3;
+  display: flex; align-items: center; gap: var(--sp-4);
+  padding: var(--sp-4) var(--sp-5);
+  font-family: var(--sans); font-size: var(--fs-sm); line-height: 1.45;
+  color: var(--text);
+  background: linear-gradient(var(--amb-l), var(--amb-l)), var(--bg3);
+  border-bottom: 1px solid var(--brd);
+  border-left: 3px solid var(--amb);
+}
+.sim-lock-banner[hidden] { display: none; }
+.sim-lock-banner .b { margin-left: auto; flex-shrink: 0; font-size: var(--fs-sm); }
+.rp.sim-locked .ci { opacity: .4; filter: grayscale(1); transition: opacity var(--tr-slow); }

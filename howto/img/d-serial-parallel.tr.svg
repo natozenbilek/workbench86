@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="wbfig" viewBox="0 0 1152 380" width="1152" height="380" role="img" aria-labelledby="d-serial-parallel-tr-t d-serial-parallel-tr-d" lang="tr">
+<title id="d-serial-parallel-tr-t">Seri ve paralel iletim</title>
+<desc id="d-serial-parallel-tr-d">İki panel. Solda seri iletim: gönderen ile alan arasında tek bir mor tel; üzerinde sırayla sekiz bit, 0 0 0 0 1 0 1 0, altında zaman oku. Sağda paralel iletim: aynı iki kutu arasında sekiz tel, her telde bir bit, hepsi aynı sütunda. Yedinci bit ötekilerin gerisinde kalmış, kırmızı çerçeveli ve "geç kalan bit" diye işaretli.</desc>
+<defs><style>
+.wbfig .tx{font-family:'Atkinson Hyperlegible Next','Source Sans 3','Segoe UI',Arial,sans-serif}
+.wbfig .tm{font-family:'JetBrains Mono','IBM Plex Mono',Consolas,Menlo,monospace;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+.wbfig .f-bg2{fill:var(--bg2,#ffffff)}
+.wbfig .f-blu{fill:var(--blu,#2471a3)}
+.wbfig .f-blu-l{fill:var(--blu-l,rgba(36,113,163,.08))}
+.wbfig .f-grn{fill:var(--grn,#1d7a45)}
+.wbfig .f-grn-l{fill:var(--grn-l,rgba(39,174,96,.08))}
+.wbfig .f-pur{fill:var(--pur,#8e44ad)}
+.wbfig .f-pur-l{fill:var(--pur-l,rgba(142,68,173,.08))}
+.wbfig .f-red{fill:var(--red,#c0392b)}
+.wbfig .f-red-l{fill:var(--red-l,rgba(192,57,43,.08))}
+.wbfig .f-text{fill:var(--text,#1a1a1a)}
+.wbfig .f-text3{fill:var(--text3,#6b6b6b)}
+.wbfig .s-blu{stroke:var(--blu,#2471a3)}
+.wbfig .s-brd{stroke:var(--brd,#d0d0c8)}
+.wbfig .s-brd2{stroke:var(--brd2,#bbbbbb)}
+.wbfig .s-grn{stroke:var(--grn,#1d7a45)}
+.wbfig .s-pur{stroke:var(--pur,#8e44ad)}
+.wbfig .s-red{stroke:var(--red,#c0392b)}
+.wbfig .s-text3{stroke:var(--text3,#6b6b6b)}
+</style></defs>
+<rect class="wb-panel f-bg2 s-brd" x="1" y="1" width="1150" height="378" rx="14" stroke-width="2"/>
+<path class="s-brd2" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M576,24 L576,356"/>
+<text class="tx f-text" x="30" y="50" font-size="32" font-weight="700">Seri</text>
+<rect class="f-blu-l s-blu" x="30" y="110" width="70" height="220" rx="6" stroke-width="3"/>
+<text class="tx f-blu" x="65" y="96" font-size="24" font-weight="700" text-anchor="middle">gönderen</text>
+<rect class="f-grn-l s-grn" x="476" y="110" width="70" height="220" rx="6" stroke-width="3"/>
+<text class="tx f-grn" x="511" y="96" font-size="24" font-weight="700" text-anchor="middle">alan</text>
+<path class="s-pur" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M100,220 L476,220"/>
+<rect class="f-bg2 s-pur" x="108" y="200" width="40" height="40" rx="4" stroke-width="2.5"/>
+<rect class="f-pur-l" x="108" y="200" width="40" height="40" rx="4"/>
+<text class="tm f-pur" x="128" y="229" font-size="26" font-weight="700" text-anchor="middle">0</text>
+<rect class="f-bg2 s-pur" x="154" y="200" width="40" height="40" rx="4" stroke-width="2.5"/>
+<rect class="f-pur-l" x="154" y="200" width="40" height="40" rx="4"/>
+<text class="tm f-pur" x="174" y="229" font-size="26" font-weight="700" text-anchor="middle">0</text>
+<rect class="f-bg2 s-pur" x="200" y="200" width="40" height="40" rx="4" stroke-width="2.5"/>
+<rect class="f-pur-l" x="200" y="200" width="40" height="40" rx="4"/>
+<text class="tm f-pur" x="220" y="229" font-size="26" font-weight="700" text-anchor="middle">0</text>
+<rect class="f-bg2 s-pur" x="246" y="200" width="40" height="40" rx="4" stroke-width="2.5"/>
+<rect class="f-pur-l" x="246" y="200" width="40" height="40" rx="4"/>
+<text class="tm f-pur" x="266" y="229" font-size="26" font-weight="700" text-anchor="middle">0</text>
+<rect class="f-bg2 s-pur" x="292" y="200" width="40" height="40" rx="4" stroke-width="2.5"/>
+<rect class="f-pur-l" x="292" y="200" width="40" height="40" rx="4"/>
+<text class="tm f-pur" x="312" y="229" font-size="26" font-weight="700" text-anchor="middle">1</text>
+<rect class="f-bg2 s-pur" x="338" y="200" width="40" height="40" rx="4" stroke-width="2.5"/>
+<rect class="f-pur-l" x="338" y="200" width="40" height="40" rx="4"/>
+<text class="tm f-pur" x="358" y="229" font-size="26" font-weight="700" text-anchor="middle">0</text>
+<rect class="f-bg2 s-pur" x="384" y="200" width="40" height="40" rx="4" stroke-width="2.5"/>
+<rect class="f-pur-l" x="384" y="200" width="40" height="40" rx="4"/>
+<text class="tm f-pur" x="404" y="229" font-size="26" font-weight="700" text-anchor="middle">1</text>
+<rect class="f-bg2 s-pur" x="430" y="200" width="40" height="40" rx="4" stroke-width="2.5"/>
+<rect class="f-pur-l" x="430" y="200" width="40" height="40" rx="4"/>
+<text class="tm f-pur" x="450" y="229" font-size="26" font-weight="700" text-anchor="middle">0</text>
+<path class="s-text3" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M110,286 L466,286"/>
+<path class="s-text3" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M450.1,294.5 L466,286 L450.1,277.5"/>
+<text class="tx f-text3" x="288" y="318" font-size="24" font-weight="600" text-anchor="middle">zaman</text>
+<text class="tx f-text" x="606" y="50" font-size="32" font-weight="700">Paralel</text>
+<rect class="f-blu-l s-blu" x="606" y="110" width="70" height="220" rx="6" stroke-width="3"/>
+<text class="tx f-blu" x="641" y="96" font-size="24" font-weight="700" text-anchor="middle">gönderen</text>
+<rect class="f-grn-l s-grn" x="1052" y="110" width="70" height="220" rx="6" stroke-width="3"/>
+<text class="tx f-grn" x="1087" y="96" font-size="24" font-weight="700" text-anchor="middle">alan</text>
+<path class="s-pur" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M676,115 L1052,115"/>
+<rect class="f-bg2 s-pur" x="846" y="102" width="26" height="26" rx="3" stroke-width="2"/>
+<rect class="f-pur-l" x="846" y="102" width="26" height="26" rx="3"/>
+<text class="tm f-pur" x="859" y="123" font-size="22" font-weight="700" text-anchor="middle">0</text>
+<path class="s-pur" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M676,145 L1052,145"/>
+<rect class="f-bg2 s-pur" x="846" y="132" width="26" height="26" rx="3" stroke-width="2"/>
+<rect class="f-pur-l" x="846" y="132" width="26" height="26" rx="3"/>
+<text class="tm f-pur" x="859" y="153" font-size="22" font-weight="700" text-anchor="middle">0</text>
+<path class="s-pur" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M676,175 L1052,175"/>
+<rect class="f-bg2 s-pur" x="846" y="162" width="26" height="26" rx="3" stroke-width="2"/>
+<rect class="f-pur-l" x="846" y="162" width="26" height="26" rx="3"/>
+<text class="tm f-pur" x="859" y="183" font-size="22" font-weight="700" text-anchor="middle">0</text>
+<path class="s-pur" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M676,205 L1052,205"/>
+<rect class="f-bg2 s-pur" x="846" y="192" width="26" height="26" rx="3" stroke-width="2"/>
+<rect class="f-pur-l" x="846" y="192" width="26" height="26" rx="3"/>
+<text class="tm f-pur" x="859" y="213" font-size="22" font-weight="700" text-anchor="middle">0</text>
+<path class="s-pur" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M676,235 L1052,235"/>
+<rect class="f-bg2 s-pur" x="846" y="222" width="26" height="26" rx="3" stroke-width="2"/>
+<rect class="f-pur-l" x="846" y="222" width="26" height="26" rx="3"/>
+<text class="tm f-pur" x="859" y="243" font-size="22" font-weight="700" text-anchor="middle">1</text>
+<path class="s-pur" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M676,265 L1052,265"/>
+<rect class="f-bg2 s-pur" x="846" y="252" width="26" height="26" rx="3" stroke-width="2"/>
+<rect class="f-pur-l" x="846" y="252" width="26" height="26" rx="3"/>
+<text class="tm f-pur" x="859" y="273" font-size="22" font-weight="700" text-anchor="middle">0</text>
+<path class="s-pur" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M676,295 L1052,295"/>
+<rect class="f-bg2 s-red" x="786" y="282" width="26" height="26" rx="3" stroke-width="3"/>
+<rect class="f-red-l" x="786" y="282" width="26" height="26" rx="3"/>
+<text class="tm f-red" x="799" y="303" font-size="22" font-weight="700" text-anchor="middle">1</text>
+<path class="s-pur" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M676,325 L1052,325"/>
+<rect class="f-bg2 s-pur" x="846" y="312" width="26" height="26" rx="3" stroke-width="2"/>
+<rect class="f-pur-l" x="846" y="312" width="26" height="26" rx="3"/>
+<text class="tm f-pur" x="859" y="333" font-size="22" font-weight="700" text-anchor="middle">0</text>
+<path class="s-red" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M760,344 L788,312"/>
+<path class="s-red" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M785.3,323.7 L788,312 L776.8,316.3"/>
+<text class="tx f-red" x="752" y="368" font-size="24" font-weight="700" text-anchor="end">geç kalan bit</text>
+</svg>

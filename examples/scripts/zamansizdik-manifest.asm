@@ -1,4 +1,4 @@
-; Zamansizdik - Manifest (Ates Atilla)
+; Zamansizdik, by Manifest (Ates Atilla)
 ; E minor, ~100 BPM, transcribed from kolaynota.com sheet music
 ; DigiAC2000 piezo toggle: all UPORT1 bits
 ;

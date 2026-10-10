@@ -1,8 +1,9 @@
 // ============================================================
-// workbench86 Main Sim - Step, run, reset, speed, UI interactions
+// workbench86 Main Sim: Step, run, reset, speed, UI interactions
 // ============================================================
 
 function doStep() {
+  if (typeof simLocked === 'function' && simLocked()) { simLockedNotice(); return; }
   if (!pLen) { sLog('No program assembled.', 1); return; }
   if (halt) return;
   let prevState = {AX,BX,CX,DX,SI,DI,SP,BP,CS,DS,SS,ES,IP,FLAGS};
@@ -35,6 +36,7 @@ function doStep() {
 // the snapshot just captured. That journal is the return ticket, which is what
 // lets the opposite button replay the step byte for byte.
 function doStepBack() {
+  if (typeof simLocked === 'function' && simLocked()) { simLockedNotice(); return; }
   if (!stepPast.length) return;
   stopRun();
   stepFuture.push(captureSnap());
@@ -42,6 +44,7 @@ function doStepBack() {
   renderAll();
 }
 function doStepForward() {
+  if (typeof simLocked === 'function' && simLocked()) { simLockedNotice(); return; }
   if (!stepFuture.length) return;
   stopRun();
   stepPast.push(captureSnap());
@@ -53,12 +56,37 @@ function doStepForward() {
 let spd = 20;
 function updSpd() { spd = +document.getElementById('spd').value; if(running){stopRun();startRun()} }
 function doToggleRun() { if(running) stopRun(); else startRun(); }
+
+// The simulated MUART timer counts executed instructions (one tick per 50), and a
+// WTNMS loop also runs at the instruction rate, so below Max such programs take
+// minutes. Checked on the assembled bytes: OUT to UIRQEN or UTIMER1..5 (or MOV DX
+// with one of them), or MOV AH,WTNMS together with INT 28H.
+const TIMER_PORTS = [PATCALLS.UIRQEN, PATCALLS.UTIMER1, PATCALLS.UTIMER2, PATCALLS.UTIMER3, PATCALLS.UTIMER4, PATCALLS.UTIMER5];
+function slowSpeedHint() {
+  let int28 = false, wtnms = false, timer = false;
+  for (let al of asmLines) {
+    let b = al.bytes;
+    if (b[0] === 0xCD && b[1] === 0x28) int28 = true;
+    else if (b[0] === 0xB4 && b[1] === PATCALLS.WTNMS) wtnms = true;
+    else if ((b[0] === 0xE6 || b[0] === 0xE7) && TIMER_PORTS.includes(b[1])) timer = true;
+    else if (b[0] === 0xBA && b[2] === 0 && TIMER_PORTS.includes(b[1])) timer = true;
+  }
+  let what = timer ? 'the MUART timer' : (int28 && wtnms) ? 'WTNMS' : '';
+  // The advice comes first: the status bar is narrow and cuts long messages.
+  return what ? `Tip: use Max speed (this program uses ${what})` : '';
+}
+
 function startRun() {
+  if (typeof simLocked === 'function' && simLocked()) { simLockedNotice(); return; }
   if(!pLen){sLog('No program.',1);return} if(halt)return;
   running=true;
   document.getElementById('runBtn').textContent='Pause';
   document.getElementById('runBtn').className='b';
   setSt('RUNNING');
+  let hint = spd < 9999 ? slowSpeedHint() : '';
+  let log = document.getElementById('log');
+  if (hint) sLog(hint, 0);
+  else if (log && log.textContent.startsWith('Tip: use Max speed')) sLog('', 0);   // switched to Max
   let batch = spd >= 9999 ? 500 : 1;
   let delay = spd >= 9999 ? 1 : Math.max(1, Math.floor(1000/spd));
   tmr = setInterval(()=>{

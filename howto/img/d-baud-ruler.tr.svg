@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="wbfig" viewBox="0 0 672 400" width="672" height="400" role="img" aria-labelledby="d-baud-ruler-tr-t d-baud-ruler-tr-d" lang="tr">
+<title id="d-baud-ruler-tr-t">9600 baud'da bir bit</title>
+<desc id="d-baud-ruler-tr-d">0'dan 1 milisaniyeye bir zaman cetveli. Her 104 mikrosaniyede bir mor çentik var, 1'den 9'a numaralı; 1 ms, 9. ile 10. çentiğin arasına düşüyor: 9,6 bit. İlk aralığın üstünde tek bir bit kutusu: 1 bit yaklaşık 104 µs. Altta: 1 s = 9600 bit; RS-232'de 1 sembol = 1 bit.</desc>
+<defs><style>
+.wbfig .tx{font-family:'Atkinson Hyperlegible Next','Source Sans 3','Segoe UI',Arial,sans-serif}
+.wbfig .tm{font-family:'JetBrains Mono','IBM Plex Mono',Consolas,Menlo,monospace;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+.wbfig .f-bg2{fill:var(--bg2,#ffffff)}
+.wbfig .f-pur{fill:var(--pur,#8e44ad)}
+.wbfig .f-pur-l{fill:var(--pur-l,rgba(142,68,173,.08))}
+.wbfig .f-text{fill:var(--text,#1a1a1a)}
+.wbfig .f-text3{fill:var(--text3,#6b6b6b)}
+.wbfig .s-brd{stroke:var(--brd,#d0d0c8)}
+.wbfig .s-pur{stroke:var(--pur,#8e44ad)}
+.wbfig .s-text{stroke:var(--text,#1a1a1a)}
+</style></defs>
+<rect class="wb-panel f-bg2 s-brd" x="1" y="1" width="670" height="398" rx="14" stroke-width="2"/>
+<rect class="f-pur-l s-pur" x="50" y="108" width="56.2" height="64" rx="3" stroke-width="5"/>
+<text class="tm f-pur" x="50" y="86" font-size="26" font-weight="700">1 bit yaklaşık 104 µs</text>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M50,186 L590,186"/>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M50,172 L50,200"/>
+<text class="tm f-text3" x="50" y="226" font-size="22" font-weight="600" text-anchor="middle">0</text>
+<path class="s-pur" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M106.2,174 L106.2,198"/>
+<text class="tm f-pur" x="106.2" y="226" font-size="22" font-weight="700" text-anchor="middle">1</text>
+<path class="s-pur" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M162.5,174 L162.5,198"/>
+<text class="tm f-pur" x="162.5" y="226" font-size="22" font-weight="700" text-anchor="middle">2</text>
+<path class="s-pur" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M218.8,174 L218.8,198"/>
+<text class="tm f-pur" x="218.8" y="226" font-size="22" font-weight="700" text-anchor="middle">3</text>
+<path class="s-pur" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M275,174 L275,198"/>
+<text class="tm f-pur" x="275" y="226" font-size="22" font-weight="700" text-anchor="middle">4</text>
+<path class="s-pur" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M331.2,174 L331.2,198"/>
+<text class="tm f-pur" x="331.2" y="226" font-size="22" font-weight="700" text-anchor="middle">5</text>
+<path class="s-pur" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M387.5,174 L387.5,198"/>
+<text class="tm f-pur" x="387.5" y="226" font-size="22" font-weight="700" text-anchor="middle">6</text>
+<path class="s-pur" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M443.8,174 L443.8,198"/>
+<text class="tm f-pur" x="443.8" y="226" font-size="22" font-weight="700" text-anchor="middle">7</text>
+<path class="s-pur" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M500,174 L500,198"/>
+<text class="tm f-pur" x="500" y="226" font-size="22" font-weight="700" text-anchor="middle">8</text>
+<path class="s-pur" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M556.2,174 L556.2,198"/>
+<text class="tm f-pur" x="556.2" y="226" font-size="22" font-weight="700" text-anchor="middle">9</text>
+<path class="s-text" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M590,160 L590,200"/>
+<text class="tm f-text" x="590" y="150" font-size="24" font-weight="700" text-anchor="middle">1 ms</text>
+<text class="tx f-pur" x="590" y="260" font-size="24" font-weight="700" text-anchor="middle">9,6 bit</text>
+<text class="tx f-pur" x="320" y="318" font-size="32" font-weight="700" text-anchor="middle">1 s = 9600 bit</text>
+<text class="tx f-text3" x="320" y="362" font-size="24" font-weight="600" text-anchor="middle">RS-232'de 1 sembol = 1 bit</text>
+</svg>

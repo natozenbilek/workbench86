@@ -1,4 +1,4 @@
-; PA29 — Timer-driven motor speed display
+; PA29: Timer-driven motor speed display
         INCLUDE PATCALLS.INC
 INT25V  EQU     0094H
         ORG     0500H

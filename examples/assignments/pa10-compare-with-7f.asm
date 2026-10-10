@@ -1,4 +1,4 @@
-; PA10 — Compare DS:2300H with 7FH
+; PA10: Compare DS:2300H with 7FH
         ORG     0400H
         MOV     AL,BYTE PTR DS:2300H
         CMP     AL,7FH

@@ -1,11 +1,11 @@
 // ============================================================
-// workbench86 Assembler - Parser, expression evaluator, data directives
+// workbench86 Assembler: Parser, expression evaluator, data directives
 // ============================================================
 
 function doAssemble() {
   if (typeof currentFileType === 'function' && currentFileType() !== 'asm') {
-    sLog('Cannot assemble: current file is not .asm \u2014 use "Translate to ASM" first.', 1);
-    return;
+    sLog('Cannot assemble: current file is not .asm. Use "Translate to ASM" first.', 1);
+    return false;
   }
   let src = document.getElementById('ed').value;
   let lines = src.split('\n');
@@ -124,7 +124,7 @@ function doAssemble() {
     let firstErr = updLn();
     if (firstErr > 0) scrollToLine(firstErr);
     sLog(errs.join('\n'), 1);
-    return;
+    return false;
   }
 
   mem.fill(0); ioPorts.fill(0); ioLog = []; patDisplay = ''; execTrace = [];
@@ -152,13 +152,14 @@ function doAssemble() {
   IP=p2.org;
   FLAGS=0x0002;
   halt=false; cy=0; ic=0;
-  curInstr='\u2014'; curDesc='\u2014'; lastDiff='\u2014';
+  curInstr='(none)'; curDesc='(none)'; lastDiff='(none)';
   stepPast=[]; stepFuture=[];
   motorDacVal=0; piezoOn=false; diskPulses=0; motorAngle=0;
 
   sLog(`Assembled ${pLen} instructions. CS:IP=${hex16(CS)}:${hex16(IP)} SP=${hex16(SP)}`, 0);
   setSt('READY');
   renderAll();
+  return true;
 }
 
 function isInstruction(tok) {

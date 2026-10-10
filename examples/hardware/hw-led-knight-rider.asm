@@ -1,4 +1,4 @@
-; LED Knight Rider — bouncing pattern D0-D7-D0 on Port 2
+; LED Knight Rider: bouncing pattern D0-D7-D0 on Port 2
         ORG     0100H
         INCLUDE PATCALLS.INC
         ; MUART init

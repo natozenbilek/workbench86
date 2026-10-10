@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="wbfig" viewBox="0 0 1152 420" width="1152" height="420" role="img" aria-labelledby="d-big-picture-en-t d-big-picture-en-d" lang="en" data-focus="agenda">
+<title id="d-big-picture-en-t">From the page to the board</title>
+<desc id="d-big-picture-en-d">Three boxes from left to right. On the left the browser with the Editor, the Simulator and the Terminal, and a WebSerial strip under them. In the middle the USB-RS232 converter, joined to the browser by USB, with "needs a driver" under it. On the right the DIGIAC 2000 board: the ROM monitor program printing PAT:, the 80286 and RAM, eight LEDs and the red PAT RESET button. An RS-232 cable labelled 9600 8N2 joins the converter and the board. Two arrows over the top: "C, bytes, G" from the Terminal to the board, and "PAT:, replies" back.</desc>
+<defs><style>
+.wbfig .tx{font-family:'Atkinson Hyperlegible Next','Source Sans 3','Segoe UI',Arial,sans-serif}
+.wbfig .tm{font-family:'JetBrains Mono','IBM Plex Mono',Consolas,Menlo,monospace;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+.wbfig .f-acc{fill:var(--acc,#c0392b)}
+.wbfig .f-amb-l{fill:var(--amb-l,rgba(183,149,11,.08))}
+.wbfig .f-bg2{fill:var(--bg2,#ffffff)}
+.wbfig .f-blu{fill:var(--blu,#2471a3)}
+.wbfig .f-blu-l{fill:var(--blu-l,rgba(36,113,163,.08))}
+.wbfig .f-cyn{fill:var(--cyn,#117864)}
+.wbfig .f-cyn-l{fill:var(--cyn-l,rgba(23,165,137,.08))}
+.wbfig .f-grn{fill:var(--grn,#1d7a45)}
+.wbfig .f-grn-l{fill:var(--grn-l,rgba(39,174,96,.08))}
+.wbfig .f-pur{fill:var(--pur,#8e44ad)}
+.wbfig .f-text{fill:var(--text,#1a1a1a)}
+.wbfig .f-text3{fill:var(--text3,#6b6b6b)}
+.wbfig .s-amb{stroke:var(--amb,#7d6608)}
+.wbfig .s-bg2{stroke:var(--bg2,#ffffff)}
+.wbfig .s-blu{stroke:var(--blu,#2471a3)}
+.wbfig .s-brd{stroke:var(--brd,#d0d0c8)}
+.wbfig .s-cyn{stroke:var(--cyn,#117864)}
+.wbfig .s-grn{stroke:var(--grn,#1d7a45)}
+.wbfig .s-pur{stroke:var(--pur,#8e44ad)}
+.wbfig .s-text{stroke:var(--text,#1a1a1a)}
+.wbfig .num,.wbfig .chk,.wbfig .lock{display:none}
+.wbfig .part{transition:opacity .2s}
+svg[data-focus="agenda"] .num,svg[data-focus="done"] .chk,svg[data-focus="board"] .lock{display:inline}
+svg[data-focus="line"] .part:not(.fx-line){opacity:.4}
+svg[data-focus="line"] .fx-line .fs{stroke-width:5}
+svg[data-focus="sim"] .part:not(.fx-sim){opacity:.4}
+svg[data-focus="sim"] .fx-sim .fs{stroke-width:5}
+svg[data-focus="upload"] .part:not(.fx-upload){opacity:.4}
+svg[data-focus="upload"] .fx-upload .fs{stroke-width:5}
+svg[data-focus="board"] .part:not(.fx-board){opacity:.4}
+svg[data-focus="board"] .fx-board .fs{stroke-width:5}
+.wbfig .bp-st:target~.num{display:none}
+#bp-agenda:target~.num,#bp-done:target~.chk,#bp-board:target~.lock{display:inline}
+#bp-line:target~.part:not(.fx-line){opacity:.4}
+#bp-line:target~.fx-line .fs{stroke-width:5}
+#bp-sim:target~.part:not(.fx-sim){opacity:.4}
+#bp-sim:target~.fx-sim .fs{stroke-width:5}
+#bp-upload:target~.part:not(.fx-upload){opacity:.4}
+#bp-upload:target~.fx-upload .fs{stroke-width:5}
+#bp-board:target~.part:not(.fx-board){opacity:.4}
+#bp-board:target~.fx-board .fs{stroke-width:5}
+</style></defs>
+<rect class="wb-panel f-bg2 s-brd" x="1" y="1" width="1150" height="418" rx="14" stroke-width="2"/>
+<g id="bp-agenda" class="bp-st"/>
+<g id="bp-line" class="bp-st"/>
+<g id="bp-sim" class="bp-st"/>
+<g id="bp-upload" class="bp-st"/>
+<g id="bp-board" class="bp-st"/>
+<g id="bp-done" class="bp-st"/>
+<g class="part p-browser">
+<rect class="f-blu-l s-blu" x="20" y="104" width="440" height="296" rx="6" stroke-width="3"/>
+<text class="tx f-text" x="38" y="138" font-size="24" font-weight="700">Browser</text>
+</g>
+<g class="part p-editor">
+<rect class="f-bg2 s-blu fs" x="38" y="156" width="342" height="52" rx="6" stroke-width="2"/>
+<text class="tx f-text" x="209" y="190" font-size="24" font-weight="700" text-anchor="middle">Editor</text>
+</g>
+<g class="part p-sim fx-sim">
+<rect class="f-bg2 s-blu fs" x="38" y="218" width="342" height="52" rx="6" stroke-width="2"/>
+<text class="tx f-text" x="209" y="252" font-size="24" font-weight="700" text-anchor="middle">Simulator</text>
+</g>
+<g class="part p-term fx-board">
+<rect class="f-bg2 s-blu fs" x="38" y="280" width="342" height="52" rx="6" stroke-width="2"/>
+<text class="tx f-text" x="209" y="314" font-size="24" font-weight="700" text-anchor="middle">Terminal</text>
+</g>
+<g class="part p-webserial">
+<rect class="f-blu-l s-blu" x="38" y="342" width="342" height="44" rx="4" stroke-width="2" stroke-dasharray="6 5"/>
+<text class="tm f-blu" x="209" y="371" font-size="22" font-weight="600" text-anchor="middle">WebSerial</text>
+</g>
+<g class="part p-usb">
+<path class="s-cyn" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M462,195 L518,195"/>
+<path class="s-cyn" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M507.4,200.6 L518,195 L507.4,189.4"/>
+<path class="s-cyn" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M472.6,189.4 L462,195 L472.6,200.6"/>
+<text class="tx f-cyn" x="490" y="178" font-size="24" font-weight="700" text-anchor="middle">USB</text>
+</g>
+<g class="part p-conv fx-line">
+<rect class="f-cyn-l s-cyn fs" x="520" y="150" width="160" height="90" rx="6" stroke-width="3"/>
+<text class="tx f-text" x="600" y="186" font-size="24" font-weight="700" text-anchor="middle">USB-RS232</text>
+<text class="tx f-text" x="600" y="214" font-size="24" font-weight="700" text-anchor="middle">converter</text>
+<text class="tx f-text3" x="600" y="274" font-size="24" font-weight="600" text-anchor="middle">needs a driver</text>
+</g>
+<g class="part p-cable fx-line">
+<path class="s-pur" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M684,195 L816,195"/>
+<path class="s-pur" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M801.9,202.5 L816,195 L801.9,187.5"/>
+<path class="s-pur" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M698.1,187.5 L684,195 L698.1,202.5"/>
+<text class="tx f-pur" x="750" y="140" font-size="24" font-weight="700" text-anchor="middle">RS-232</text>
+<text class="tx f-pur" x="750" y="166" font-size="24" font-weight="700" text-anchor="middle">cable</text>
+<text class="tm f-pur" x="750" y="242" font-size="22" font-weight="700" text-anchor="middle">9600 8N2</text>
+</g>
+<g class="part p-board fx-board">
+<rect class="f-grn-l s-grn fs" x="820" y="104" width="312" height="296" rx="6" stroke-width="3"/>
+<text class="tx f-text" x="838" y="152" font-size="26" font-weight="700">DIGIAC 2000</text>
+<rect class="f-bg2 s-grn" x="838" y="180" width="276" height="76" rx="6" stroke-width="2"/>
+<text class="tx f-text" x="852" y="210" font-size="24" font-weight="700">ROM monitor</text>
+<text class="tx f-text" x="852" y="240" font-size="24" font-weight="700">program</text>
+<text class="tm f-grn" x="1100" y="240" font-size="24" font-weight="700" text-anchor="end">PAT:</text>
+<rect class="f-bg2 s-grn" x="838" y="266" width="276" height="44" rx="6" stroke-width="2"/>
+<text class="tx f-text" x="976" y="296" font-size="24" font-weight="700" text-anchor="middle">80286 and RAM</text>
+<circle class="f-amb-l s-amb" cx="848" cy="338" r="8" stroke-width="2.5"/>
+<circle class="f-amb-l s-amb" cx="869" cy="338" r="8" stroke-width="2.5"/>
+<circle class="f-amb-l s-amb" cx="890" cy="338" r="8" stroke-width="2.5"/>
+<circle class="f-amb-l s-amb" cx="911" cy="338" r="8" stroke-width="2.5"/>
+<circle class="f-amb-l s-amb" cx="932" cy="338" r="8" stroke-width="2.5"/>
+<circle class="f-amb-l s-amb" cx="953" cy="338" r="8" stroke-width="2.5"/>
+<circle class="f-amb-l s-amb" cx="974" cy="338" r="8" stroke-width="2.5"/>
+<circle class="f-amb-l s-amb" cx="995" cy="338" r="8" stroke-width="2.5"/>
+<text class="tx f-text" x="838" y="388" font-size="24" font-weight="600">LEDs</text>
+</g>
+<g class="part p-reset fx-board fx-upload">
+<circle class="f-acc s-text fs" cx="1078" cy="336" r="22" stroke-width="3"/>
+<circle class="s-bg2" cx="1078" cy="336" r="12" fill="none" stroke-width="2"/>
+<text class="tx f-acc" x="1122" y="388" font-size="24" font-weight="700" text-anchor="end">PAT RESET</text>
+</g>
+<g class="part p-tx fx-upload">
+<path class="s-blu fs" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M380,298 L410,298 L410,36 L930,36 L930,101"/>
+<path class="s-blu fs" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M923.4,88.6 L930,101 L936.6,88.6"/>
+<text class="tm f-blu" x="480" y="27" font-size="22" font-weight="700">C, bytes, G</text>
+</g>
+<g class="part p-rx fx-upload">
+<path class="s-grn fs" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M1000,104 L1000,66 L436,66 L436,316 L383,316"/>
+<path class="s-grn fs" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M395.4,309.4 L383,316 L395.4,322.6"/>
+<text class="tm f-grn" x="480" y="93" font-size="22" font-weight="700">PAT:, replies</text>
+</g>
+<g class="lock">
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M341,236 v-6 a9,9 0 0 1 18,0 v6"/>
+<rect class="f-text" x="335" y="236" width="30" height="22" rx="3"/>
+<circle class="f-bg2" cx="350" cy="246" r="3"/>
+</g>
+<g class="num">
+<circle class="f-text s-bg2" cx="750" cy="195" r="19" stroke-width="3"/>
+<text class="tx f-bg2" x="750" y="204" font-size="26" font-weight="700" text-anchor="middle">1</text>
+</g>
+<g class="chk">
+<circle class="f-grn s-bg2" cx="750" cy="195" r="19" stroke-width="3"/>
+<path class="s-bg2" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M741,196 l6,7 l12,-14"/>
+</g>
+<g class="num">
+<circle class="f-text s-bg2" cx="352" cy="244" r="19" stroke-width="3"/>
+<text class="tx f-bg2" x="352" y="253" font-size="26" font-weight="700" text-anchor="middle">2</text>
+</g>
+<g class="chk">
+<circle class="f-grn s-bg2" cx="352" cy="244" r="19" stroke-width="3"/>
+<path class="s-bg2" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M343,245 l6,7 l12,-14"/>
+</g>
+<g class="num">
+<circle class="f-text s-bg2" cx="760" cy="36" r="19" stroke-width="3"/>
+<text class="tx f-bg2" x="760" y="45" font-size="26" font-weight="700" text-anchor="middle">3</text>
+</g>
+<g class="chk">
+<circle class="f-grn s-bg2" cx="760" cy="36" r="19" stroke-width="3"/>
+<path class="s-bg2" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M751,37 l6,7 l12,-14"/>
+</g>
+<g class="num">
+<circle class="f-text s-bg2" cx="1104" cy="132" r="19" stroke-width="3"/>
+<text class="tx f-bg2" x="1104" y="141" font-size="26" font-weight="700" text-anchor="middle">4</text>
+</g>
+<g class="chk">
+<circle class="f-grn s-bg2" cx="1104" cy="132" r="19" stroke-width="3"/>
+<path class="s-bg2" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M1095,133 l6,7 l12,-14"/>
+</g>
+<g class="num">
+<circle class="f-text s-bg2" cx="352" cy="306" r="19" stroke-width="3"/>
+<text class="tx f-bg2" x="352" y="315" font-size="26" font-weight="700" text-anchor="middle">5</text>
+</g>
+<g class="chk">
+<circle class="f-grn s-bg2" cx="352" cy="306" r="19" stroke-width="3"/>
+<path class="s-bg2" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M343,307 l6,7 l12,-14"/>
+</g>
+</svg>

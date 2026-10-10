@@ -87,7 +87,7 @@
     ed.setSelectionRange(start, end);
     updateCount();
     // Scroll textarea to show match
-    const lh = parseInt(getComputedStyle(ed).lineHeight) || 18;
+    const lh = parseFloat(getComputedStyle(ed).lineHeight) || 20;
     const line = ed.value.substring(0, start).split('\n').length - 1;
     ed.scrollTop = Math.max(0, line * lh - ed.clientHeight / 2);
   }
@@ -127,9 +127,11 @@
     runSearch();
   }
 
-  // Global Ctrl+F
+  // Ctrl+F in the editor (or the find bar) opens this bar; elsewhere the browser's own find
   document.addEventListener('keydown', function (e) {
-    if (e.ctrlKey && e.key === 'f') { e.preventDefault(); openBar(); }
+    const a = document.activeElement;
+    const inEditor = a && (a.id === 'ed' || (bar && bar.contains(a)));
+    if (e.ctrlKey && e.key === 'f' && inEditor) { e.preventDefault(); openBar(); }
     if (e.key === 'Escape' && bar && !bar.hidden) closeBar();
   });
 })();

@@ -1,5 +1,5 @@
 // ============================================================
-// workbench86 Editor - Instruction & register tooltips data
+// workbench86 Editor: Instruction & register tooltips data
 // ============================================================
 
 const INSTR_TOOLTIPS = {

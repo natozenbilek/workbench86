@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="wbfig" viewBox="0 0 1152 380" width="1152" height="380" role="img" aria-labelledby="d-pill-states-tr-t d-pill-states-tr-d" lang="tr">
+<title id="d-pill-states-tr-t">Durum etiketi</title>
+<desc id="d-pill-states-tr-d">Üstteki durum etiketinin dört hali ve geçişleri. READY: simülatör, kart bağlı değil. Device ile BOARD olur: bağlı, sayfa boşta. Upload and Run ile UPLOADING: byte'lar gidiyor. G gönderilince BOARD RUNNING: G'den sonra, program kartta; 8 s içinde PAT: gelmezse burada kalır. PAT: gelince, yani program döndüğünde ya da PAT RESET'e basıldığında, yeniden BOARD. Disconnect ile READY'ye döner. Yan not: Simulate anyway ile bağlantı kalır, panel açılır.</desc>
+<defs><style>
+.wbfig .tx{font-family:'Atkinson Hyperlegible Next','Source Sans 3','Segoe UI',Arial,sans-serif}
+.wbfig .tm{font-family:'JetBrains Mono','IBM Plex Mono',Consolas,Menlo,monospace;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+.wbfig .f-acc{fill:var(--acc,#c0392b)}
+.wbfig .f-amb{fill:var(--amb,#7d6608)}
+.wbfig .f-amb-l{fill:var(--amb-l,rgba(183,149,11,.08))}
+.wbfig .f-bg2{fill:var(--bg2,#ffffff)}
+.wbfig .f-bg3{fill:var(--bg3,#eeeeea)}
+.wbfig .f-blu{fill:var(--blu,#2471a3)}
+.wbfig .f-blu-l{fill:var(--blu-l,rgba(36,113,163,.08))}
+.wbfig .f-grn{fill:var(--grn,#1d7a45)}
+.wbfig .f-grn-l{fill:var(--grn-l,rgba(39,174,96,.08))}
+.wbfig .f-text{fill:var(--text,#1a1a1a)}
+.wbfig .f-text3{fill:var(--text3,#6b6b6b)}
+.wbfig .s-acc{stroke:var(--acc,#c0392b)}
+.wbfig .s-amb{stroke:var(--amb,#7d6608)}
+.wbfig .s-blu{stroke:var(--blu,#2471a3)}
+.wbfig .s-brd{stroke:var(--brd,#d0d0c8)}
+.wbfig .s-brd2{stroke:var(--brd2,#bbbbbb)}
+.wbfig .s-grn{stroke:var(--grn,#1d7a45)}
+.wbfig .s-text{stroke:var(--text,#1a1a1a)}
+.wbfig .s-text3{stroke:var(--text3,#6b6b6b)}
+</style></defs>
+<rect class="wb-panel f-bg2 s-brd" x="1" y="1" width="1150" height="378" rx="14" stroke-width="2"/>
+<rect class="f-bg3 s-text3" x="30" y="200" width="122" height="46" rx="23" stroke-width="3"/>
+<text class="tm f-text" x="91" y="232" font-size="26" font-weight="700" text-anchor="middle">READY</text>
+<rect class="f-grn-l s-grn" x="404" y="200" width="122" height="46" rx="23" stroke-width="5"/>
+<text class="tm f-grn" x="465" y="232" font-size="26" font-weight="700" text-anchor="middle">BOARD</text>
+<rect class="f-blu-l s-blu" x="360" y="60" width="184.4" height="46" rx="23" stroke-width="3"/>
+<text class="tm f-blu" x="452.2" y="92" font-size="26" font-weight="700" text-anchor="middle">UPLOADING</text>
+<rect class="f-amb-l s-amb" x="760" y="60" width="246.8" height="46" rx="23" stroke-width="3"/>
+<text class="tm f-amb" x="883.4" y="92" font-size="26" font-weight="700" text-anchor="middle">BOARD RUNNING</text>
+<text class="tx f-text3" x="30" y="298" font-size="24" font-weight="600">simülatör</text>
+<text class="tx f-text3" x="30" y="324" font-size="24" font-weight="600">(bağlı değil)</text>
+<text class="tx f-text3" x="465" y="298" font-size="24" font-weight="600" text-anchor="middle">bağlı, sayfa boşta</text>
+<text class="tx f-text3" x="452.2" y="40" font-size="24" font-weight="600" text-anchor="middle">byte'lar gidiyor</text>
+<text class="tx f-text3" x="883.4" y="40" font-size="24" font-weight="600" text-anchor="middle">G'den sonra; program kartta</text>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M158,214 L398,214"/>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M382.1,222.5 L398,214 L382.1,205.5"/>
+<text class="tm f-text" x="278" y="204" font-size="22" font-weight="700" text-anchor="middle">Device</text>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M398,234 L158,234"/>
+<path class="s-text" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M173.9,225.5 L158,234 L173.9,242.5"/>
+<text class="tm f-text" x="278" y="262" font-size="22" font-weight="700" text-anchor="middle">Disconnect</text>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M444,196 L444,112"/>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M452.5,127.9 L444,112 L435.5,127.9"/>
+<text class="tm f-blu" x="432" y="162" font-size="22" font-weight="700" text-anchor="end">Upload and Run</text>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M550.4,83 L754,83"/>
+<path class="s-blu" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M738.1,91.5 L754,83 L738.1,74.5"/>
+<text class="tm f-text" x="652.2" y="136" font-size="22" font-weight="700" text-anchor="middle">G gönderildi</text>
+<path class="s-acc" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M966.8,110 L966.8,223 L532,223"/>
+<path class="s-acc" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M549.7,213.6 L532,223 L549.7,232.4"/>
+<text class="tx f-amb" x="952.8" y="150" font-size="22" font-weight="700" text-anchor="end">8 s içinde PAT:</text>
+<text class="tx f-amb" x="952.8" y="176" font-size="22" font-weight="700" text-anchor="end">gelmezse burada kalır</text>
+<text class="tm f-acc" x="1136" y="256" font-size="22" font-weight="700" text-anchor="end">PAT: geldi</text>
+<text class="tm f-acc" x="1136" y="282" font-size="22" font-weight="700" text-anchor="end">(program döndü ya da PAT RESET)</text>
+<rect class="f-bg3 s-brd2" x="583.7" y="314" width="552.3" height="48" rx="8" stroke-width="2"/>
+<text class="tx f-text3" x="859.9" y="345" font-size="22" font-weight="600" text-anchor="middle">Simulate anyway bağlantıyı kesmeden paneli açar</text>
+</svg>

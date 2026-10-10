@@ -1,16 +1,21 @@
 // ============================================================
-// workbench86 Render Core - Status, registers, memory, stack, trace
+// workbench86 Render Core: Status, registers, memory, stack, trace
 // ============================================================
 
 function setSt(s) {
+  // While a board is connected the header pill describes the BOARD link, not the simulator.
+  // BOARD RUNNING: G was sent and no PAT: has come back yet.
+  if (typeof simLocked === 'function' && simLocked())
+    s = serialBusy === 'upload' ? 'UPLOADING' : (serialBusy === 'G' || boardRunning) ? 'BOARD RUNNING' : 'BOARD';
   let e=document.getElementById('st');e.textContent=s;
-  e.className='pill p-'+{READY:'rdy',RUNNING:'run',HALTED:'hlt',ERROR:'err'}[s];
+  e.className='pill p-'+{READY:'rdy',RUNNING:'run',HALTED:'hlt',ERROR:'err',BOARD:'hlt',UPLOADING:'run','BOARD RUNNING':'run'}[s];
 }
 function sLog(m,err) {
   let e=document.getElementById('log');
   if(!e) return;
   e.className='sb-item sb-log'+(err?' sb-error':' sb-success');
   e.textContent=String(m||'');
+  e.title=String(m||'');                     // the bar cuts long messages; hover shows all of it
   // Show error banner for assembly errors
   let banner = document.getElementById('errorBanner');
   if (banner && err) {
@@ -83,8 +88,8 @@ function renderAll() {
   renderTrace();
 
   let bb=document.getElementById('stepBackBtn'),bf=document.getElementById('stepFwdBtn');
-  if(bb){bb.disabled=running||!stepPast.length;bb.textContent='\u2190 Back'+(stepPast.length?' ('+stepPast.length+')':'');}
-  if(bf){bf.disabled=running||!stepFuture.length;bf.textContent='Fwd'+(stepFuture.length?' ('+stepFuture.length+')':'')+' \u2192';}
+  if(bb){bb.disabled=running||!stepPast.length||(typeof simLocked==='function'&&simLocked());bb.textContent='\u2190 Back'+(stepPast.length?' ('+stepPast.length+')':'');}
+  if(bf){bf.disabled=running||!stepFuture.length||(typeof simLocked==='function'&&simLocked());bf.textContent='Fwd'+(stepFuture.length?' ('+stepFuture.length+')':'')+' \u2192';}
 
   updLn();
   if (typeof renderWatches === 'function') renderWatches();

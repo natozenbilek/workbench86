@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="wbfig" viewBox="0 0 1152 380" width="1152" height="380" role="img" aria-labelledby="d-error-families-en-t d-error-families-en-d" lang="en">
+<title id="d-error-families-en-t">The letters in error codes</title>
+<desc id="d-error-families-en-d">Five letter tiles in a row. C, purple: connection, e.g. C01. U, blue and highlighted: upload, e.g. U01. A, cyan: stopped before sending, e.g. A02. B, red: board error, e.g. B01. W, yellow: warning, e.g. W01. At the bottom, the same code written two ways: [Error U01] ... in the terminal and Error U01: ... in the status bar.</desc>
+<defs><style>
+.wbfig .tx{font-family:'Atkinson Hyperlegible Next','Source Sans 3','Segoe UI',Arial,sans-serif}
+.wbfig .tm{font-family:'JetBrains Mono','IBM Plex Mono',Consolas,Menlo,monospace;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+.wbfig .f-amb{fill:var(--amb,#7d6608)}
+.wbfig .f-amb-l{fill:var(--amb-l,rgba(183,149,11,.08))}
+.wbfig .f-bg2{fill:var(--bg2,#ffffff)}
+.wbfig .f-blu{fill:var(--blu,#2471a3)}
+.wbfig .f-blu-l{fill:var(--blu-l,rgba(36,113,163,.08))}
+.wbfig .f-cyn{fill:var(--cyn,#117864)}
+.wbfig .f-cyn-l{fill:var(--cyn-l,rgba(23,165,137,.08))}
+.wbfig .f-pur{fill:var(--pur,#8e44ad)}
+.wbfig .f-pur-l{fill:var(--pur-l,rgba(142,68,173,.08))}
+.wbfig .f-red{fill:var(--red,#c0392b)}
+.wbfig .f-red-l{fill:var(--red-l,rgba(192,57,43,.08))}
+.wbfig .f-text{fill:var(--text,#1a1a1a)}
+.wbfig .f-text3{fill:var(--text3,#6b6b6b)}
+.wbfig .s-amb{stroke:var(--amb,#7d6608)}
+.wbfig .s-blu{stroke:var(--blu,#2471a3)}
+.wbfig .s-brd{stroke:var(--brd,#d0d0c8)}
+.wbfig .s-cyn{stroke:var(--cyn,#117864)}
+.wbfig .s-pur{stroke:var(--pur,#8e44ad)}
+.wbfig .s-red{stroke:var(--red,#c0392b)}
+</style></defs>
+<rect class="wb-panel f-bg2 s-brd" x="1" y="1" width="1150" height="378" rx="14" stroke-width="2"/>
+<rect class="f-pur-l s-pur" x="52" y="20" width="160" height="150" rx="10" stroke-width="3"/>
+<text class="tm f-pur" x="132" y="126" font-size="88" font-weight="700" text-anchor="middle">C</text>
+<text class="tx f-pur" x="132" y="204" font-size="26" font-weight="700" text-anchor="middle">connection</text>
+<text class="tm f-text" x="132" y="282" font-size="24" font-weight="700" text-anchor="middle">C01</text>
+<rect class="f-blu-l s-blu" x="274" y="20" width="160" height="150" rx="10" stroke-width="5"/>
+<text class="tm f-blu" x="354" y="126" font-size="88" font-weight="700" text-anchor="middle">U</text>
+<text class="tx f-blu" x="354" y="204" font-size="26" font-weight="700" text-anchor="middle">upload</text>
+<text class="tm f-text" x="354" y="282" font-size="24" font-weight="700" text-anchor="middle">U01</text>
+<rect class="f-cyn-l s-cyn" x="496" y="20" width="160" height="150" rx="10" stroke-width="3"/>
+<text class="tm f-cyn" x="576" y="126" font-size="88" font-weight="700" text-anchor="middle">A</text>
+<text class="tx f-cyn" x="576" y="204" font-size="26" font-weight="700" text-anchor="middle"><tspan x="576" dy="0">stopped before</tspan><tspan x="576" dy="32.5">sending</tspan></text>
+<text class="tm f-text" x="576" y="282" font-size="24" font-weight="700" text-anchor="middle">A02</text>
+<rect class="f-red-l s-red" x="718" y="20" width="160" height="150" rx="10" stroke-width="3"/>
+<text class="tm f-red" x="798" y="126" font-size="88" font-weight="700" text-anchor="middle">B</text>
+<text class="tx f-red" x="798" y="204" font-size="26" font-weight="700" text-anchor="middle">board error</text>
+<text class="tm f-text" x="798" y="282" font-size="24" font-weight="700" text-anchor="middle">B01</text>
+<rect class="f-amb-l s-amb" x="940" y="20" width="160" height="150" rx="10" stroke-width="3"/>
+<text class="tm f-amb" x="1020" y="126" font-size="88" font-weight="700" text-anchor="middle">W</text>
+<text class="tx f-amb" x="1020" y="204" font-size="26" font-weight="700" text-anchor="middle">warning</text>
+<text class="tm f-text" x="1020" y="282" font-size="24" font-weight="700" text-anchor="middle">W01</text>
+<text class="tx f-text3" x="52" y="344" font-size="24" font-weight="600">terminal</text>
+<text class="tm f-blu" x="168" y="344" font-size="22" font-weight="700">[Error U01] ...</text>
+<text class="tx f-text3" x="600" y="344" font-size="24" font-weight="600">status bar</text>
+<text class="tm f-blu" x="748.3" y="344" font-size="22" font-weight="700">Error U01: ...</text>
+</svg>

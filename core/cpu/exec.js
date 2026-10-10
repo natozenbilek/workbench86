@@ -1,5 +1,5 @@
 // ============================================================
-// workbench86 CPU - Main Execution Engine (opcode dispatch)
+// workbench86 CPU: Main Execution Engine (opcode dispatch)
 // Depends on: core.js, decode.js, alu.js, int28.js
 // ============================================================
 
@@ -203,14 +203,14 @@ function execOne() {
       curInstr = `MOV rm,${['ES','CS','SS','DS'][modrm.reg]}`; curDesc = `MOV seg: ${hex16(v)}`;
     }
   }
-  // LEA (8D) - load effective address (offset only, no segment)
+  // LEA (8D): load effective address (offset only, no segment)
   else if (op === 0x8D) {
     let modrm = decodeModRM(fetchByte(), true);
     let ea = calcEA(modrm.mod, modrm.rm, 0); // seg=0 so pa(0,off)=off
     setReg16(modrm.reg, ea & 0xFFFF);
     curInstr = `LEA ${rn16(modrm.reg)}`; curDesc = `LEA: offset=${hex16(ea & 0xFFFF)}`;
   }
-  // POP rm16 (8F /0) - the mirror of PUSH rm16 (FF /6)
+  // POP rm16 (8F /0): the mirror of PUSH rm16 (FF /6)
   else if (op === 0x8F) {
     let modrm = decodeModRM(fetchByte(), true);
     if (modrm.reg === 0) {
@@ -293,7 +293,7 @@ function execOne() {
     setReg16(r, v);
     curInstr = `MOV ${rn16(r)},${hex16(v)}`; curDesc = `MOV: ${hex16(v)}\u2192${rn16(r)}`;
   }
-  // RET imm16 (C2) - pop IP, then discard imm16 bytes of arguments
+  // RET imm16 (C2): pop IP, then discard imm16 bytes of arguments
   else if (op === 0xC2) {
     let imm = fetchWord();
     IP = popW();

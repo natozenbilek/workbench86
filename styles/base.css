@@ -1,5 +1,5 @@
 /* ============================================================
-   workbench86 Base - Reset, body, layout grid, header, buttons
+   workbench86 Base: Reset, body, layout grid, header, buttons
    ============================================================ */
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -38,7 +38,7 @@ body {
 /* Header button group styling */
 .hd-r .b { font-size: var(--fs-sm); padding: var(--sp-2) var(--sp-4); min-height: 30px; border-radius: var(--r-md); }
 
-/* === BUTTONS - 3-level hierarchy === */
+/* === BUTTONS: 3-level hierarchy === */
 
 /* Ghost (tertiary): text-only, minimal chrome */
 .b {
@@ -131,7 +131,7 @@ body {
 /* === MAIN 3-COL LAYOUT === */
 .mn {
   display: grid;
-  grid-template-columns: 200px 1fr 1fr;
+  grid-template-columns: 220px 1fr 1fr;   /* left column: keep in step with DEF_LEFT in resize-handles.js */
   flex: 1;
   min-height: 0;
   overflow: hidden;
@@ -158,22 +158,28 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .06em;
-  color: var(--text3);
-  padding: var(--sp-2) var(--sp-4) var(--sp-2) var(--sp-6);
+  color: var(--text2);
+  padding: var(--sp-3) var(--sp-4) var(--sp-3) var(--sp-6);
   border-bottom: 1px solid var(--brd);
   background: var(--bg3);
   flex-shrink: 0;
 }
-.fb-hd-btns { display: flex; gap: var(--sp-1); }
-.fb-new-btn, .fb-open-btn { font-size: 13px !important; padding: 0 5px !important; min-height: 20px !important; line-height: 20px !important; text-transform: none; letter-spacing: 0; font-weight: 400; }
-.fb-new-btn { font-size: 15px !important; font-weight: 300; }
+/* Labelled toolbar under the header: New, Open, Download. Wraps on a narrow panel. */
+.fb-toolbar { display: flex; flex-wrap: wrap; gap: var(--sp-1); padding: var(--sp-2); border-bottom: 1px solid var(--brd); flex-shrink: 0; }
+.fb-tool { display: inline-flex; align-items: center; gap: var(--sp-2); min-height: 28px; padding: 0 var(--sp-3); font: 500 var(--fs-xs)/1 var(--sans); color: var(--text2); background: transparent; border: 1px solid transparent; border-radius: var(--r-md); cursor: pointer; white-space: nowrap; }
+.fb-tool:hover { background: var(--bg4); color: var(--text); }
+.fb-tool:focus-visible, .fb-act:focus-visible { outline: 2px solid var(--blu); outline-offset: 1px; }
+.fb-tool:disabled { opacity: .45; cursor: default; }
+.fb-tool:disabled:hover { background: transparent; color: var(--text2); }
+.ico { width: 16px; height: 16px; display: block; flex-shrink: 0; }
 .fb-tree { flex: 1; overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; scrollbar-color: var(--brd) transparent; padding: var(--sp-1) 0; }
 .fb-folder { user-select: none; }
 .fb-folder-hd {
   display: flex;
   align-items: center;
   gap: var(--sp-2);
-  padding: var(--sp-2) var(--sp-4) var(--sp-2) var(--sp-3);
+  min-height: 28px;
+  padding: 0 var(--sp-4) 0 var(--sp-3);
   cursor: pointer;
   font-family: var(--sans);
   font-size: var(--fs-md);
@@ -182,42 +188,48 @@ body {
   transition: background var(--tr-fast);
 }
 .fb-folder-hd:hover { background: var(--bg3); }
-.fb-arrow { font-size: 7px; width: 12px; text-align: center; color: var(--text3); transition: transform .15s; flex-shrink: 0; }
+.fb-arrow { width: 16px; height: 16px; color: var(--text2); transition: transform .15s; flex-shrink: 0; }
 .fb-arrow.open { transform: rotate(90deg); }
-.fb-folder-icon { display: none; }
 .fb-folder-items { overflow: hidden; }
 .fb-folder-items.collapsed { display: none; }
 .fb-file {
   display: flex;
   align-items: center;
-  gap: 5px;
-  padding: 1px var(--sp-4) 1px 20px;
+  gap: var(--sp-3);
+  min-height: 28px;
+  padding: 0 var(--sp-2) 0 26px;
   cursor: pointer;
   font-family: var(--sans);
   font-size: var(--fs-md);
   color: var(--text2);
   transition: all var(--tr-fast);
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: 22px;
 }
+.fb-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 .fb-file:hover { background: rgba(255,255,255,.05); color: var(--text); }
-.fb-file.active { background: var(--blu-l); color: var(--text); border-left: 2px solid var(--blu); padding-left: 18px; }
-.fb-file-icon { display: none; }
-.fb-ext { color: var(--text3); margin-left: 0; }
+.fb-file.active { background: var(--blu-l); color: var(--text); box-shadow: inset 2px 0 0 var(--blu); }
+/* Row buttons (rename, delete, copy, download): on hover and keyboard focus; always on touch screens */
+.fb-acts { display: none; gap: 1px; flex-shrink: 0; }
+.fb-file:hover .fb-acts, .fb-file:focus-within .fb-acts { display: flex; }
+@media (hover: none) { .fb-acts { display: flex; } }
+.fb-file.fb-editing .fb-acts { display: none; }
+.fb-act { width: 24px; height: 24px; padding: 0; display: inline-flex; align-items: center; justify-content: center; border: 0; border-radius: var(--r); background: transparent; color: var(--text2); cursor: pointer; }
+.fb-act:hover { background: var(--bg5); color: var(--text); }
+.fb-empty { padding: var(--sp-2) var(--sp-4) var(--sp-2) 26px; font-size: var(--fs-md); color: var(--text2); white-space: normal; }
 
 /* === SIM BAR === */
 .sim-bar {
   display: flex;
+  flex-wrap: wrap;            /* a second row instead of running off a narrow panel */
   align-items: center;
   gap: var(--sp-3);
+  row-gap: var(--sp-2);
   padding: var(--sp-3) var(--sp-4);
   border-bottom: 1px solid var(--brd);
   background: var(--bg3);
   flex-shrink: 0;
 }
-.sim-bar .sim-ctrls { display: flex; gap: 3px; align-items: center; }
+.sim-bar .sim-ctrls { display: flex; flex-wrap: wrap; gap: 3px; align-items: center; }
 .sim-bar select {
   font-family: var(--mono);
   font-size: var(--fs-md);
@@ -260,6 +272,9 @@ body {
 .b-upload { border-color: var(--brd); color: var(--text3); font-weight: 600; opacity: .5; pointer-events: none; }
 .b-upload.active { border-color: var(--grn); color: var(--grn); opacity: 1; pointer-events: auto; }
 .b-upload.active:hover { background: var(--grn); color: #111; }
+/* Busy: an upload or G is talking to the board. Disabled, but clearly visible.
+   Text stays --text: amber text is too faint on the light theme. */
+.b-upload:disabled[aria-busy='true'] { border-color: var(--amb); background: var(--amb-l); color: var(--text); opacity: 1; pointer-events: auto; cursor: progress; }
 
 /* === CONTEXT MENU === */
 .ctx-menu {
@@ -320,3 +335,10 @@ body {
 :root[data-theme='light'] .lb.ls { color: #27ae60; }
 :root[data-theme='light'] .fb-file:hover { background: rgba(0,0,0,.04); }
 :root[data-theme='light'] .fb-file.active { background: var(--blu-l); }
+/* Filled buttons on the light theme: dark text on the darker light accents is too faint */
+:root[data-theme='light'] .bp, :root[data-theme='light'] .b-blu, :root[data-theme='light'] .bg,
+:root[data-theme='light'] .b-serial:hover, :root[data-theme='light'] .b-serial.connected,
+:root[data-theme='light'] .b-upload.active:hover { color: #fff; }
+:root[data-theme='light'] .bp:hover, :root[data-theme='light'] .b-blu:hover { background: #1a5a85; border-color: #1a5a85; }
+:root[data-theme='light'] .bg:hover { background: #166238; border-color: #166238; }
+:root[data-theme='light'] .bp.loading { color: transparent; }

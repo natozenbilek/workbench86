@@ -10,14 +10,14 @@
     </linearGradient>
   </defs>
 
-  <text x="460" y="24" text-anchor="middle" font-weight="700" font-size="16">execOne() — Single-Step Execution Pipeline</text>
+  <text x="460" y="24" text-anchor="middle" font-weight="700" font-size="16">execOne(): Single-Step Execution Pipeline</text>
 
   <!-- Pipeline boxes -->
   <g>
     <rect x="20"  y="60" width="120" height="64" rx="6" fill="url(#b1)" stroke="#c08020"/>
     <text x="80"  y="86"  text-anchor="middle" font-weight="700">1. Interrupt</text>
-    <text x="80"  y="104" text-anchor="middle" font-size="11">timerTick()</text>
-    <text x="80"  y="118" text-anchor="middle" font-size="11">checkInterrupts()</text>
+    <text x="80"  y="104" text-anchor="middle" font-size="11">checkInterrupts()</text>
+    <text x="80"  y="118" text-anchor="middle" font-size="11">timerTick()</text>
 
     <rect x="160" y="60" width="120" height="64" rx="6" fill="url(#b1)" stroke="#c08020"/>
     <text x="220" y="86"  text-anchor="middle" font-weight="700">2. Prefix Eat</text>
@@ -42,7 +42,7 @@
     <rect x="780" y="60" width="120" height="64" rx="6" fill="url(#b1)" stroke="#c08020"/>
     <text x="840" y="86"  text-anchor="middle" font-weight="700">6. Retire</text>
     <text x="840" y="104" text-anchor="middle" font-size="11">flags update</text>
-    <text x="840" y="118" text-anchor="middle" font-size="11">cy++ ic++ snapshot</text>
+    <text x="840" y="118" text-anchor="middle" font-size="11">cy++ ic++</text>
   </g>
 
   <!-- Arrows -->

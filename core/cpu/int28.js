@@ -1,5 +1,5 @@
 // ============================================================
-// workbench86 CPU - INT 28H Handler (PAT Monitor calls)
+// workbench86 CPU: INT 28H Handler (PAT Monitor calls)
 // ============================================================
 
 function handleInt28() {
@@ -7,7 +7,7 @@ function handleInt28() {
   switch(fn) {
     case PATCALLS.EXIT:
       halt = true;
-      curDesc = 'EXIT \u2014 returned to PAT monitor';
+      curDesc = 'EXIT: returned to PAT monitor';
       setSt('HALTED');
       break;
     case PATCALLS.WRCHAR: {
@@ -70,6 +70,8 @@ function handleInt28() {
       curDesc = `WRITE: "${s.slice(0,20)}"`;
       break;
     }
+    // TONE and NOTOFF exist only in the simulator. The PAT monitor does not
+    // support them; on the board the piezo is toggled through UPORT1.
     case PATCALLS.TONE: {
       let freq = BX, dur = CX;
       if (freq > 0) {
