@@ -15,6 +15,8 @@
     { label: 'New File',           key: '',           run: () => newEmptyFile() },
     { label: 'Open File from Computer', key: '',      run: () => document.getElementById('openFile').click() },
     { label: 'Download Current File',   key: 'Ctrl+S', run: () => downloadCurrent() },
+    { label: 'Download All as Zip',     key: '',       run: () => downloadAllZip() },
+    { label: 'Load Files from Zip',     key: '',       run: () => document.getElementById('openZip').click() },
     { label: 'Make a Copy of Current File', key: '',  run: () => activeTabKey ? duplicateFile(activeTabKey) : sLog('Open a file first.', 1) },
     { label: 'Close Tab',          key: '',           run: () => closeTab(activeTabKey) },
     { label: 'Collapse All Panels',key: '',           run: () => document.querySelectorAll('.cd').forEach(el => el.classList.add('collapsed')) },

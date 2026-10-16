@@ -415,5 +415,5 @@ function hideWelcome() {
     portsOv.addEventListener('click', function(e) { if (e.target === this) closePorts(); });
   }
 
-  if (openTabs.length === 0) showWelcome();
+  // The welcome screen waits for the saved tabs (restoreSavedFiles, app/files/store.js).
 })();

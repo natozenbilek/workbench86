@@ -19,7 +19,7 @@ USB↔RS-232 çevirici gerekir (B bölümü).
 1. Linki aç.
 2. Soldaki **Explorer**'dan bir örnek seç (ör. `assignments/` klasörü), ya da Explorer'daki
    **New** ile yeni bir `.asm` dosyası aç ve kendi kodunu yaz (dosyaların **My files**
-   klasöründe durur).
+   klasöründe durur, sayfa yenilense de kaybolmaz).
 3. **Ctrl+Enter** (veya ▶ Assemble) → kod derlenir. Hata varsa ilgili satır kırmızı
    işaretlenir, en alttaki durum çubuğunda mesaj çıkar.
 4. **Step** ile tek tek, **Run** ile akıcı çalıştır. Sağ paneldeki kartlardan
@@ -113,21 +113,47 @@ Doğru akış:
   - `Error C01: Could not open the serial port.` → port başka bir yerde açık. Diğer workbench86
     sekmelerini ve PuTTY gibi programları kapatın, çeviriciyi çıkarıp takın, **Device**'a
     tekrar basın.
-  - `Error C07: Could not open the USB adapter (Prolific PL2303 chip).` → Windows'taki Prolific
-    sürücüsü eski ve taklit PL2303 çiplerini çalıştırmıyor; port listede görünür ama açılmaz.
-    Aygıt Yöneticisi'nde "Bağlantı noktaları (COM ve LPT)" altındaki Prolific portunu açın.
-    PHASED OUT ya da Kod 10 yazıyorsa Sürücüyü güncelleştir → Sürücüler için bilgisayarıma gözat →
-    listeden seçmeme izin ver yolundan eski bir sürümü seçin. Listede yoksa FTDI, CH340 ya da
-    CP2102 çipli bir çevirici kullanın.
+  - `Warning W03: This USB adapter has a Prolific PL2303 chip.` → yalnızca Windows'ta, seçtiğiniz
+    çeviricide Prolific çipi varsa, port açılmadan önce bir kez çıkar. Sayfa portu yine de açar:
+    çip orijinalse ya da eski sürücü kuruluysa bağlantı kurulur, bir şey yapmanız gerekmez.
+    Ardından C07 gelirse bir alttaki adımlara bakın.
+  - `Error C07: Could not open the USB adapter (Prolific PL2303 chip).` → çeviricide taklit
+    Prolific PL2303 çipi var ve Windows'un yeni Prolific sürücüsü bu çipi çalıştırmıyor. Aygıt
+    Yöneticisi'nde "THIS IS NOT PROLIFIC" ya da Kod 10 görünür. Çözüm: Aygıt Yöneticisi'nde
+    cihazı sürücüsüyle birlikte kaldırın ("Bu aygıtın sürücü yazılımını silmeye çalış"),
+    sonra eski bir Prolific sürücüsü kurun. Önce 3.8.38.2 sürücü paketini deneyin: `.cab`
+    dosyasındaki dört dosyayı bir klasöre çıkarın, Sürücüyü güncelleştir → Sürücüler için
+    bilgisayarıma gözat → listeden seçmeme izin ver → Disketi Var ile o klasörü seçin. Paket
+    Microsoft imzalı, Windows kurmadan önce imzayı kendisi kontrol eder. Hâlâ "THIS IS NOT
+    PROLIFIC" görünürse 3.3.2.105 kurulum dosyası işe yarıyor, ama dijital imzası yok, kaynağı
+    doğrulanamıyor; kurmak sizin kararınız. FTDI, CH340 ya da CP2102 çipli bir çeviricide bu
+    sorun yok.
   - `Error C05: Serial write error` → **Disconnect**, sonra **Device** ile yeniden bağlanın.
 - `Error U04` (`[ABORT] The board left change-memory mode`) → yükleme sürerken PAT RESET'e basıldı ya
   da kart hata verdi. `G` gönderilmedi. PAT RESET, yeni `PAT:`, sonra tekrar Upload.
+- `ERROR 33 : Uninitialized Interrupt Vector` → program kartta tanımlı olmayan bir kesmeye gitti.
+  Kartta DOS ve BIOS yok: `INT 21H` ya da `INT 10H` yerine monitörün servisleri `INT 28H` ile
+  çağrılır, çıkış `MOV AH,4` ve `INT 28H`. `INT 40H` de yanlış, `USER` ondalık 40, yani `28H`.
+  Kesmeli programlarda vektörü `STI`'dan ve MUART'ta kesmeyi açmadan önce yazın.
 - `ERROR 30 : Invalid Opcode Exception` → işlemci kod olmayan bir adrese gitti. Terminaldeki
   `TX: C 0080:xxxx` adresi ORG'unuzla aynı olmalı. Programınız kesme vektörü kuruyorsa
   vektörün gösterdiği adreste gerçekten kod olmalı.
-- Sayfayı yenilersen açık sekmeler de **My files** klasöründeki dosyalar da gider;
-  henüz otomatik kayıt yok. Çıkmadan önce Explorer'daki **Download** düğmesine bas
-  (kısayol: **Ctrl+S**).
+- **Dosyalarınız:** My files ve açık sekmeler bu tarayıcıda kendiliğinden kaydedilir;
+  sayfa yenilense, tarayıcı kapanıp açılsa da geri gelir. Bir örneği değiştirmeye
+  başlayınca sayfa onu My files'a kopyalar, örnek dosyanın kendisi değişmez. Ama dosyalar
+  yalnızca o bilgisayardaki o tarayıcıda durur: başka bir bilgisayarda yoktur, lab
+  bilgisayarında aynı tarayıcıyı açan bir sonraki kişi ise onları görür. Safari de siteyi
+  bir hafta açmazsanız dosyaları siler. Çıkmadan önce açık dosyayı Explorer'daki
+  **Download** ile (kısayol: **Ctrl+S**), hepsini de My files satırındaki zip düğmesinden
+  **Download all as zip** ile indirin.
+- Chrome ve Edge'de My files'ı bilgisayarınızdaki bir klasöre bağlayabilirsiniz (My files
+  satırının üzerine gelince çıkan klasör düğmesi). O zaman **Ctrl+S** dosyayı o klasöre
+  kaydeder.
+- Editörün üstünde `Files cannot be kept in this browser` yazıyorsa tarayıcı sayfanın dosya
+  saklamasına izin vermiyor (ör. site verileri engelli). Sayfa yine çalışır ama
+  yenilenince her şey gider; işinizi indirin.
+  `Your saved files have not loaded yet` yazıyorsa tarayıcının deposu geç cevap veriyor;
+  dosyalarınız gelince My files'a kendiliğinden döner.
 
 ## Hata kodları
 
@@ -145,7 +171,7 @@ de ekler, onu da gönderebilirsiniz.
 | C04 | Kartla bağlantı koptu | Kabloyu kontrol et, Device, PAT RESET |
 | C05 | Porta yazılamadı | Disconnect, sonra Device |
 | C06 | Bağlı değilsin | Device |
-| C07 | Windows, Prolific PL2303 çipli çeviriciyi açamadı; sebep çoğunlukla sürücü | Aygıt Yöneticisi'nden eski sürücüyü seç ya da FTDI, CH340, CP2102 çipli çevirici kullan |
+| C07 | Windows, Prolific PL2303 çipli çeviriciyi açamadı; sebep çoğunlukla sürücü | Eski Prolific sürücüsünü kur (yukarıda, önce 3.8.38.2 paketi) ya da FTDI, CH340, CP2102 çipli çevirici kullan |
 | U01 | Kart cevap vermedi; büyük ihtimalle önceki program hâlâ çalışıyor | PAT RESET, `PAT:` gelsin, tekrar Upload |
 | U02 | `C` komutuna cevap gelmedi | PAT RESET, tekrar dene; tekrarlarsa Copy ile kaydı gönder |
 | U03 | Bir blok yazıldıktan sonra `PAT:` gelmedi | PAT RESET, tekrar dene |
@@ -156,9 +182,10 @@ de ekler, onu da gönderebilirsiniz.
 | A01 | Açık sekme `.asm` değil | Translate to ASM, sonra `.asm` sekmesini aç |
 | A02 | Kod derlenmiyor, karta bir şey gitmedi | Assemble hatalarını düzelt |
 | A03 | Program boş | Bir program yaz ya da aç |
-| B01 | Kart `G`'den sonra `ERROR` yazdı (ör. `ERROR 30 : Invalid Opcode Exception`) | `TX: C 0080:xxxx` adresi ORG'unla aynı mı bak; kesme vektörü kuruyorsan gösterdiği adreste kod olmalı |
+| B01 | Kart `G`'den sonra `ERROR` yazdı (ör. `ERROR 30 : Invalid Opcode Exception`, `ERROR 33 : Uninitialized Interrupt Vector`) | `TX: C 0080:xxxx` adresi ORG'unla aynı mı bak; kesme vektörü kuruyorsan gösterdiği adreste kod olmalı |
 | W01 | Seri hatta bozulma (Break, Framing vb.), sayfa dinlemeye devam ediyor | Genelde bir şey yapma; bazı çeviriciler PAT RESET'te bunu üretir. Sürekli tekrarlarsa kabloya bak |
 | W02 | Yüklemede bazı byte'lara karttan cevap gelmedi | Program tuhaf davranırsa PAT RESET ve tekrar Upload |
+| W03 | Windows'ta seçilen çeviricide Prolific PL2303 çipi var; taklitleri yeni sürücüyle açılmaz. Sayfa portu yine de açar | Bağlanırsa bir şey yapma; ardından C07 gelirse yukarıdaki adımlar |
 
 ---
 

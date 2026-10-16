@@ -10,7 +10,8 @@ function setSt(s) {
   let e=document.getElementById('st');e.textContent=s;
   e.className='pill p-'+{READY:'rdy',RUNNING:'run',HALTED:'hlt',ERROR:'err',BOARD:'hlt',UPLOADING:'run','BOARD RUNNING':'run'}[s];
 }
-function sLog(m,err) {
+// keepBanner: an assembler error stays in the banner above the editor.
+function sLog(m,err,keepBanner) {
   let e=document.getElementById('log');
   if(!e) return;
   e.className='sb-item sb-log'+(err?' sb-error':' sb-success');
@@ -21,7 +22,7 @@ function sLog(m,err) {
   if (banner && err) {
     document.getElementById('errorMsg').textContent = String(m||'');
     banner.hidden = false;
-  } else if (banner && !err) {
+  } else if (banner && !err && !keepBanner) {
     banner.hidden = true;
   }
 }

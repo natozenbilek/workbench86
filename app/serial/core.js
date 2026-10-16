@@ -21,8 +21,9 @@ let uploadedOrg = null;       // entry ORG of the last upload that reached G; th
 let lastSerialCode = '';      // code of the last error or warning (C01, U01, ...); goes in the Copy header
 let lastUploadInfo = '';      // file, ORG, segments and bytes of the last upload; goes in the Copy header
 let simLockOverride = false;  // "Simulate anyway" pressed while connected
+let prolificWarned = false;   // W03 already shown on this page: it is said once
 
-const WB_VERSION = 'v18';
+const WB_VERSION = 'v19';
 const SERIAL_BAUD = 9600;
 const SERIAL_STOP_BITS = 2;
 const SERIAL_OPEN_OPTS = { baudRate: SERIAL_BAUD, dataBits: 8, stopBits: SERIAL_STOP_BITS, parity: 'none' };
@@ -47,6 +48,7 @@ async function serialConnect() {
     if (e.name !== 'NotFoundError') serialConnectFailed(e);   // NotFoundError: the picker was closed
     return;
   }
+  warnProlificOnWindows(port);
   try {
     await openSerialPort(port);
   } catch (e) {
@@ -106,10 +108,18 @@ function isProlificOnWindows(port) {
   return info.usbVendorId === PROLIFIC_VID && /Windows/i.test(navigator.userAgent);
 }
 
+// Said before open(), so the cause is on screen before C07 and while a slow open() is pending.
+// The open goes ahead: a genuine chip, or Prolific's old driver, opens fine.
+function warnProlificOnWindows(port) {
+  if (prolificWarned || !isProlificOnWindows(port)) return;
+  prolificWarned = true;
+  serialCode('W03', 'This USB adapter has a Prolific PL2303 chip. On Windows, copies of this chip do not open with Prolific\'s current driver. Opening it anyway: a genuine chip, or the old driver, works. If Device then reports C07, the hardware guide has the steps.');
+}
+
 function serialConnectFailed(e, port) {
   const openFailed = e.name === 'NetworkError' || /failed to open/i.test(e.message || '');
   if (openFailed && isProlificOnWindows(port))
-    serialCode('C07', 'Could not open the USB adapter (Prolific PL2303 chip). If no other tab or program is using it, the cause is usually the Windows driver: Prolific\'s current driver refuses older and copied PL2303 chips, so the port is listed but does not open. In Device Manager, under Ports (COM & LPT), open the Prolific port. If it shows PHASED OUT or Code 10, choose Update driver, Browse my computer for drivers, Let me pick from a list, and select an older version. If there is none, use an adapter with an FTDI, CH340 or CP2102 chip.');
+    serialCode('C07', 'Could not open the USB adapter (Prolific PL2303 chip). If no other tab or program is using it, the cause is usually the Windows driver: Prolific\'s current driver refuses older and copied PL2303 chips, so the port is listed but does not open. In Device Manager, under Ports (COM & LPT), the adapter then shows as THIS IS NOT PROLIFIC, PHASED OUT or Code 10. Fix: remove the device together with its driver, then install an older Prolific driver: first the 3.8.38.2 package from its .cab file (Update driver, Browse my computer for drivers, Let me pick from a list, Have Disk; Windows checks its Microsoft signature), and only if the adapter still shows THIS IS NOT PROLIFIC, the 3.3.2.105 installer, which is not signed. The hardware guide has the steps. An adapter with an FTDI, CH340 or CP2102 chip works without any of this.');
   else if (openFailed)
     serialCode('C01', 'Could not open the serial port. Another program or tab is probably using it. Close other workbench86 tabs and programs such as minicom, PuTTY or a serial monitor, unplug and replug the USB adapter, then click Device again.');
   else if (e.name === 'InvalidStateError')

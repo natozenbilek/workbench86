@@ -504,7 +504,9 @@ time.
 | Opened from `file://`, no connection | WebSerial requires a secure context | Serve the folder: `python3 -m http.server 8000`, then open <http://localhost:8000>. Do not double-click `index.html` |
 | The browser's port picker is empty | Adapter driver missing, adapter not plugged in, or the port is held by another program | Install the driver and confirm the OS lists the adapter. Close minicom, PuTTY, screen or the Arduino IDE: only one program may hold the port |
 | `Error C01: Could not open the serial port. Another program or tab is probably using it. ...` | The port is open in another tab or program | Close other workbench86 tabs and programs such as minicom, PuTTY or a serial monitor. Unplug and replug the USB adapter, then click Device again |
-| `Error C07: Could not open the USB adapter (Prolific PL2303 chip). ...` (Windows) | Prolific's current Windows driver refuses older and copied PL2303 chips: the port is listed but does not open, and `chrome://device-log` shows `Failed to open serial port: FILE_ERROR_FAILED` | Device Manager, Ports (COM & LPT), open the Prolific port. If it shows PHASED OUT or Code 10: Update driver, Browse my computer for drivers, Let me pick from a list, and choose an older version. If there is none, use an adapter with an FTDI, CH340 or CP2102 chip |
+| `Warning W03: This USB adapter has a Prolific PL2303 chip. ...` (Windows) | The port picked in Device belongs to a Prolific adapter (USB vendor 067B). Copies of this chip do not open with Prolific's current driver. The page says so once, before the port opens, and then opens it as usual | Nothing, if the board connects. If `Error C07` follows, see "Prolific PL2303 adapters on Windows" below |
+| `Error C07: Could not open the USB adapter (Prolific PL2303 chip). ...` (Windows) | Prolific's current Windows driver refuses older and copied PL2303 chips: the port is listed but does not open, Device Manager shows the adapter as `THIS IS NOT PROLIFIC`, `PHASED OUT` or Code 10, and `chrome://device-log` shows `Failed to open serial port: FILE_ERROR_FAILED` | See "Prolific PL2303 adapters on Windows" below |
+| `Error B01: The board reported "ERROR 33 : Uninitialized Interrupt Vector"` | The CPU took an interrupt whose vector nobody set. Likely causes: a DOS or BIOS call such as `INT 21H` or `INT 10H` (the board has neither; the monitor's services are `INT 28H`), `INT 40H` written for `INT 28H` (`USER` is 40 decimal), or an interrupt enabled with `STI` or in the MUART before its vector was written, or written to the wrong vector number. Seen in the lab on 2026-10-16 | Exit with `MOV AH,4` and `INT 28H`. Write each vector before enabling its interrupt. Send the terminal's **Copy** text and the `.asm` if it stays |
 | `=== FAILED: the board reported ERROR 30 : Invalid Opcode Exception ===` and a register dump | The CPU ran memory where no code was loaded: `G` went to an address where nothing was written, or an interrupt vector points where the program loads no code | Check that `TX: C 0080:xxxx` matches your `ORG`. If the address is 0100 for a program with another ORG, or has no `0080:`, you are on an old cached build (Ctrl+Shift+R). Check that every vector your program installs points at code it uploads. See section 6 |
 | Nothing happens on Upload and Run, status bar says `Error C06: Connect to device first!` | No serial connection | Click Device and grant a port |
 | Status bar says `Error A02: Upload cancelled. Fix the assembler errors first:` | The code in the editor does not assemble. Nothing was sent | Fix the error shown, then Upload and Run again |
@@ -538,6 +540,48 @@ the offline harness, not yet on a board. This build handles it like this:
   programs that use the port, unplug and replug the adapter, and click
   **Device** again.
 
+### Prolific PL2303 adapters on Windows (Error C07)
+
+Many cheap USB to RS-232 adapters carry a copy of Prolific's PL2303 chip (USB
+`067B:2303`). Prolific's current Windows driver refuses copies and older chips:
+Chrome lists the port, often as `USB-Serial Controller (COMx)`, but it does not
+open. Several groups hit this in the lab on 2026-10-16. Mac and Linux are not
+affected; their own drivers accept these chips.
+
+On Windows the page recognises the adapter when you pick its port in Device:
+before the port opens it prints `Warning W03` (once per page), then opens the
+port anyway, because a genuine chip, or a copy with the old driver, works. If
+the open fails, `Error C07` follows. A student fixed that on Windows like this:
+
+1. With the adapter plugged in, open Device Manager. Under Ports (COM & LPT),
+   right-click the `THIS IS NOT PROLIFIC PL2303...` entry, choose Uninstall
+   device, tick "Attempt to remove the driver for this device", and unplug the
+   adapter.
+2. Install an older Prolific driver. Prolific no longer offers these, so they
+   come from copies on the web; the class used a copy from a third-party GitHub
+   repository with two versions:
+   - First try the driver package 3.8.38.2 (a `.cab` file). Copy its four files
+     (`ser2pl.inf`, `ser2pl.cat`, `ser2pl.sys`, `ser2pl64.sys`) into a folder,
+     then Update driver, Browse my computer for drivers, Let me pick from a list,
+     Have Disk, and choose that folder. Its catalog is signed by Microsoft
+     (Windows Hardware Compatibility Publisher) and Windows checks that signature
+     before installing, so a modified package does not install. No program runs.
+   - If the adapter still shows `THIS IS NOT PROLIFIC`, the fix that worked in
+     the lab was the 3.3.2.105 installer, run as administrator. It is an
+     InstallShield `setup.exe` without a digital signature, so where it came from
+     cannot be checked. On 2026-10-16 VirusTotal listed no detections for it
+     (SHA-256 `81993c22b2daa5cd3c0efaee68cfc4a7100fd5956ea8da06346cf42cf3373aff`).
+     Running it is the student's own decision.
+3. Plug the adapter into the same USB port. Device Manager should show
+   `Prolific USB-to-Serial Comm Port (COMx)` with the older driver version. If
+   it still shows the new name, choose Update driver, Browse my computer for
+   drivers, Let me pick from a list, and select the older version.
+4. Optional: Windows Update may put the new driver back. System Properties
+   (`sysdm.cpl`), Hardware, Device Installation Settings, No stops that, but it
+   stops automatic driver downloads for every device.
+
+An adapter with an FTDI, CH340 or CP2102 chip avoids all of this.
+
 ### Error codes
 
 Every failure the page can detect prints a short code, in the terminal as
@@ -556,7 +600,7 @@ bytes).
 | C04 | Board link lost: adapter unplugged, board off, or a fatal read error | Check the cable, click Device, PAT RESET |
 | C05 | Writing to the port failed | Disconnect, then Device |
 | C06 | Not connected | Click Device |
-| C07 | Windows could not open a Prolific PL2303 adapter; usually its driver refuses the chip | Pick an older driver in Device Manager, or use an adapter with an FTDI, CH340 or CP2102 chip |
+| C07 | Windows could not open a Prolific PL2303 adapter; usually its driver refuses the chip | See "Prolific PL2303 adapters on Windows" above, or use an adapter with an FTDI, CH340 or CP2102 chip |
 | U01 | The board did not answer the first CR; usually the previous program is still running | PAT RESET, wait for `PAT:`, Upload again |
 | U02 | No reply to the `C` command | PAT RESET and try again; if it repeats, copy the log |
 | U03 | No `PAT:` after writing a segment | PAT RESET and try again |
@@ -567,9 +611,10 @@ bytes).
 | A01 | The active tab is not an `.asm` file | Translate to ASM, open the `.asm` tab |
 | A02 | The code does not assemble; nothing was sent | Fix the assembler errors |
 | A03 | The program is empty | Write or open a program |
-| B01 | The board printed an `ERROR` line after `G`, for example `ERROR 30 : Invalid Opcode Exception` | Check that `TX: C 0080:xxxx` matches your ORG and that interrupt vectors point at loaded code (section 6) |
+| B01 | The board printed an `ERROR` line after `G`, for example `ERROR 30 : Invalid Opcode Exception` or `ERROR 33 : Uninitialized Interrupt Vector` | ERROR 30: check that `TX: C 0080:xxxx` matches your ORG and that interrupt vectors point at loaded code (section 6). ERROR 33: see the troubleshooting table |
 | W01 | Serial line error (Break, Framing, Parity, Overrun); the page keeps listening | Usually nothing; some adapters do this during PAT RESET. If it repeats, check the cable |
 | W02 | Some bytes got no reply from the board during the upload | If the program misbehaves, PAT RESET and upload again |
+| W03 | Windows: the adapter picked in Device has a Prolific PL2303 chip, and copies of it do not open with Prolific's current driver. Said once, before the port opens; the page then opens it anyway | Nothing, if the board connects. If C07 follows, see "Prolific PL2303 adapters on Windows" above |
 
 ### The dark display
 

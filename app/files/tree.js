@@ -53,9 +53,11 @@ function buildExDropdown() {
   }
 
   // My files first, then the examples by manifest category and order, then the
-  // pseudo-language samples and generated files.
+  // pseudo-language samples and generated files. While My files is a folder on this
+  // computer (app/files/folder.js), the files kept in this browser follow it.
+  let bound = folderBound();
   let folders = [
-    { name: 'My files', dynamics: dynFolders.local || [], user: true },
+    { name: 'My files', dynamics: bound ? folderFiles() : (dynFolders.local || []), user: true },
     { name: 'assignments', keys: [] },
     { name: 'demos', keys: [] },
     { name: 'hardware', keys: [] },
@@ -76,8 +78,9 @@ function buildExDropdown() {
   }
 
   for (let fn of Object.keys(dynFolders)) {
-    if (fn !== 'local') folders.push({ name: fn, dynamics: dynFolders[fn] });
+    if (fn !== 'local' && fn !== 'disk') folders.push({ name: fn, dynamics: dynFolders[fn] });
   }
+  if (bound && dynFolders.local) folders.splice(1, 0, { name: FD_BROWSER, dynamics: dynFolders.local });
 
   let tree = document.getElementById('fbTree');
   if (!tree) return;
@@ -130,7 +133,7 @@ function buildExDropdown() {
     }
     if (user) {
       act('rename', 'Rename (F2)', function() { renameFile(key); });
-      act('trash', 'Delete (Del)', function() { deleteFile(key); });
+      if (!folderOnDisk(key)) act('trash', 'Delete (Del)', function() { deleteFile(key); });
     } else {
       act('copy', 'Make an editable copy in My files', function() { duplicateFile(key); });
     }
@@ -201,7 +204,7 @@ function buildExDropdown() {
 
     if (folder.dynamics) {
       folder.dynamics.forEach(df => {
-        let file = makeFileEl(df.name, df.name, function() {
+        let file = makeFileEl(df.name, df.disk ? df.disk.name : df.name, function() {
           openFileInTab(df.name, df.content, file);
         }, true);
         file.style.paddingLeft = filePad;
@@ -227,6 +230,7 @@ function buildExDropdown() {
   }
 
   folders.forEach(f => { let r = makeFolder(f, 0); tree.appendChild(r.el); });
+  folderDecorate(tree);
 
   if (activeTabKey) highlightFileInTree(activeTabKey);
   if (hadFocus && refocus) {
@@ -348,7 +352,7 @@ document.addEventListener('contextmenu', function(e) {
     addItem(user ? 'Duplicate' : 'Make an editable copy', function() { duplicateFile(key); });
     if (user) {
       addItem('Rename (F2)', function() { renameFile(key); });
-      addItem('Delete (Del)', function() { deleteFile(key); });
+      if (!folderOnDisk(key)) addItem('Delete (Del)', function() { deleteFile(key); });
     }
     addSep();
     addItem('Copy content', function() {
@@ -359,6 +363,8 @@ document.addEventListener('contextmenu', function(e) {
   } else {
     addItem('New file', newEmptyFile);
     addItem('Open file from this computer...', function() { document.getElementById('openFile').click(); });
+    zipMenuItems(addItem);
+    folderMenuItems(addItem);
     addSep();
     addItem('Collapse All', function() { setAllFolders(false); });
     addItem('Expand All', function() { setAllFolders(true); });
@@ -386,17 +392,19 @@ function newEmptyFile() {
 
 // === FILE ACTIONS (row buttons, context menu, keyboard) ===
 function nameTaken(n) {
-  return isUserFile(n) || EXTRA_FILES.some(f => f.name === n) || Object.keys(EX).some(k => k === n || fileLabel(k) === n);
+  return isUserFile(n) || folderHas(n) || EXTRA_FILES.some(f => f.name === n) || Object.keys(EX).some(k => k === n || fileLabel(k) === n);
 }
-function uniqueName(name) {
-  if (!nameTaken(name)) return name;
+// `taken` replaces nameTaken where a looser rule applies (copy on edit, app/files/save.js).
+function uniqueName(name, taken) {
+  taken = taken || nameTaken;
+  if (!taken(name)) return name;
   let d = name.lastIndexOf('.'), base = d > 0 ? name.slice(0, d) : name, ext = d > 0 ? name.slice(d) : '';
-  for (let i = 2; ; i++) if (!nameTaken(base + '-' + i + ext)) return base + '-' + i + ext;
+  for (let i = 2; ; i++) if (!taken(base + '-' + i + ext)) return base + '-' + i + ext;
 }
 
 function duplicateFile(key) {
   let user = isUserFile(key);
-  let name = uniqueName(user ? key : 'my-' + fileLabel(key));
+  let name = uniqueName(user ? (isFolderFile(key) ? fileLabel(key) : key) : 'my-' + fileLabel(key));
   let content = getFileContent(key);
   addDynamicFile(name, content, 'local');
   openFileInTab(name, content);
@@ -407,8 +415,10 @@ function renameFile(key) {
   if (!isUserFile(key)) { sLog('Examples cannot be renamed. Make an editable copy first.', 1); return; }
   let row = document.querySelector('.fb-file[data-key="' + CSS.escape(key) + '"]');
   if (!row) return;
-  startInlineEdit(row.querySelector('.fb-name'), key, function(n) {
+  let inFolder = isFolderFile(key);
+  startInlineEdit(row.querySelector('.fb-name'), inFolder ? fileLabel(key) : key, function(n) {
     if (!n.includes('.')) n += '.asm';
+    if (inFolder) { folderRename(key, n); return; }   // renamed in the folder too
     if (n === key) { buildExDropdown(); return; }
     if (nameTaken(n)) { sLog('A file named ' + n + ' already exists.', 1); buildExDropdown(); return; }
     syncActiveTab();
@@ -428,6 +438,7 @@ function renameFile(key) {
 
 function deleteFile(key) {
   if (!isUserFile(key)) { sLog('Examples cannot be deleted.', 1); return; }
+  if (folderOnDisk(key)) { sLog(fileLabel(key) + ' is in the folder ' + fdDir.name + ' on this computer. Delete it there, in Explorer or Finder; My files follows.', 1); return; }
   if (!confirm('Delete ' + key + ' from My files?\nThis cannot be undone. Download it first if you need it.')) return;
   // Keyboard focus moves to the next row (or the folder) instead of being lost
   let row = document.querySelector('.fb-file[data-key="' + CSS.escape(key) + '"]');

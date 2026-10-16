@@ -13,7 +13,7 @@ Canlı demo: <https://natozenbilek.github.io/workbench86/>. Adım adım anlatım
 
 workbench86 ilk açıldığında koyu temadadır. Üst çubuktaki tema düğmesinde o anki temanın adı yazar (Dark ya da Light); düğmeye basınca öbür temaya geçilir ve seçim hatırlanır. GitHub da kendi temanıza uyan ekran görüntüsünü gösterir.
 
-Bu README v18 build'ini anlatıyor. Değişiklikler [CHANGELOG.md](CHANGELOG.md) dosyasında, açık sorunlar da [docs/KNOWN_ISSUES.md](docs/KNOWN_ISSUES.md) dosyasında listeleniyor.
+Bu README v19 build'ini anlatıyor. Değişiklikler [CHANGELOG.md](CHANGELOG.md) dosyasında, açık sorunlar da [docs/KNOWN_ISSUES.md](docs/KNOWN_ISSUES.md) dosyasında listeleniyor.
 
 ## Neden var
 
@@ -25,7 +25,7 @@ Bu karta program, kartla birlikte gelen komut satırı assembler'ı Merlin ile y
 
 workbench86 bu iş akışını değiştirmiyor, etrafına tam bir IDE kuruyor. Ne kartın ne de Merlin'in kurallarının yerini alıyor: `INCLUDE PATCALLS.INC` ile yazılmış bir program burada da olduğu gibi assemble olur, yani mevcut ders materyali değişmeden kullanılabilir. Simülatörün çalıştırdığı byte dizisi, yüklemenin karta gönderdiğiyle aynıdır; bu yüzden program, donanıma gitmeden önce simülatörde doğru hale getirilir.
 
-workbench86 tek sayfalık bir uygulama. Build adımı, backend, kütüphane ya da framework yok. 32 dosyada yaklaşık 6,6 kLOC JavaScript ve 7 dosyada 1,6 kLOC CSS var, hepsi vanilla. How to use sayfası bunlara bir script ve bir stil dosyası (ikisi birlikte yaklaşık 0,8 kLOC), test düzeneği de üç script (0,3 kLOC) ekliyor. Herhangi bir statik sunucudan çalışır; büyük kısmı `file://` üzerinden de çalışır. Başka bir sunucuya giden tek istek, Google Fonts'tan alınan üç web fontu içindir; çevrimdışıyken sayfa Consolas ve Segoe UI gibi sistem fontlarına geçer. How to use sayfasının fontları ise kendi klasöründe, sayfayla birlikte gelir.
+workbench86 tek sayfalık bir uygulama. Build adımı, backend, kütüphane ya da framework yok. 36 dosyada yaklaşık 7,9 kLOC JavaScript ve 7 dosyada 1,7 kLOC CSS var, hepsi vanilla. How to use sayfası bunlara bir script ve bir stil dosyası (ikisi birlikte yaklaşık 0,8 kLOC), test düzeneği de üç script (0,3 kLOC) ekliyor. Herhangi bir statik sunucudan çalışır; büyük kısmı `file://` üzerinden de çalışır. Başka bir sunucuya giden tek istek, Google Fonts'tan alınan üç web fontu içindir; çevrimdışıyken sayfa Consolas ve Segoe UI gibi sistem fontlarına geçer. How to use sayfasının fontları ise kendi klasöründe, sayfayla birlikte gelir.
 
 ## Hızlı başlangıç
 
@@ -56,7 +56,7 @@ Sonra <http://localhost:8000> adresini açın.
 
 ## How to use sayfası
 
-![How to use sayfasının ilk kartı. Sayfanın üst çubuğunda workbench86'ya dönüş bağlantısı, 1 / 57 kart sayacı, README ve Hardware guide bağlantıları, Present düğmesi, TR ile EN arasında dil seçimi ve tema düğmesi var. Kartta başlık, 'An 8086 simulator in the browser, with upload to the DIGIAC 2000 board' satırı, v18 sürümü ve uygulamanın bir ekran görüntüsü duruyor.](docs/screenshots/howto.png)
+![How to use sayfasının ilk kartı. Sayfanın üst çubuğunda workbench86'ya dönüş bağlantısı, 1 / 57 kart sayacı, README ve Hardware guide bağlantıları, Present düğmesi, TR ile EN arasında dil seçimi ve tema düğmesi var. Kartta başlık, 'An 8086 simulator in the browser, with upload to the DIGIAC 2000 board' satırı, v19 sürümü ve uygulamanın bir ekran görüntüsü duruyor.](docs/screenshots/howto.png)
 
 Adım adım bir anlatım [howto/](https://natozenbilek.github.io/workbench86/howto/) sayfasında; uygulamanın üst çubuğundaki How to use bağlantısı bu sayfayı açar. Pencere 1024 px ya da daha darsa bu bağlantı üst çubuktaki ⋮ menüsünün ilk maddesi olur. Sayfada hem Türkçesi hem İngilizcesi olan 57 kart var: seri iletişimin temelleri (RS-232, TX ve RX, 9600 8N2), simülatörde çalışma, karta yükleme (PAT RESET, yeni bir `PAT:`, 0080 segmentiyle `C` ve `G`), kart modu ve hata kodları.
 
@@ -70,9 +70,44 @@ Explorer'ın üstünde New, Open ve Download düğmeleri var. Klasörler sıras�
 
 New bir isim sorar ve My files içinde bir `.asm` dosyası oluşturur. Open, bilgisayarınızdan `.asm`, `.inc`, `.c`, `.cpp`, `.py`, `.java`, `.go` ve `.txt` dosyalarını alıp My files'a koyar. Download, `Ctrl+S` ya da `Cmd+S` açık dosyayı kendi adıyla kaydeder; Windows'ta satır sonları CRLF olur.
 
-Örnek programlar ve `languages` örnekleri yeniden adlandırılamaz, silinemez. Birini kendi sekmesinde düzenleyebilirsiniz ama değişiklikler o sekmede kalır; Make an editable copy, My files'a `my-<dosya adı>` adında bir kopya koyar. Fareyle bir satırın üzerine gelince düğmeler çıkar: kendi dosyalarınızda Rename ve Delete, örneklerde Make an editable copy, ikisinde de Download. Bir dosyaya, ağacın boş bir yerine ya da bir sekmeye sağ tıklayınca bağlam menüsü açılır. Sekme menüsünde Close, Close Others, Close All, Copy Path, Download ve Duplicate ya da Make an editable copy bulunur. Sekmedeki nokta, dosyanın açıldığından ya da indirildiğinden beri değiştiğini gösterir; düzenlenmiş bir örneği kapatırken sayfa onay ister.
+Örnek programlar ve `languages` örnekleri yeniden adlandırılamaz, silinemez, değişmez de. Birinde ilk değişikliği yaptığınızda o sekme My files'ta bir kopyaya dönüşür. Kopya örnek dosyanın adını alır, durum çubuğu da bu adı yazar: PA01'i düzenlerseniz `pa01-subtract-byte.asm` olur. O adda bir dosya zaten varsa sonuna `-2`, `-3` eklenir; Fibonacci demosu, `languages` altında `fibonacci.asm` olduğu için `fibonacci-2.asm` olur. Yaptığınız değişiklik, imlecin yeri ve geri alma geçmişi kopyaya geçer; örnek dosyanın kendisi olduğu gibi kalır. Make an editable copy ise hiçbir şey değiştirmeden My files'a `my-<dosya adı>` adında bir kopya koyar. Fareyle bir satırın üzerine gelince düğmeler çıkar: kendi dosyalarınızda Rename ve Delete, örneklerde Make an editable copy, ikisinde de Download. Bir dosyaya, ağacın boş bir yerine ya da bir sekmeye sağ tıklayınca bağlam menüsü açılır. Sekme menüsünde Close, Close Others, Close All, Copy Path, Download ve Duplicate ya da Make an editable copy bulunur. Sekmedeki nokta, dosyanın açıldığından ya da indirildiğinden beri değiştiğini gösterir.
 
-My files yalnızca sayfanın belleğinde durur. Sayfayı yenilerseniz açık sekmelerle birlikte silinir ve sayfa sizi uyarmaz (sayfadan çıkarken yalnızca kartla ilgili bir iş sürüyorsa onay ister). Saklamak istediğinizi indirin. Sayfanın hatırladığı tek şey tema ve panel genişlikleri.
+### Tarayıcıda saklanan dosyalar
+
+Sayfa My files'ı, `generated` klasörünü, açık sekmeleri, etkin sekmeyi ve imlecin yerini tarayıcının kendi deposunda (IndexedDB) saklar; sayfa yenilense de, tarayıcı kapatılıp yeniden açılsa da hepsi geri gelir. Basılacak bir düğme yok: değişiklik, yazmayı bıraktıktan 300 ms sonra, yazmaya devam ederken de en geç 2 saniyede bir kaydedilir; sekme arka plana geçince ya da kapanınca hemen yazılır. Sayfa yenilenirken ya da kapanırken son değişiklikler tarayıcının `localStorage`'ına da yazılır; tarayıcı sayfayı depo onları almadan kapatırsa, sayfa bir sonraki açılışta onları oradan alır. Tema ve panel genişlikleri de eskisi gibi hatırlanır.
+
+Bunun kapsamadığı durumlar:
+
+- Dosyalar yalnızca bu bilgisayardaki bu tarayıcıda durur. Başka bir tarayıcı ya da bilgisayar onları görmez. Her site kendi dosyalarını tutar: canlı site, `http://localhost:8000` ve `file://` ile açılan bir kopya dosyalarını paylaşmaz, ama aynı sitenin farklı yollarındaki iki workbench86 kopyası aynı dosyaları görür.
+- Gizli pencere dosyaları pencere kapanana kadar tutar. Tarayıcının site verilerini silerseniz dosyalar da silinir; disk dolmak üzereyken tarayıcı da kendiliğinden silebilir. Sayfa, dosyaları silmemesini tarayıcıdan bir kez ister (`navigator.storage.persist()`); Chrome ve Safari buna kendileri karar verir, Firefox size sorabilir.
+- Safari'yi yedi gün kullanıp bu arada workbench86'yı hiç açmazsanız Safari dosyaları siler. Safari kullanıyorsanız dosyalarınızın zip yedeğini alın (aşağıda).
+- Ortak kullanılan bir bilgisayarda, aynı tarayıcıda workbench86'yı açan bir sonraki kişi dosyalarınızı görür. Kalkmadan önce gerekenleri indirin, gerisini My files'tan silin.
+- İki workbench86 sekmesi aynı dosyaları kullanır, ikisinde de bunu söyleyen bir not çıkar. Bir sekmede değişen dosya öbür sekmede de değişir; o sekmede de değiştirildiyse orada olduğu gibi kalır. İki sekme aynı dosyayı aşağı yukarı aynı anda değiştirirse iki metin de kaybolmaz: ikinci kaydedilen, sonuna `-2` eklenmiş yeni bir ada geçer ve editörün üstündeki bir not bunu söyler. Açık sekmeler de ortaktır; sayfa yenilenince en son kaydeden sekmenin sekmeleri açılır.
+
+Tarayıcı sayfaya hiç depo vermezse (site verileri engelliyse, bazı gizli pencerelerde) ya da depo çalışırken bozulursa (örneğin disk dolunca) sayfa v18'deki gibi çalışır: dosyalar sayfanın belleğinde durur ve sayfa yenilenince gider, bir örnekte yapılan değişiklik o sekmede kalır, değiştirilmiş bir örneği kapatırken de sayfa onay ister. Editörün üstündeki bir satır bunu bir kez söyler. Depo 3 saniye içinde cevap vermezse (örneğin yeni açılmış yavaş bir bilgisayarda) sayfa vazgeçmez: kayıtlı dosyalarınız olmadan açılır, bunu söyler, depo cevap verince de dosyaları My files'a geri getirir. Bu arada açtığınız dosyalar yerinde kalır ve o andan sonra onlar da saklanır. Depoda daha yeni bir workbench86'nın dosyaları varsa o satır sayfayı yenilemenizi ister.
+
+Dosyalar tarayıcıdan yine indirilerek çıkar: açık dosya için Download ya da `Ctrl+S`, hepsi için Download all as zip.
+
+### My files bir klasörde (Chrome ve Edge)
+
+Chrome ve Edge'de My files bilgisayarınızdaki bir klasör olabilir; programlarınız da orada sıradan dosyalar olarak durur. Fareyle My files satırının üzerine gelip (ya da klavyeyle o satıra gidip) klasör düğmesine basın ya da Explorer'a sağ tıklayıp Use a folder on this computer...'ı seçin; sonra bir klasör seçip sayfanın dosyaları düzenlemesine izin verin. Satırda `My files · <klasör adı>` yazar ve klasördeki `.asm`, `.inc`, `.c`, `.cpp`, `.py`, `.java`, `.go` ve `.txt` dosyaları listelenir. Yalnızca klasörün kendisi okunur, alt klasörleri okunmaz; gizli dosyalar, 1 MB'tan büyük dosyalar ve ilk 300'den sonrası listeye girmez. Tarayıcıda saklanan dosyalar da Explorer'da My files'tan sonra gelen In this browser klasöründe görünmeye devam eder.
+
+`Ctrl+S` açık dosyayı klasöre yazar; başka bir dosyada eskisi gibi indirir. Rename dışında klasöre başka hiçbir şey yazmaz. Değişiklikler siz klasöre kaydedene kadar tarayıcıda tutulur, sayfa yenilense de kaybolmaz; sekmedeki ya da satırdaki nokta "klasöre henüz kaydedilmedi" demektir. New, Open, Duplicate, değiştirilen bir örnek ve Load files from a zip dosyalarını klasörün listesine ekler; bunlar diske `Ctrl+S` ile yazılır. Klasördeki bir dosyanın Delete düğmesi yoktur: dosyayı Explorer'da ya da Finder'da silin, My files da ona uyar.
+
+Sayfa, penceresine her dönüldüğünde klasörü yeniden okur. Yalnızca klasörde değişen bir dosyada yeni metin görünür, yalnızca burada değişen dosya kaydedilmemiş olarak kalır. İki yerde de değişen bir dosyada buradaki metin korunur, editörün üstündeki bir not bunu söyler ve `Ctrl+S` klasördeki kopyanın üstüne yazmadan önce sorar. Sayfanın bilmediği bir dosyanın üstüne kaydederken de sorar. Kayıt dosyanın satır sonlarını ve UTF-8 BOM'unu korur; UTF-8 olmayan bir dosya Windows-1254 (Türkçe Windows) olarak okunur ve yine öyle yazılır, yeni bir dosya da Windows'ta CRLF satır sonlarıyla yazılır.
+
+Sayfa klasörü hatırlar. Bir sonraki açılışta, Chrome sorduğunda her ziyarette izin vermeyi (Allow on every visit) seçtiyseniz kendiliğinden yeniden bağlanır; seçmediyseniz My files dosyaların son kopyalarını ve bir Reconnect düğmesini gösterir, `Ctrl+S` de izin ister. Klasör bulunamazsa (örneğin USB bellek takılı değilse) düğmede Try again yazar. Read the folder again ve Stop using this folder, My files satırında ve sağ tık menüsünde bulunur. Klasörü bıraktığınızda klasörün kendisine dokunulmaz; klasöre kaydedilmemiş değişiklikleri olan dosyalar My files'ta tarayıcı dosyası olarak kalır.
+
+Firefox ve Safari'de File System Access API yok; klasör ayrıca yukarıdaki tarayıcı deposuna da ihtiyaç duyar. İkisinden biri yoksa klasör düğmesi de görünmez.
+
+### Zip yedeği
+
+My files satırında, fareyle üzerine gelince çıkan zip düğmesi iki işlem sunar. İkisi Explorer'ın sağ tık menüsünde ve command palette'te de var ve her tarayıcıda çalışır:
+
+- Download all as zip, bütün dosyalarınızı Explorer'daki klasörleriyle birlikte `workbench86-files.zip` adıyla indirir: `My files/`, `generated/`, kullanılan bir klasör varsa da onun adı ve `In this browser/`. Dosyalar sıkıştırılmadan, UTF-8 olarak, Windows'ta CRLF satır sonlarıyla yazılır. Tarayıcı dosya saklayamıyorsa değiştirilen örnekler `edited examples/` altına girer.
+- Load files from a zip..., zip'teki `.asm`, `.inc`, `.c`, `.cpp`, `.py`, `.java`, `.go` ve `.txt` dosyalarını, zip'in içindeki klasörleri düzleştirerek My files'a koyar ve ilkini açar. Adı alınmış bir dosyanın sonuna `-2`, `-3` eklenir, durum çubuğu da yeni adları yazar. My files'ta aynı ad ve aynı metinle zaten duran bir dosya tekrar eklenmez; yani aynı zip'i iki kez yüklemek bir şey eklemez. Windows Explorer'ın (Türkçe dosya adları dahil), Mac'te Finder'ın Sıkıştır komutunun ve `zip` aracının yaptığı zip'ler yüklenir. Bir zip'ten en fazla 300 dosya, dosya başına en fazla 1 MB alınır; 64 MB'tan büyük bir zip hiç okunmaz. Sayfa neyi dışarıda bıraktığını söyler.
+
+Dosyalarınızı başka bir bilgisayara taşımak ya da tarayıcıyı temizlemeden önce bir kopyasını almak için kullanın.
 
 ### Editör
 
@@ -80,7 +115,7 @@ Editör çok sekmeli; metnin üstündeki breadcrumb klasörü ve dosyayı göste
 
 Ghost completion `.asm` sekmelerinde çalışır. Satırın başında mnemonic ve directive önerir; operand alanında register'ları, label'ları, `EQU` isimlerini ve `PATCALLS.INC` sembollerini önerir. `Tab` öneriyi kabul eder, öneri yoksa 8 boşluk ekler.
 
-Bul ve değiştir, editördeyken `Ctrl+F` ile açılır. Düz metin arar, düzenli ifade (regex) kabul etmez. Büyük-küçük harf düğmesi açık değilse harf farkına bakmaz. Replace ve Replace All düğmeleri de var. `Enter` sonraki, `Shift+Enter` önceki eşleşmeye gider. `Ctrl+Shift+P` ile açılan command palette, 19 komut arasında bulanık eşleşmeyle (fuzzy match) arar: assemble, run, step, geri ve ileri adım, reset, tema, Ports, Export/Import, ISA rehberi, Connect Device, Upload Program, dosya işlemleri, sekme kapatma ve bütün panelleri katlayıp açma.
+Bul ve değiştir, editördeyken `Ctrl+F` ile açılır. Düz metin arar, düzenli ifade (regex) kabul etmez. Büyük-küçük harf düğmesi açık değilse harf farkına bakmaz. Replace ve Replace All düğmeleri de var. `Enter` sonraki, `Shift+Enter` önceki eşleşmeye gider. `Ctrl+Shift+P` ile açılan command palette, 21 komut arasında bulanık eşleşmeyle (fuzzy match) arar: assemble, run, step, geri ve ileri adım, reset, tema, Ports, Export/Import, ISA rehberi, Connect Device, Upload Program, iki zip işlemi dahil dosya işlemleri, sekme kapatma ve bütün panelleri katlayıp açma.
 
 Geri alma (undo) geçmişi tarayıcının değil, editörün kendisinin. 200 durum tutar; `Ctrl+Z` ile `Ctrl+Y` yalnızca editörde çalışır ve sekme değiştirince geçmiş sıfırlanır.
 
@@ -288,7 +323,7 @@ Bu iki ekran görüntüsünün kart tarafı PAT monitörünün bir modelinden ge
 
 Seri hattı aynı anda yalnızca bir iş kullanabilir. Yükleme sürerken Upload düğmesi önce `Uploading n/N`, sonra `Waiting for PAT:` gösterir ve basılamaz; ikinci bir Upload, G, T, Send ve Simulate anyway reddedilir. Disconnect her zaman kullanılabilir ve işi hemen durdurur. Bir iş sürerken sayfadan çıkmak isterseniz sayfa önce onay ister.
 
-Sayfanın fark edebildiği her hatanın kısa bir kodu var: terminalde `[Error U01] ...`, durum çubuğunda `Error U01: ...` olarak görünür. C01–C07 bağlantı hataları, U01–U06 ve U09 yükleme hataları, A01–A03 daha hiçbir şey gönderilmeden reddedilen yüklemeler, B01 de karttan gelen bir `ERROR` satırıdır. W01 bir seri hat hatasını (Break, Framing, Parity ya da Overrun) bildirir ve sayfa bundan sonra da okumaya devam eder; W02 ise cevap gelmeyen byte'ları bildirir. Bağlantı koparsa sayfa C04 ile bağlantıyı kapatır. C07, Windows'un Prolific PL2303 çipli bir çeviriciyi açamadığını söyler; sebebi çoğunlukla sürücünün çipi reddetmesidir. Her kodun anlamı ve ne yapılacağı Türkçe olarak [laboratuvar notunda](docs/lab-hizli-kullanim.md#hata-kodları), İngilizce olarak [donanım rehberinde](docs/hardware-guide.md#error-codes) anlatılıyor.
+Sayfanın fark edebildiği her hatanın kısa bir kodu var: terminalde `[Error U01] ...`, durum çubuğunda `Error U01: ...` olarak görünür. C01–C07 bağlantı hataları, U01–U06 ve U09 yükleme hataları, A01–A03 daha hiçbir şey gönderilmeden reddedilen yüklemeler, B01 de karttan gelen bir `ERROR` satırıdır. W01 bir seri hat hatasını (Break, Framing, Parity ya da Overrun) bildirir ve sayfa bundan sonra da okumaya devam eder; W02 ise cevap gelmeyen byte'ları bildirir. Bağlantı koparsa sayfa C04 ile bağlantıyı kapatır. C07, Windows'un Prolific PL2303 çipli bir çeviriciyi açamadığını söyler; sebebi çoğunlukla sürücünün çipi reddetmesidir. W03 bundan önce gelir: Windows'ta Device ile seçilen port Prolific çipli bir çeviriciyse sayfa, bu çipin taklitlerinin Prolific'in yeni sürücüsüyle açılmadığını bir kez söyler, sonra portu yine de açar; çünkü orijinal bir çip ya da eski sürücüsü kurulu bir çevirici çalışır. Her kodun anlamı ve ne yapılacağı Türkçe olarak [laboratuvar notunda](docs/lab-hizli-kullanim.md#hata-kodları), İngilizce olarak [donanım rehberinde](docs/hardware-guide.md#error-codes) anlatılıyor.
 
 ### Seri terminal
 
@@ -314,7 +349,7 @@ Yükleme yalnızca Chromium ailesi tarayıcılarda çalışır. Firefox ve Safar
 
 ## Transpiler
 
-Transpiler küçük C, C++, Python, Java ve Go parçacıklarını assembly'ye çevirir; böylece öğrenci aynı döngüyü iki biçimde de görebilir. Örnekler Explorer'da, `languages` altında. `.c`, `.cpp`, `.py`, `.java` veya `.go` sekmesinde Assemble düğmesinin üstünde Translate to ASM yazar, `Ctrl+Enter` da aynı işi yapar. Sonuç `generated/<isim>.asm` dosyasına yazılır, kendi sekmesinde açılır ve assemble edilir.
+Transpiler küçük C, C++, Python, Java ve Go parçacıklarını assembly'ye çevirir; böylece öğrenci aynı döngüyü iki biçimde de görebilir. Örnekler Explorer'da, `languages` altında. `.c`, `.cpp`, `.py`, `.java` veya `.go` sekmesinde Assemble düğmesinin üstünde Translate to ASM yazar, `Ctrl+Enter` da aynı işi yapar. Sonuç `generated/<isim>.asm` dosyasına yazılır, kendi sekmesinde açılır ve assemble edilir. İkinci çeviri bu dosyanın yerine geçer. Bu adda sizin bir dosyanız, klasörün bir dosyası ya da bir örnek varsa sonuç `<isim>-2.asm` olur; yani `blink.c`'yi çevirmek kendi yazdığınız `blink.asm`'nin üstüne yazmaz.
 
 ![languages/go/chase.go üzerinde Translate to ASM'den sonra workbench86. Explorer'da c, python, go, java, cpp ve asm örnekleriyle languages klasörü ve artık chase.asm'yi içeren generated klasörü görünüyor. Editörde chase.go ve chase.asm sekmeleri açık. chase.asm'de çevrilmiş program var: MUART kurulumu, BL'yi UPORT2'ye yazan bir döngü, LOOP ile bekleme ve ROL BL,1. Durum çubuğunda 'Translated → chase.asm & assembled' yazıyor.](docs/screenshots/transpiler.png)
 
@@ -350,7 +385,7 @@ Araçla birlikte dört klasörde 52 assembly programı geliyor.
 | Tuş | Eylem |
 |---|---|
 | `Ctrl+Enter` | Assemble edip yükle; yüksek seviyeli bir dilin sekmesinde Translate to ASM |
-| `Ctrl+S` | Açık dosyayı indir |
+| `Ctrl+S` | Açık dosyayı indir; My files olarak kullanılan bir klasörün dosyasıysa klasöre kaydet |
 | `Ctrl+Z` / `Ctrl+Y` ya da `Ctrl+Shift+Z` | Editörde geri al / yinele |
 | `Ctrl+F` | Editördeyken bul ve değiştir |
 | Bul kutusunda `Enter` / `Shift+Enter` | Sonraki / önceki eşleşme |
@@ -397,7 +432,9 @@ workbench86/
 │   ├── main/                     editor.js, sim.js
 │   ├── render/                   core.js, io.js
 │   ├── editor/                   tooltips.js, features.js
-│   ├── files/                    core.js, tree.js
+│   ├── files/                    core.js, tree.js, store.js, save.js ve
+│   │                             sync.js (tarayıcıda saklama), folder.js,
+│   │                             folder-io.js, zip.js
 │   ├── panels/                   layout.js, display.js
 │   ├── highlighter/              render.js, constants.js
 │   ├── guide/                    data.js, ui.js
@@ -443,6 +480,8 @@ workbench86/
 
 WebSerial ayrıca secure context ister; yükleme `https://` ya da `http://localhost` üzerinden çalışır, `file://` üzerinden çalışmaz. WebSerial olmayan bir tarayıcıda Device ve Upload and Run düğmeleri pasif kalır, üzerlerine gelince `WebSerial: Chrome/Edge only` yazar.
 
+Dosyaların tarayıcıda saklanması ve zip yedeği bu tarayıcıların hepsinde çalışır. My files'ı bir klasörde tutmak File System Access API ister; bu API yalnızca Chrome ve Edge'de var.
+
 Yerleşim üç sütunlu ve 1024 px'ten geniş bir masaüstü penceresi varsayar. Pencere 1024 px ya da daha darsa Ports, Export, Guide ve How to use üst çubuktaki ⋮ menüsüne taşınır ve paneller artık rahat sığmaz: debug paneli daralır, editöre de birkaç satırlık yer kalır. Pencere 640 px ya da daha darsa paneller tek sütunda alt alta dizilir.
 
 ## Test durumu
@@ -454,9 +493,9 @@ Motor, headless bir test düzeneğiyle sınanıyor. `tests/run.sh`, `tests/stubs
 ./tests/run.sh engine    # tek bir suite
 ```
 
-İki suite var. Biri sonuçları ve flag'leri elle hesaplanmış 8086 değerleriyle karşılaştırıyor (differential); differential testin şimdiye kadar bulduğu her hata için de ayrıca sabitlenmiş bir vakası var. Diğeri örnek program kümesini baştan sona dolaşıyor ve 52 programın hepsinin assemble olmasını, en fazla 100.000 adım boyunca bilinmeyen bir opcode'a ya da uygulanmamış bir yola düşmeden çalışmasını şart koşuyor. v18'de bu iki suite sırasıyla 43 ve 54 kontrol çalıştırıyor ve hiçbiri başarısız olmuyor. Bir suite hata bildirirse script sıfırdan farklı bir çıkış koduyla biter. Ayrıntılar [tests/README.md](tests/README.md) dosyasında.
+İki suite var. Biri sonuçları ve flag'leri elle hesaplanmış 8086 değerleriyle karşılaştırıyor (differential); differential testin şimdiye kadar bulduğu her hata için de ayrıca sabitlenmiş bir vakası var. Diğeri örnek program kümesini baştan sona dolaşıyor ve 52 programın hepsinin assemble olmasını, en fazla 100.000 adım boyunca bilinmeyen bir opcode'a ya da uygulanmamış bir yola düşmeden çalışmasını şart koşuyor. v19'da bu iki suite sırasıyla 43 ve 54 kontrol çalıştırıyor ve hiçbiri başarısız olmuyor. Bir suite hata bildirirse script sıfırdan farklı bir çıkış koduyla biter. Ayrıntılar [tests/README.md](tests/README.md) dosyasında.
 
-`app/` altındaki kod testlerin kapsamında değil; editör, paneller ve donanım köprüsü hâlâ elle kontrol ediliyor. Otomatik bir tarayıcı test paketi yok.
+`app/` altındaki kod testlerin kapsamında değil; editör, paneller ve donanım köprüsü hâlâ elle kontrol ediliyor. Otomatik bir tarayıcı test paketi yok. v19'daki dosya saklama, klasör ve zip kodu, depoya dahil olmayan betiklerle headless Chrome'da denendi.
 
 workbench86 fiziksel kartta da kullanıldı. Program yükleme yolundaki bir hata, workbench86'nın yazarı olmayan bir öğrencinin yaptığı bir lab oturumunda bulundu; hata yalnızca `ORG` değeri varsayılan adresten farklı olan programlarda ortaya çıkıyordu. Nisan 2026'daki kart oturumlarında `C 0080:0100` ve `G 0080:0100` ile yapılan yüklemeler çalıştı; o build Manifest şarkılarını kartta çalıyor. Ekim 2026'nın ilk lab haftasında öğrenciler kendi dizüstü bilgisayarlarını bağladı ve yüklemeler `PAT:` isteminden sonra sürekli başarısız oldu; bir lab raporuna göre yüklemeler bir seri port hatası çıkana kadar çalışıyordu. v18 kodda bulunan sorunları düzeltiyor ve Nisan build'indeki `0080:` segment önekini geri getiriyor. Bu sürüm test paketiyle, kodu modellenmiş bir PAT monitörüne karşı çalıştıran çevrimdışı bir düzenekle ve Chrome'da sahte bir seri portla denendi; gerçek bir kartta henüz denenmedi. Doğrulanmak için hâlâ kart bekleyen maddeler [docs/KNOWN_ISSUES.md](docs/KNOWN_ISSUES.md#not-yet-seen-on-a-board) dosyasında listeleniyor.
 
@@ -474,7 +513,8 @@ workbench86 fiziksel kartta da kullanıldı. Program yükleme yolundaki bir hata
 - Import Intel HEX çözmez, Export da son komuttan sonraki veriyi dışarıda bırakır.
 - Intel HEX yükleme yolunun düğmesi yok ve `ORG 0100H` varsayar.
 - Transpiler bilerek kısıtlı. `if` ya da `else` yok, kullanıcı tanımlı fonksiyon yok, iç içe control flow yok, yalnızca sonsuz döngüler var ve değişkenleri `CX` gecikme döngüleriyle çakışabilir.
-- Editör içeriği saklanmaz. Sayfa yenilenince açık sekmeler ve My files uyarı verilmeden silinir.
+- Dosyalar yalnızca bu bilgisayardaki bu tarayıcıda saklanır. Başka bir bilgisayarda, site verileri silindikten sonra ya da kapanmış bir gizli pencerede yoktur, Safari de site yedi gün açılmazsa onları siler; ortak bir bilgisayarda aynı tarayıcıyı açan bir sonraki kişi de onları görür. Dosyaları tek tek ya da zip olarak indirin.
+- My files'ı bir klasörde tutmak yalnızca Chrome ve Edge'de çalışır, klasörün alt klasörlerini okumaz ve oradaki dosyaları silmez.
 - 1024 px ya da daha dar bir pencerede yerleşim rahat sığmaz.
 - Otomatik bir tarayıcı test paketi yok.
 - Applications Module için grafik bir panel yok. Çevre birimlerinin durumu I/O Log, Ports penceresi ve PAT Display kartı üzerinden okunur.

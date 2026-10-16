@@ -7,8 +7,12 @@ function compileIfC() {
   let cSrc = document.getElementById('ed').value;
   let asmCode = compileCtoASM(cSrc);
   let sourceKey = activeTabKey;
-  let baseName = (sourceKey || 'output').replace(/\.(c|cpp|py|java|go)$/, '');
-  let asmKey = baseName + '.asm';
+  // The file's own name: a file of a bound folder can have a longer key (app/files/folder.js).
+  let baseName = (sourceKey ? fileLabel(sourceKey) : 'output').replace(/\.(c|cpp|py|java|go)$/, '');
+  // The last translation's file is replaced; a file of yours, of the bound folder or a
+  // sample with that name is not (blink.asm next to blink.c gives blink-2.asm).
+  let asmKey = uniqueName(baseName + '.asm', n => fsSource(n) !== undefined || folderHas(n) ||
+    dynamicFiles.some(f => f.name === n && f.folder !== 'generated'));
 
   // Save current source tab content
   if (sourceKey) {

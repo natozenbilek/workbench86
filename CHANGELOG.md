@@ -10,8 +10,165 @@ The version is the build number. It is in the `?v=N` query strings of
 `index.html`, in the first line of the terminal's Copy log and on the first
 card of the How to use page. The public git history is shorter than this file
 and has no tags: its first commit ("workbench86: the bench for the DIGIAC 2000
-lab trainer, in a browser", 2026-08-14) carries v17, and the commit named "v2"
-(2026-10-10) carries v18. Builds before v17 are not in the public history.
+lab trainer, in a browser", 2026-08-14) carries v17, the commit named "v2"
+(2026-10-10) carries v18, and the commit named "v3" carries v19. Builds before
+v17 are not in the public history.
+
+## v19 (2026-10-17)
+
+Your files now stay in the browser, and My files can be a folder on your
+computer. The new file code was checked in headless Chrome against the whole
+page: saving and restoring, copy on edit, two tabs editing the same files,
+blocked, slow and failing storage, writes cut off by a reload, the zip round
+trip, and the folder binding, with the browser's private file system standing
+in for a folder picked from the disk. W03 was checked with stubbed serial
+ports, not with a Prolific adapter on Windows. The upload path of v18 is still
+to be seen on a board (`docs/KNOWN_ISSUES.md`).
+
+### Files
+- My files, the `generated` folder, the open tabs, the active tab with its
+  cursor, and every edit are kept in this browser (IndexedDB, database
+  `workbench86`) and come back after a reload or a browser restart. A change is
+  written 300 ms after the last one, at least every 2 seconds while typing goes
+  on, and at once when the page is hidden or closed. Only changed files are
+  written. The files stay in this browser on this computer: another browser or
+  computer does not have them, a private window keeps them until it is closed,
+  and clearing the site data deletes them, as Safari does after seven days
+  without a visit.
+- On a reload or close, the changes not yet written also go to `localStorage`
+  (`workbench86_pending`), because a browser may end the page before the
+  database has them. The next start applies them where the file has not
+  changed since, and otherwise brings them back as a copy.
+- Copy on edit: the first change to an example or a built-in sample turns its
+  tab into a copy in My files, under the example's file name with `-2`, `-3`
+  added when that name is taken (`pa01-subtract-byte.asm`, `fibonacci-2.asm`).
+  The edit, the cursor and undo stay, the example does not change, and the
+  status bar names the copy. An assembler error stays in its banner.
+- When the browser gives the page no storage (site data blocked, some private
+  windows), or storage fails later (a full disk), the page works as v18 did:
+  edits to an example stay in its tab, and closing an edited example asks
+  first. A line above the editor says once that files cannot be kept in this
+  browser. If the saved files cannot all be restored, that tab does not save,
+  so it cannot delete them.
+- A database that has not opened after 3 seconds is waited for: the page starts
+  without the saved files and says so, and when the database answers they come
+  back into My files next to the files made meanwhile, and saving starts. A
+  database left by a newer build is not touched; the line asks for a reload.
+- Two workbench86 tabs share the files, and both show a notice. Every record
+  carries a stamp of its last write, and a tab writes a file only while the
+  record still has the stamp it last saw, reading and writing in one
+  transaction. After a write the other tabs hear the names over the
+  `BroadcastChannel` and take the files they have not changed. When both tabs
+  change a file before either saved it, or both make a file of the same name,
+  the text saved second moves to `<name>-2` with a note, so neither is lost.
+  A file deleted in one tab goes from the other unless it is open there or
+  changed there.
+- The first time a file exists, the page asks the browser once to keep its
+  storage (`navigator.storage.persist()`), so the files are less likely to be
+  cleared when the disk runs low.
+- The welcome screen waits until the saved tabs are known, so it does not flash
+  on a reload. The editor takes no typing until they are back, so nothing typed
+  in that moment is replaced. A file made meanwhile (New, Open) under the name of
+  a saved file keeps it, and the saved file comes back as `<name>-2`.
+- The line above the editor holds one line per message, so a later note (a zip
+  that left files out, say) no longer hides the storage warning.
+- My files in a folder on this computer, in Chrome and Edge (File System Access
+  API): a button on the My files row, shown on hover and keyboard focus, and
+  "Use a folder on this computer..." in the Explorer's right-click menu. My
+  files then lists the folder's `.asm`, `.inc`, `.c`, `.cpp`, `.py`, `.java`,
+  `.go` and `.txt` files by name: the top level only, without hidden files,
+  files over 1 MB or anything past the first 300. The files kept in the browser
+  move to an "In this browser" folder. The row reads `My files · <folder>` and
+  gets Read the folder again and Stop using this folder.
+- With a folder in use, `Ctrl+S` writes the open file there, and on any other
+  file it downloads as before. Nothing else writes to the folder except Rename.
+  Edits are kept in the browser until then, and the dot on a tab or a row means
+  "not saved in the folder yet". New, Open, Duplicate, copy on edit and Load
+  from zip add their files to the folder's list; they reach the disk with
+  `Ctrl+S`. A file that is in the folder is deleted in Explorer or Finder, not
+  from the page.
+- The folder is read again when the window gets focus. A file changed only
+  there takes the new text, one changed only here stays unsaved, and one changed
+  in both keeps the text here, says so once, and `Ctrl+S` asks before it
+  replaces the folder's copy. A file deleted there drops off the list unless it
+  has changes here or an open tab; then `Ctrl+S` writes it back. Saving over a
+  file the page did not know about asks first, and Rename and New refuse a name
+  the folder already has, ignoring case. Rename can change only the case of a
+  name (`Lab.asm` to `lab.asm`): it goes through a temporary name, since Windows
+  and macOS see one file under both, and a browser that cannot move the file
+  gets an error instead of a deleted file. A file that disappears while the
+  folder is read (an editor's safe save) waits for the next read instead of
+  marking the whole folder missing.
+- A save reads the folder's copy first, then swaps the new file in whole, so a
+  failed save leaves the old file as it was. It keeps the file's CRLF line ends
+  and UTF-8 BOM. A file that is not UTF-8 is read and written back as
+  Windows-1254 (Turkish Windows), and a new file gets CRLF line ends on Windows.
+- The folder is remembered. On the next visit it reconnects by itself where
+  Chrome allows it on every visit; otherwise My files shows the last copies of
+  its files and a Reconnect button, and `Ctrl+S` asks for permission too. A
+  folder that cannot be found (a USB stick unplugged) shows Try again. Stopping
+  reads the folder once more, then leaves it as it is; files with changes not
+  saved there stay in My files as browser files (all of its files, if the
+  folder cannot be reached). A save or rename that is still running when the
+  folder is stopped no longer ties its file to the folder again.
+- Download all as zip saves `workbench86-files.zip` with every file of yours
+  under its Explorer folder: `My files/`, `generated/`, and with a folder in
+  use, the folder's name and `In this browser/`. When the browser keeps no
+  files, edited examples go in as `edited examples/`. Files are stored
+  uncompressed as UTF-8, with CRLF line ends on Windows.
+- Load files from a zip puts the zip's text files (the types Open accepts) into
+  My files, flattening its folders. A taken name gets `-2`, `-3`; a file with
+  the same name and the same text is not added again. It reads stored and
+  deflated entries, zip64, and zips from Windows Explorer (Turkish file names),
+  macOS Finder and the `zip` tool, up to 300 files of 1 MB each from a zip of at
+  most 64 MB, and says what it left out.
+- Both zip actions are under a zip button on the My files row, in the Explorer's
+  right-click menu and in the command palette, in every browser.
+- Tab, an accepted ghost completion, undo and redo now mark the tab as changed,
+  as typing does, and are saved.
+- Translate to ASM no longer replaces a file of yours, of the folder or a sample
+  that has the result's name: translating `blink.c` next to your own
+  `blink.asm` gives `generated/blink-2.asm`, and the `led_blink.c` sample gives
+  `led_blink-2.asm` instead of taking the name of the `led_blink.asm` sample.
+  The previous result in `generated` is still replaced.
+
+### Upload and the serial link
+- Warning W03: on Windows, when the port picked in Device is a Prolific PL2303
+  adapter (USB vendor 067B), the terminal and the status bar say before the port
+  opens that copies of this chip do not open with Prolific's current driver, and
+  that the hardware guide has the steps if C07 follows. The page then opens the
+  port as usual: a genuine chip, or one with the old driver, works. It is said
+  once per page.
+- Error C07 names what Device Manager shows (`THIS IS NOT PROLIFIC`,
+  `PHASED OUT` or Code 10) and the fix that worked in the lab on 2026-10-16:
+  remove the device with its driver, then install an older Prolific driver,
+  first the 3.8.38.2 package, which Microsoft signed, and only if the adapter
+  still shows `THIS IS NOT PROLIFIC`, the unsigned 3.3.2.105 installer, which a
+  student got working. The hardware guide has a new section with the steps, and
+  the lab handout the same in Turkish.
+- The guides explain the board's `ERROR 33 : Uninitialized Interrupt Vector`,
+  also seen in the lab on 2026-10-16.
+
+### Appearance
+- `favicon.svg`: the page and How to use have a tab icon, so browsers no longer
+  ask for a missing `/favicon.ico`.
+- Bumped the cache-busting query string in `index.html` and `howto/index.html`
+  from `?v=18` to `?v=19`.
+
+### Documentation
+- `README.md` and `README.tr.md`: how files are kept and what that does not
+  cover, copy on edit, the folder, the zip backup and W03.
+- `docs/KNOWN_ISSUES.md`: "My files lost on a reload" is replaced by the limits
+  of keeping files in the browser (Safari's seven-day deletion and two tabs
+  among them), of the folder and of the zip.
+- `docs/hardware-guide.md` and `docs/lab-hizli-kullanim.md`: W03 in the error
+  codes and the Prolific section; the handout's file notes.
+- How to use: the Explorer and saving cards and their notes describe the files
+  kept in the browser, and the Saving (2) drawing now has clearing the site
+  data, not a reload, wipe the board. W03 is in the code table; both "All codes"
+  tables have slightly tighter rows so that eleven fit.
+- `CONTRIBUTING.md`: names of what the page stores in the browser, and working
+  without storage.
 
 ## v18 (2026-10-10)
 

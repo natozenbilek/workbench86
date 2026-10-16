@@ -325,6 +325,52 @@ body.resizing * { cursor: col-resize !important; }
 }
 .error-banner-close:hover { opacity: 1; }
 
+/* === FILE NOTICE: files not kept, another tab open, one line each (app/files/store.js) === */
+.file-notice {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-shrink: 0;
+  padding: var(--sp-2) var(--sp-5);
+  font-family: var(--sans);
+  font-size: var(--fs-sm);
+  line-height: 1.45;
+  color: var(--text);
+  background: linear-gradient(var(--amb-l), var(--amb-l)), var(--bg3);
+  border-bottom: 1px solid var(--brd);
+  border-left: 3px solid var(--amb);
+}
+.file-notice[hidden] { display: none; }
+.file-notice-line { display: block; }
+.file-notice-line + .file-notice-line { margin-top: var(--sp-1); }
+.file-notice-close {
+  margin-left: auto;
+  padding: 0 var(--sp-2);
+  font-size: var(--fs-lg);
+  line-height: 1;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  opacity: .6;
+  transition: opacity var(--tr-fast);
+}
+.file-notice-close:hover, .file-notice-close:focus-visible { opacity: 1; }
+
+/* === MY FILES IN A FOLDER ON THIS COMPUTER (app/files/folder.js) === */
+/* Buttons on the My files row, like the file rows: on hover and keyboard focus. */
+.fb-folder-hd .fb-acts { margin-left: auto; }
+.fb-folder-hd:hover .fb-acts, .fb-folder-hd:focus-within .fb-acts { display: flex; }
+.fb-folder-hd:has(.fb-src) > .fb-name { flex: 0 1 auto; }
+/* With the buttons shown, a narrow Explorer shortens the names instead of wrapping them,
+   the bound folder's name first. */
+.fb-folder-hd > .fb-name { white-space: nowrap; }
+.fb-src { flex: 0 99 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 400; color: var(--text3); }
+.fb-src::before { content: '\00B7\00A0'; }
+.fb-src-off { color: var(--amb); }
+.fb-file.fb-unsaved .fb-name::after { content: ' \2022'; color: var(--amb); }
+.fb-reconnect { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); padding: var(--sp-2) var(--sp-4) var(--sp-2) 26px; font-family: var(--sans); font-size: var(--fs-sm); line-height: 1.45; color: var(--text2); white-space: normal; }
+
 /* === EMPTY STATES === */
 .empty-state {
   color: var(--text3);

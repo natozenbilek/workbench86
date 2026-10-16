@@ -32,6 +32,8 @@ confirmed with a board:
   harness.
 - The pitch of each key in `examples/assignments/pa24-organ-keypad.asm`. The
   simulator plays the same fixed tone for every key.
+- `Warning W03` with a real Prolific adapter on Windows. It was checked only with
+  stubbed serial ports.
 
 ## Still open
 
@@ -46,6 +48,60 @@ confirmed with a board:
 - The Intel HEX upload path (`L`, `/t1`) has no button and is called from the
   browser console. It assumes `ORG 0100H` and sends `G 0100` without the
   `0080:` segment.
+- `Warning W03` is shown like an error: in red in the status bar and in the
+  banner above the editor that otherwise shows assembler errors. The status bar
+  has no style for warnings.
+
+### Files
+
+- Files are kept only in this browser, on this computer, for this site.
+  Another browser or computer does not have them, and the live site,
+  `http://localhost:8000` and a copy opened from `file://` each keep their own.
+  Two copies of workbench86 at different paths of one site share them. A
+  private window keeps them until it is closed, and clearing the site data
+  deletes them. Download what you need elsewhere, one file at a time or with
+  Download all as zip.
+- Safari deletes the files after seven days of Safari use in which the site was
+  not opened (its tracking prevention clears a site's storage then). Safari
+  users have no folder to fall back on, so a zip backup is their only copy.
+- On a shared computer, the next person who opens workbench86 in the same
+  browser sees your files. There is no sign-in and no way to hide them.
+- Two workbench86 tabs share the files. When both change one file before
+  either has saved it, the text saved second moves to `<name>-2` instead of
+  replacing the other; nothing is merged. The open tabs are shared too, so a
+  reload opens the tabs of whichever tab saved last. Without
+  `BroadcastChannel` (Safari before 15.4) the tabs do not hear about each
+  other, so a file changed in both becomes such a copy even when the changes
+  were minutes apart.
+- A folder bound to My files in one tab shows in another workbench86 tab only
+  after that tab is reloaded.
+- Without storage (site data blocked, some private windows), or after storage
+  fails, the page works as v18 did and a reload loses everything; a line above
+  the editor says so once. A tab that could not restore every saved file does
+  not save until it is reloaded. Storage that has not answered after 3 seconds
+  holds the page up that long; the saved files then come back when it answers.
+- A copy made by editing an example can have the example's file name, such as
+  `pa01-subtract-byte.asm`, but New and Rename still refuse every name an
+  example uses.
+- My files in a folder needs the File System Access API, so it works only in
+  Chrome and Edge, and only where the browser keeps files, because the folder's
+  handle and the copies of its files are kept there too. Only the folder's top
+  level is listed, without hidden files, files over 1 MB or anything past the
+  first 300.
+- Changes other programs make in the folder are picked up only when the
+  workbench86 window gets the focus again, or with Read the folder again.
+- A file that is in the folder cannot be deleted from the page; delete it in
+  Explorer or Finder. Edits reach the folder only with `Ctrl+S`.
+- A file of the folder whose name a sample or a file kept in the browser
+  already uses gets a separate internal name, such as `labs/fibonacci.asm`.
+  Copy Path and the tab's tooltip show that name.
+- Load files from a zip flattens the zip's folders, so two files with the same
+  name in different folders become `name` and `name-2`. It loads at most 300
+  files of 1 MB each, does not read a zip over 64 MB, and leaves out encrypted
+  files and compression methods other than stored and deflated. Deflated files
+  need a browser with `DecompressionStream` (Chrome and Edge 103, Firefox 113,
+  Safari 16.4 or later).
+- Download all as zip does not compress the files.
 
 ### Assembler
 
@@ -138,10 +194,6 @@ The assembler rejects these with an error:
 - `INCLUDE` accepts only `PATCALLS.INC`, because the PATCALLS constants are built
   into the assembler rather than read from a file. Any other `INCLUDE` line is an
   assembler error (`Unknown instruction: INCLUDE`).
-- Nothing you write is kept across a page reload: the open tabs and the files
-  in My files are lost. Only the theme and the panel widths are remembered.
-  Save your work to disk before closing the tab (Download button in the
-  Explorer, or Ctrl+S).
 - The transpiler is deliberately restricted: no `if`/`else`, no user-defined
   functions, no nested control flow. Its register allocation can also collide
   with `CX`, which the generated delay loops use.

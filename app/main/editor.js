@@ -42,7 +42,7 @@ function updateBreadcrumb(fileKey) {
   let ef = EXTRA_FILES.find(f => f.name === fileKey);
   if (typeof EX_META !== 'undefined' && EX_META[fileKey]) parts.unshift(EX_META[fileKey].category);
   else if (EX && EX[fileKey]) parts.unshift(fileKey.startsWith('PA') ? 'assignments' : fileKey.startsWith('HW:') ? 'hardware' : 'demos');
-  else if (df) parts.unshift(df.folder === 'local' ? 'My files' : df.folder);
+  else if (df) parts.unshift(folderLabel(df));
   else if (ef) parts.unshift('languages', ef.folder);
   bc.textContent = '';
   parts.forEach((p, i) => {
@@ -74,7 +74,7 @@ ed.addEventListener('scroll', syncScroll);
 ed.addEventListener('click', updateStatusBarPos);
 ed.addEventListener('keyup', updateStatusBarPos);
 ed.addEventListener('keydown', function(e) {
-  if (e.key === 'Tab') { e.preventDefault(); if (window._acceptGhost && window._acceptGhost()) { updLn(); updateHighlight(); return; } let s=this.selectionStart; this.value=this.value.substring(0,s)+'        '+this.value.substring(this.selectionEnd); this.selectionStart=this.selectionEnd=s+8; updLn(); updateHighlight(); }
+  if (e.key === 'Tab') { e.preventDefault(); if (window._acceptGhost && window._acceptGhost()) { updLn(); updateHighlight(); editorChanged(); return; } let s=this.selectionStart; this.value=this.value.substring(0,s)+'        '+this.value.substring(this.selectionEnd); this.selectionStart=this.selectionEnd=s+8; updLn(); updateHighlight(); editorChanged(); }
   else if ((e.ctrlKey||e.metaKey) && e.key === 'Enter') { e.preventDefault(); assembleWithLoading(); }
 });
 
@@ -243,7 +243,7 @@ function editorUndo() {
   ed.value = state.val;
   ed.selectionStart = ed.selectionEnd = state.pos;
   historyPaused = false;
-  updLn(); updateHighlight();
+  updLn(); updateHighlight(); editorChanged();
 }
 function editorRedo() {
   flushEditorHistory();
@@ -254,7 +254,7 @@ function editorRedo() {
   ed.value = state.val;
   ed.selectionStart = ed.selectionEnd = state.pos;
   historyPaused = false;
-  updLn(); updateHighlight();
+  updLn(); updateHighlight(); editorChanged();
 }
 // Capture history on input (debounced)
 ed.addEventListener('input', function() {
@@ -278,7 +278,7 @@ function openShortcuts() {
       <table class="shortcuts-table">
         <tr><th colspan="2" class="shortcut-section">Editor</th></tr>
         <tr><td><kbd>Ctrl+Enter</kbd></td><td>Assemble &amp; Load</td></tr>
-        <tr><td><kbd>Ctrl+S</kbd></td><td>Download the open file</td></tr>
+        <tr><td><kbd>Ctrl+S</kbd></td><td>Download the open file (save it, if My files is a folder)</td></tr>
         <tr><td><kbd>Ctrl+Z</kbd></td><td>Undo</td></tr>
         <tr><td><kbd>Ctrl+Y</kbd></td><td>Redo</td></tr>
         <tr><td><kbd>Ctrl+F</kbd></td><td>Find / Replace</td></tr>
@@ -355,5 +355,10 @@ applyTheme(currentTheme);
 buildRightPanel();
 initCollapsibleCards();
 enhanceMemoryView();
-loadExamples().then(() => { buildExDropdown(); renderAll(); });
+// Saved files and tabs come back first (app/files/store.js), then the folder bound to
+// My files (app/files/folder.js); the welcome screen shows only when no tab is open.
+restoreSavedFiles(loadExamples()).then(folderRestore).catch(console.error).then(() => {
+  buildExDropdown(); renderAll();
+  if (!openTabs.length) showWelcome();
+});
 document.body.addEventListener('click', initAudio, {once: true});

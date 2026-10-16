@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" class="doodle" viewBox="0 0 560 480" width="560" height="480" role="img" aria-labelledby="doodle-tahta-tr-t doodle-tahta-tr-d" lang="tr">
 <title id="doodle-tahta-tr-t">Silinmeden önce tahtanın fotoğrafı</title>
-<desc id="doodle-tahta-tr-d">Elle çizilmiş gibi basit bir resim. Ortada yazılarla dolu bir tahta; okunan tek satır MOV AL,0FFH. Sağda yeşil tişörtlü nöbetçi elindeki silgiyi kaldırmış, balonunda &quot;Siliyorum.&quot; yazıyor; silgiye &quot;sayfayı yenilemek&quot; etiketi gidiyor. Solda mavi tişörtlü bir öğrenci telefonunu tahtaya tutmuş, telefonda küçük bir flaş yıldızı var; telefona &quot;Ctrl+S&quot; etiketi gidiyor.</desc>
+<desc id="doodle-tahta-tr-d">Elle çizilmiş gibi basit bir resim. Ortada yazılarla dolu bir tahta; okunan tek satır MOV AL,0FFH. Sağda yeşil tişörtlü nöbetçi elindeki silgiyi kaldırmış, balonunda &quot;Siliyorum.&quot; yazıyor; silgiye &quot;site verilerini silmek&quot; etiketi gidiyor. Solda mavi tişörtlü bir öğrenci telefonunu tahtaya tutmuş, telefonda küçük bir flaş yıldızı var; telefona &quot;Ctrl+S&quot; etiketi gidiyor.</desc>
 <defs><style>
 .doodle .dd-fl{stroke:none}
 .doodle .dd-ln{fill:none;stroke-linecap:round;stroke-linejoin:round}
@@ -83,7 +83,7 @@
 <path class="dd-ln dd-s-ink" stroke-width="4" d="M371,305C378.5,304.1 401.6,300.7 416.1,299.9C430.6,299.1 451,300 458,300"/>
 <path class="dd-ln dd-s-ink" stroke-width="4" d="M458,300C451.2,302.5 432,309.5 417.5,315.3C403,321.1 378.7,331.7 371,335"/>
 <text class="dd-hand dd-t-ink" x="262.5" y="341.9" font-size="26" font-weight="600" text-anchor="middle" transform="rotate(2.1 262.5 341.9)">Siliyorum.</text>
-<text class="dd-hand dd-t-acc" x="536" y="38" font-size="26" font-weight="700" text-anchor="end" transform="rotate(-1.5 536 38)">sayfayı yenilemek</text>
+<text class="dd-hand dd-t-acc" x="536" y="38" font-size="26" font-weight="700" text-anchor="end" transform="rotate(-1.5 536 38)">site verilerini silmek</text>
 <path class="dd-ln dd-s-acc" stroke-width="3" d="M492,50C492.7,54.3 495.4,67.1 496.5,75.5C497.6,84 498.5,92.4 498.8,100.8C499.1,109.1 499.1,117.4 498.4,125.5C497.6,133.7 496.3,141.8 494.4,149.8C492.5,157.8 490,165.7 487.2,173.5C484.4,181.4 481.2,189.2 477.7,196.9C474.2,204.7 468,216.2 466,220"/>
 <path class="dd-ln dd-s-acc" stroke-width="3" d="M466,220C466,218.8 465.7,215.3 465.7,213C465.7,210.7 466,207.2 466.1,206"/>
 <path class="dd-ln dd-s-acc" stroke-width="3" d="M466,220C467.1,219.5 469.9,217.4 471.8,216.1C473.8,214.9 477,213.3 478,212.8"/>

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" class="wbfig" viewBox="0 0 1152 360" width="1152" height="360" role="img" aria-labelledby="d-version-check-tr-t d-version-check-tr-d" lang="tr">
 <title id="d-version-check-tr-t">Yeni sürümün işareti</title>
-<desc id="d-version-check-tr-d">Yan yana iki terminal. Solda v18, yeşil onay işaretiyle: TX: C 0080:0500 ve TX: G 0080:0500; 0080: kısımları yeşil, 0500 kısımları mavi. Altında: henüz kartta denenmedi. Sağda, kırmızı çarpıyla, eski, önbellekte kalmış sürüm: C 0500 (0080: yok) ve C 0100 (ORG ne olursa olsun), ikisinin de üstü çizili. Altta ortada Copy kaydının ilk satırı: workbench86 v18 | ...</desc>
+<desc id="d-version-check-tr-d">Yan yana iki terminal. Solda v19, yeşil onay işaretiyle: TX: C 0080:0500 ve TX: G 0080:0500; 0080: kısımları yeşil, 0500 kısımları mavi. Altında: henüz kartta denenmedi. Sağda, kırmızı çarpıyla, eski, önbellekte kalmış sürüm: C 0500 (0080: yok) ve C 0100 (ORG ne olursa olsun), ikisinin de üstü çizili. Altta ortada Copy kaydının ilk satırı: workbench86 v19 | ...</desc>
 <defs><style>
 .wbfig .tx{font-family:'Atkinson Hyperlegible Next','Source Sans 3','Segoe UI',Arial,sans-serif}
 .wbfig .tm{font-family:'JetBrains Mono','IBM Plex Mono',Consolas,Menlo,monospace;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
@@ -23,7 +23,7 @@
 <rect class="f-bg3 s-grn" x="20" y="20" width="540" height="240" rx="8" stroke-width="5"/>
 <circle class="f-grn" cx="52" cy="56" r="16"/>
 <path class="s-bg2" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M44,56 l6,7 l11,-13"/>
-<text class="tm f-grn" x="78" y="66" font-size="28" font-weight="700">v18</text>
+<text class="tm f-grn" x="78" y="66" font-size="28" font-weight="700">v19</text>
 <text class="tm f-text" x="44" y="124" font-size="26" font-weight="700" xml:space="preserve"><tspan class="f-text">TX: C </tspan><tspan class="f-grn">0080:</tspan><tspan class="f-blu">0500</tspan></text>
 <text class="tm f-text" x="44" y="170" font-size="26" font-weight="700" xml:space="preserve"><tspan class="f-text">TX: G </tspan><tspan class="f-grn">0080:</tspan><tspan class="f-blu">0500</tspan></text>
 <rect class="f-amb-l s-amb" x="44" y="206" width="277.1" height="34" rx="17" stroke-width="2"/>
@@ -36,6 +36,6 @@
 <path class="s-red" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M610,124 L881.2,124"/>
 <text class="tm f-text3" x="616" y="188" font-size="24" font-weight="600">C 0100 (ORG ne olursa olsun)</text>
 <path class="s-red" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M610,180 L1025.2,180"/>
-<text class="tm f-text" x="576" y="312" font-size="22" font-weight="700" text-anchor="middle">workbench86 v18 | ...</text>
+<text class="tm f-text" x="576" y="312" font-size="22" font-weight="700" text-anchor="middle">workbench86 v19 | ...</text>
 <text class="tx f-text3" x="576" y="344" font-size="24" font-weight="600" text-anchor="middle">Copy kaydının ilk satırı</text>
 </svg>

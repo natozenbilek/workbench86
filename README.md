@@ -13,7 +13,7 @@ Live demo: <https://natozenbilek.github.io/workbench86/>. Step by step guide: <h
 
 The page opens in the dark theme on a first visit. The theme button in the header names the current theme, Dark or Light, switches to the other one, and the choice is remembered. GitHub shows the screenshot that matches your own theme.
 
-This README describes build v18. Changes are in [CHANGELOG.md](CHANGELOG.md), open problems in [docs/KNOWN_ISSUES.md](docs/KNOWN_ISSUES.md).
+This README describes build v19. Changes are in [CHANGELOG.md](CHANGELOG.md), open problems in [docs/KNOWN_ISSUES.md](docs/KNOWN_ISSUES.md).
 
 ## Why this exists
 
@@ -25,7 +25,7 @@ The way you write for this board is Merlin, the command line assembler that come
 
 workbench86 puts a full IDE around the same workflow without changing it. It does not replace the board, and it does not replace Merlin's conventions either: a program written against `INCLUDE PATCALLS.INC` assembles here unchanged, so the existing lab material still works. The byte stream the simulator executes is the byte stream the upload sends, so the simulator is where you get a program right before it goes to hardware.
 
-workbench86 is a single page application. There is no build step, no backend and no library or framework. It is about 6.6 kLOC of JavaScript across 32 files and 1.6 kLOC of CSS across 7 files, all vanilla. The How to use page adds one script and one stylesheet (about 0.8 kLOC together), and the test harness three scripts (0.3 kLOC). It runs from any static host, and most of it runs from `file://`. The only request to another host is for three web fonts from Google Fonts; offline, the page falls back to system fonts such as Consolas and Segoe UI. The How to use page bundles its own fonts.
+workbench86 is a single page application. There is no build step, no backend and no library or framework. It is about 7.9 kLOC of JavaScript across 36 files and 1.7 kLOC of CSS across 7 files, all vanilla. The How to use page adds one script and one stylesheet (about 0.8 kLOC together), and the test harness three scripts (0.3 kLOC). It runs from any static host, and most of it runs from `file://`. The only request to another host is for three web fonts from Google Fonts; offline, the page falls back to system fonts such as Consolas and Segoe UI. The How to use page bundles its own fonts.
 
 ## Quick start
 
@@ -56,7 +56,7 @@ Your first program:
 
 ## How to use page
 
-![The first card of the How to use page. The page header has a link back to workbench86, the card counter 1 / 57, links to the README and the hardware guide, a Present button, the TR and EN language switch and the theme button. The card shows the title, the line 'An 8086 simulator in the browser, with upload to the DIGIAC 2000 board', the version v18 and a screenshot of the app.](docs/screenshots/howto.png)
+![The first card of the How to use page. The page header has a link back to workbench86, the card counter 1 / 57, links to the README and the hardware guide, a Present button, the TR and EN language switch and the theme button. The card shows the title, the line 'An 8086 simulator in the browser, with upload to the DIGIAC 2000 board', the version v19 and a screenshot of the app.](docs/screenshots/howto.png)
 
 A step by step guide lives in [howto/](https://natozenbilek.github.io/workbench86/howto/) and opens from How to use in the app's header. At a window width of 1024 px or less it is the first item of the header's ⋮ menu. It has 57 cards, each in Turkish and English: serial basics (RS-232, TX and RX, 9600 8N2), working in the simulator, uploading to the board (PAT RESET, a fresh `PAT:`, `C` and `G` with the 0080 segment), board mode and the error codes.
 
@@ -70,9 +70,44 @@ The Explorer has New, Open and Download buttons at the top. The folders are, in 
 
 New asks for a name and creates an `.asm` file in My files. Open accepts `.asm`, `.inc`, `.c`, `.cpp`, `.py`, `.java`, `.go` and `.txt` files from your computer and puts them in My files. Download, `Ctrl+S` or `Cmd+S` saves the open file under its own name, with CRLF line ends on Windows.
 
-The examples and the samples cannot be renamed or deleted. You can edit one in its tab, but the edits stay in that tab; Make an editable copy puts a copy named `my-<file name>` in My files. Each row shows buttons on hover: Rename and Delete for your own files, Make an editable copy for the examples, and Download for both. Right-clicking a file, the empty part of the tree or a tab opens a context menu. The tab menu has Close, Close Others, Close All, Copy Path, Download, and Duplicate or Make an editable copy. A dot on a tab marks edits made since the file was opened or downloaded, and closing an edited example asks first.
+The examples and the samples cannot be renamed, deleted or changed. The first change you make to one turns its tab into a copy in My files, under the example's file name, and the status bar names the copy: editing PA01 gives `pa01-subtract-byte.asm`. When a file of that name already exists, `-2`, `-3` are added, so the Fibonacci demo becomes `fibonacci-2.asm` next to the sample `fibonacci.asm`. Your edit, the cursor and undo carry over, and the example stays as it was. Make an editable copy puts a copy named `my-<file name>` in My files before any change. Each row shows buttons on hover: Rename and Delete for your own files, Make an editable copy for the examples, and Download for both. Right-clicking a file, the empty part of the tree or a tab opens a context menu. The tab menu has Close, Close Others, Close All, Copy Path, Download, and Duplicate or Make an editable copy. A dot on a tab marks edits made since the file was opened or downloaded.
 
-My files lives in the page's memory only. A reload loses it, together with the open tabs, and the page does not warn you (it asks before leaving only while a board job is running). Download what you want to keep. Only the theme and the panel widths are remembered.
+### Files kept in the browser
+
+The page keeps My files, the `generated` folder, the open tabs, the active tab and its cursor in the browser's own storage (IndexedDB), so all of it comes back after a reload, and after the browser is closed and opened again. There is nothing to press: a change is written 300 ms after you stop typing, at least every 2 seconds while you type, and at once when the tab is hidden or closed. On a reload or close the last changes also go to the browser's `localStorage`, in case the browser ends the page before its storage has them; the next start picks them up. The theme and the panel widths are remembered as before.
+
+What this does not cover:
+
+- The files are in this browser on this computer only. Another browser or another computer does not see them. Each site keeps its own: the live site, `http://localhost:8000` and a copy opened from `file://` do not share files, but two copies of workbench86 at different paths of one site do.
+- A private window keeps them until the window is closed. Clearing the browser's site data deletes them, and so can the browser itself when the disk is nearly full. The page asks the browser once to keep them (`navigator.storage.persist()`); Chrome and Safari decide on their own, and Firefox may ask you.
+- Safari deletes them after seven days of Safari use in which you did not open workbench86. In Safari, keep a zip of your files (below).
+- On a shared computer, the next person who opens workbench86 in the same browser sees your files. Download what you need and delete the rest from My files before you leave.
+- Two workbench86 tabs keep the same files, and both show a notice about it. A file changed in one tab changes in the other too, unless it was changed there as well; then it stays as it is there. When both change a file at about the same time, neither text is lost: the one saved second moves to a new name, `-2` added, and a note above the editor says so. The open tabs are shared as well, so a reload opens the tabs of the tab that saved last.
+
+When the browser gives the page no storage (site data blocked, some private windows), or storage fails while you work, for example on a full disk, the page works as v18 did. The files live in the page's memory and a reload loses them, edits to an example stay in its tab, and closing an edited example asks first. A line above the editor says so once. Storage that has not answered after 3 seconds, on a slow computer just started for example, is not given up: the page starts without your saved files, says so, and brings them back into My files when the storage answers. Files made meanwhile stay, and are kept from then on. When the storage holds files from a newer workbench86, the line asks you to reload the page.
+
+Files still leave the browser by download: Download or `Ctrl+S` for the open file, Download all as zip for all of them.
+
+### My files in a folder (Chrome and Edge)
+
+In Chrome and Edge, My files can be a folder on your computer, so your programs are ordinary files there. Hover over the My files row, or move to it with the keyboard, and click the folder button, or right-click the Explorer and choose Use a folder on this computer...; then pick a folder and let the page edit its files. The row reads `My files · <folder name>` and lists the folder's `.asm`, `.inc`, `.c`, `.cpp`, `.py`, `.java`, `.go` and `.txt` files. Only the top level is read; hidden files, files over 1 MB and anything past the first 300 are left out. The files kept in the browser stay visible in an In this browser folder, which follows My files in the Explorer.
+
+`Ctrl+S` writes the open file to the folder; on any other file it downloads as before. Nothing else writes to the folder except Rename. Edits are kept in the browser until you save them there, so they survive a reload too, and a dot on a tab or a row means "not saved in the folder yet". New, Open, Duplicate, an edited example and Load files from a zip add their files to the folder's list, and `Ctrl+S` puts them on the disk. A file that is in the folder has no Delete: delete it in Explorer or Finder, and My files follows.
+
+The page reads the folder again whenever its window gets the focus. A file changed only in the folder shows the new text, and one changed only here stays unsaved. A file changed in both places keeps the text here, a note above the editor says so, and `Ctrl+S` asks before it replaces the folder's copy. Saving over a file the page did not know about asks too. A save keeps the file's line ends and UTF-8 BOM, a file that is not UTF-8 is read and written back as Windows-1254 (Turkish Windows), and a new file gets CRLF line ends on Windows.
+
+The page remembers the folder. On the next visit it reconnects by itself if you chose Allow on every visit when Chrome asked; otherwise My files shows the last copies of the files and a Reconnect button, and `Ctrl+S` asks for permission as well. A folder that cannot be found, for example on an unplugged USB stick, shows Try again. Read the folder again and Stop using this folder are on the My files row and in the right-click menu. Stopping leaves the folder as it is; files with changes not saved there stay in My files as browser files.
+
+Firefox and Safari do not have the File System Access API, and the folder also needs the browser storage above, so without either there is no folder button.
+
+### Zip backup
+
+A zip button on the My files row, shown on hover, opens two actions, which are also in the Explorer's right-click menu and the command palette and work in every browser:
+
+- Download all as zip saves `workbench86-files.zip` with every file of yours under its Explorer folder: `My files/`, `generated/`, and with a folder in use, the folder's name and `In this browser/`. The files are stored uncompressed as UTF-8, with CRLF line ends on Windows. When the browser keeps no files, edited examples go in as `edited examples/`.
+- Load files from a zip... puts the zip's `.asm`, `.inc`, `.c`, `.cpp`, `.py`, `.java`, `.go` and `.txt` files into My files, flattening its folders, and opens the first one. A name that is taken gets `-2`, `-3`, and the status bar lists the new names. A file My files already has with the same name and text is not added again, so loading the same zip twice adds nothing. Zips made by Windows Explorer (Turkish file names included), by Finder's Compress on a Mac and by the `zip` tool load. At most 300 files of 1 MB each are loaded, a zip over 64 MB is not read, and the page says what it left out.
+
+Use it to take your files to another computer, or to keep a copy before you clear the browser.
 
 ### Editor
 
@@ -80,7 +115,7 @@ Multi tab, with a breadcrumb above the text that shows the folder and the file. 
 
 Ghost completion works in `.asm` tabs. At the start of a statement it suggests mnemonics and directives; in the operand field it suggests registers, labels, `EQU` names and the `PATCALLS.INC` symbols. `Tab` accepts the suggestion, and otherwise inserts 8 spaces.
 
-Find and replace is on `Ctrl+F` from the editor. It matches plain text, not regular expressions, ignores case unless the case toggle is on, and has Replace and Replace All. `Enter` and `Shift+Enter` move to the next and the previous match. The command palette on `Ctrl+Shift+P` finds its 19 commands by fuzzy match: assemble, run, step, step back and forward, reset, the theme, Ports, Export/Import, the ISA guide, Connect Device, Upload Program, the file actions, closing a tab, and collapsing or expanding all panels.
+Find and replace is on `Ctrl+F` from the editor. It matches plain text, not regular expressions, ignores case unless the case toggle is on, and has Replace and Replace All. `Enter` and `Shift+Enter` move to the next and the previous match. The command palette on `Ctrl+Shift+P` finds its 21 commands by fuzzy match: assemble, run, step, step back and forward, reset, the theme, Ports, Export/Import, the ISA guide, Connect Device, Upload Program, the file actions including the two zip actions, closing a tab, and collapsing or expanding all panels.
 
 The undo stack is the editor's own, not the browser's. It keeps 200 states, `Ctrl+Z` and `Ctrl+Y` act only in the editor, and switching tabs starts a fresh history.
 
@@ -288,7 +323,7 @@ The board side of these two screenshots comes from a model of the PAT monitor, s
 
 Only one job uses the line at a time. While an upload runs, the Upload button shows `Uploading n/N` and then `Waiting for PAT:` and is disabled, and a second Upload, G, T, Send and Simulate anyway are refused. Disconnect stays available and stops the job at once. Leaving the page while a job runs asks first.
 
-Every failure the page can detect has a short code, in the terminal as `[Error U01] ...` and in the status bar as `Error U01: ...`. C01 to C07 are connection errors, U01 to U06 and U09 upload errors, A01 to A03 uploads refused before anything was sent, and B01 an `ERROR` line from the board. W01 warns about a serial line error (Break, Framing, Parity or Overrun), after which the page keeps reading, and W02 about bytes that got no reply. A lost link disconnects with C04. C07 means Windows could not open a Prolific PL2303 adapter, which is usually its driver refusing the chip. Each code and what to do about it is in the [hardware guide](docs/hardware-guide.md#error-codes), and in Turkish in the [lab handout](docs/lab-hizli-kullanim.md#hata-kodları).
+Every failure the page can detect has a short code, in the terminal as `[Error U01] ...` and in the status bar as `Error U01: ...`. C01 to C07 are connection errors, U01 to U06 and U09 upload errors, A01 to A03 uploads refused before anything was sent, and B01 an `ERROR` line from the board. W01 warns about a serial line error (Break, Framing, Parity or Overrun), after which the page keeps reading, and W02 about bytes that got no reply. A lost link disconnects with C04. C07 means Windows could not open a Prolific PL2303 adapter, which is usually its driver refusing the chip. W03 comes before it: on Windows, when the port picked in Device is a Prolific adapter, the page says once that copies of this chip do not open with Prolific's current driver, then opens the port anyway, because a genuine chip, or one with the old driver, works. Each code and what to do about it is in the [hardware guide](docs/hardware-guide.md#error-codes), and in Turkish in the [lab handout](docs/lab-hizli-kullanim.md#hata-kodları).
 
 ### Serial terminal
 
@@ -314,7 +349,7 @@ Chromium family browsers only. Firefox and Safari can run everything else but ca
 
 ## Transpiler
 
-The transpiler turns small C, C++, Python, Java and Go snippets into assembly, so a student can see the same loop in both forms. The samples are in Explorer, under `languages`. On a `.c`, `.cpp`, `.py`, `.java` or `.go` tab the Assemble button reads Translate to ASM, and `Ctrl+Enter` does the same. The result goes to `generated/<name>.asm`, which is opened in its own tab and assembled.
+The transpiler turns small C, C++, Python, Java and Go snippets into assembly, so a student can see the same loop in both forms. The samples are in Explorer, under `languages`. On a `.c`, `.cpp`, `.py`, `.java` or `.go` tab the Assemble button reads Translate to ASM, and `Ctrl+Enter` does the same. The result goes to `generated/<name>.asm`, which is opened in its own tab and assembled. A second translation replaces it. When a file of yours, a file of the folder or a sample already has that name, the result is `<name>-2.asm`, so translating `blink.c` never overwrites your own `blink.asm`.
 
 ![workbench86 after Translate to ASM on languages/go/chase.go. The Explorer shows the languages folder with its c, python, go, java, cpp and asm samples, and a generated folder that now holds chase.asm. The editor has the chase.go and chase.asm tabs open. chase.asm shows the translated program: the MUART setup, a loop that writes BL to UPORT2, a LOOP delay and ROL BL,1. The status bar says 'Translated → chase.asm & assembled'.](docs/screenshots/transpiler.png)
 
@@ -350,7 +385,7 @@ The eight samples under `languages` are built into the page and are not part of 
 | Key | Action |
 |---|---|
 | `Ctrl+Enter` | Assemble and load, or Translate to ASM on a high level tab |
-| `Ctrl+S` | Download the open file |
+| `Ctrl+S` | Download the open file, or save it in the folder when it is a file of a folder used as My files |
 | `Ctrl+Z` / `Ctrl+Y` or `Ctrl+Shift+Z` | Undo / redo, in the editor |
 | `Ctrl+F` | Find and replace, from the editor |
 | `Enter` / `Shift+Enter` in the find box | Next / previous match |
@@ -397,7 +432,9 @@ workbench86/
 │   ├── main/                     editor.js, sim.js
 │   ├── render/                   core.js, io.js
 │   ├── editor/                   tooltips.js, features.js
-│   ├── files/                    core.js, tree.js
+│   ├── files/                    core.js, tree.js, store.js, save.js and
+│   │                             sync.js (kept in the browser), folder.js,
+│   │                             folder-io.js, zip.js
 │   ├── panels/                   layout.js, display.js
 │   ├── highlighter/              render.js, constants.js
 │   ├── guide/                    data.js, ui.js
@@ -443,6 +480,8 @@ workbench86/
 
 WebSerial also needs a secure context, so upload works over `https://` or `http://localhost` but not from `file://`. Without WebSerial, the Device and Upload and Run buttons are disabled, with the tooltip `WebSerial: Chrome/Edge only`.
 
+Files are kept in the browser, and the zip backup works, in all of these. My files in a folder needs the File System Access API, which only Chrome and Edge have.
+
 The layout is three columns and assumes a desktop window wider than 1024 px. At 1024 px or less, Ports, Export, Guide and How to use move into a ⋮ menu in the header, and the panels no longer fit well: the debug panel gets narrow and the editor only a few lines high. At 640 px or less the panels are stacked in one column.
 
 ## Testing
@@ -454,9 +493,9 @@ The engine is exercised by a headless harness. `tests/run.sh` concatenates `test
 ./tests/run.sh engine    # one suite
 ```
 
-Two suites. One is a differential check of results and flags against hand computed 8086 values, plus a pinned case for every defect that differential testing has found so far. The other walks the example corpus and requires all 52 programs to assemble and run, up to 100,000 steps each, without reaching an unknown opcode or an unimplemented path. At v18 they run 43 and 54 checks, none failing. The script exits with a non-zero status when a suite reports a failure. Details are in [tests/README.md](tests/README.md).
+Two suites. One is a differential check of results and flags against hand computed 8086 values, plus a pinned case for every defect that differential testing has found so far. The other walks the example corpus and requires all 52 programs to assemble and run, up to 100,000 steps each, without reaching an unknown opcode or an unimplemented path. At v19 they run 43 and 54 checks, none failing. The script exits with a non-zero status when a suite reports a failure. Details are in [tests/README.md](tests/README.md).
 
-Nothing under `app/` is covered, so the editor, the panels and the serial bridge are still checked by hand. There is no automated browser test suite.
+Nothing under `app/` is covered, so the editor, the panels and the serial bridge are still checked by hand. There is no automated browser test suite. The file storage, folder and zip code of v19 was checked with scripted headless Chrome sessions that are not part of the repository.
 
 workbench86 has also been used on the physical board. A lab session by a student other than the author is how a bug in the program load path was found, one that only appeared with programs whose `ORG` was not the default address. In the April 2026 board sessions, uploads with `C 0080:0100` and `G 0080:0100` worked, and that build plays the Manifest songs on a board. In the first lab week of October 2026 students connected their own laptops, and uploads kept failing after the `PAT:` prompt; a lab report said they worked until a serial port error appeared. v18 fixes what was found in the code and restores the `0080:` segment prefix of the April build. It was checked with the test suite, with an offline harness that runs this code against a modelled PAT monitor, and in Chrome against a fake serial port, not yet on a real board. What still needs a board is listed in [docs/KNOWN_ISSUES.md](docs/KNOWN_ISSUES.md#not-yet-seen-on-a-board).
 
@@ -474,7 +513,8 @@ workbench86 has also been used on the physical board. A lab session by a student
 - Import does not decode Intel HEX, and Export leaves out data after the last instruction.
 - The Intel HEX upload path has no button and assumes `ORG 0100H`.
 - The transpiler is deliberately restricted. No `if` or `else`, no user defined functions, no nested control flow, endless loops only, and its variables can collide with the `CX` delay loops.
-- Editor contents are not persisted. Reloading the page loses the open tabs and My files, without a warning.
+- Files are kept only in this browser on this computer. Another computer, cleared site data or a closed private window does not have them, Safari deletes them after seven days without a visit, and on a shared computer the next person in the same browser sees them. Download them, one at a time or as a zip.
+- My files in a folder works only in Chrome and Edge, reads only the folder's top level, and does not delete files there.
 - At a window width of 1024 px or less the layout does not fit well.
 - There is no automated browser test suite.
 - There is no graphical panel for the Applications Module. Peripheral state is read through the I/O Log, the Ports dialog and the PAT Display card.

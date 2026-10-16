@@ -29,9 +29,6 @@ function getFileContent(key) {
   return ef ? ef.content : '';
 }
 
-// Hook for saving files in the browser. Nothing is stored yet.
-function scheduleAutosave() {}
-
 function loadExByKey(key, fileEl) {
   if (!EX[key]) return;
   syncActiveTab();
@@ -74,7 +71,8 @@ function switchTab(key) {
   if (typeof updateStatusBarFileType === 'function') updateStatusBarFileType();
 }
 
-// Edits to an example or sample live only in its tab. A file in My files keeps them.
+// Edits to an example or sample live only in its tab while files are not kept in this
+// browser (otherwise the first edit makes a copy, see copyOnEdit). A file in My files keeps them.
 function unsavedTabs(keys) {
   return openTabs.filter(t => keys.includes(t.key) && t.dirty && !isUserFile(t.key));
 }
@@ -127,6 +125,8 @@ function closeAllTabs() {
 
 function fileLabel(key) {
   if (typeof EX_META !== 'undefined' && EX_META[key]) return EX_META[key].file;
+  let df = folderEntry(key);   // a file of the bound folder: its name there (app/files/folder.js)
+  if (df) return df.disk.name;
   if (key.includes('.')) return key;
   let short = key.replace(/^PA(\d+):\s*/, 'pa$1_').replace(/^HW:\s*/, 'hw_');
   short = short.replace(/\s+/g, '_').toLowerCase();
@@ -147,12 +147,14 @@ function renderTabs() {
   bar.innerHTML = '';
   updateAsmBtnLabel();
   openTabs.forEach(t => {
+    // For a file of the bound folder the dot means: not saved in the folder yet.
+    let inFolder = isFolderFile(t.key), dirty = inFolder ? folderUnsaved(t.key) : t.dirty;
     let tab = document.createElement('div');
-    tab.className = 'tab' + (t.key === activeTabKey ? ' active' : '') + (t.dirty ? ' dirty' : '');
+    tab.className = 'tab' + (t.key === activeTabKey ? ' active' : '') + (dirty ? ' dirty' : '');
     let label = document.createElement('span');
     label.className = 'tab-label';
     label.textContent = fileLabel(t.key);
-    label.title = t.dirty ? t.key + ' (changed since it was opened or downloaded)' : t.key;
+    label.title = dirty ? t.key + (inFolder ? ' (not saved in the folder yet, Ctrl+S saves it)' : ' (changed since it was opened or downloaded)') : t.key;
     let close = document.createElement('button');
     close.type = 'button';
     close.className = 'tab-close';
@@ -170,6 +172,7 @@ function renderTabs() {
   });
   let dl = document.getElementById('fbDownloadBtn');
   if (dl) dl.disabled = !activeTabKey;
+  scheduleAutosave();   // the open tabs and the active one are saved too (app/files/save.js)
 }
 
 function showTabContextMenu(e, key) {
@@ -210,7 +213,8 @@ function showTabContextMenu(e, key) {
   addItem('Copy Path', function() {
     navigator.clipboard.writeText(key).then(() => sLog('Copied: ' + key, 0));
   });
-  addItem('Download (Ctrl+S)', function() { downloadFile(key); });
+  if (isFolderFile(key)) addItem('Save in the folder (Ctrl+S)', function() { folderSave(key); });
+  addItem(isFolderFile(key) ? 'Download' : 'Download (Ctrl+S)', function() { downloadFile(key); });
   addItem(isUserFile(key) ? 'Duplicate' : 'Make an editable copy', function() { duplicateFile(key); });
 
   document.body.appendChild(ctxMenu);
@@ -264,44 +268,29 @@ let dynamicFiles = [];
 function addDynamicFile(name, content, folder) {
   let existing = dynamicFiles.find(f => f.name === name);
   if (existing) { existing.content = content; }
-  else { dynamicFiles.push({name, content, folder: folder || 'generated'}); }
+  else {
+    let f = {name, content, folder: folder || 'generated'};
+    folderAdopt(f);   // into the bound folder, if My files is one (app/files/folder.js)
+    dynamicFiles.push(f);
+  }
   buildExDropdown();
   scheduleAutosave();
 }
 
 // Files made in this page (New, Open from PC, copies, Translate to ASM). They can be
-// renamed and deleted; examples and the built-in samples cannot.
+// renamed and deleted; examples and the built-in samples cannot. Download and Ctrl+S
+// are in app/files/save.js.
 function isUserFile(key) { return dynamicFiles.some(f => f.name === key); }
 
-// === DOWNLOAD ===
-function downloadFile(key) {
-  if (!key) { sLog('Open a file first, then download it.', 1); return; }
-  let text = getFileContent(key);
-  // Notepad before Windows 10 1809 shows a file with bare LF line ends on one line.
-  if (/Windows/.test(navigator.userAgent)) text = text.replace(/\r?\n/g, '\r\n');
-  let name = fileLabel(key).replace(/[\\/:*?"<>|]+/g, '_');
-  let a = document.createElement('a');
-  a.href = URL.createObjectURL(new Blob([text], {type: 'text/plain'}));
-  a.download = name;
-  document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(function() { URL.revokeObjectURL(a.href); }, 2000);
-  let tab = openTabs.find(t => t.key === key);
-  if (tab && tab.dirty) { tab.dirty = false; renderTabs(); }
-  sLog('Downloaded ' + name + ' (see your browser downloads).', 0);
-}
-function downloadCurrent() { downloadFile(activeTabKey); }
-
-// Ctrl+S (Cmd+S) downloads the open file instead of saving the whole web page.
-document.addEventListener('keydown', function(e) {
-  if ((e.ctrlKey || e.metaKey) && !e.altKey && !e.shiftKey && (e.key === 's' || e.key === 'S')) {
-    e.preventDefault();
-    downloadCurrent();
-  }
-});
-
-// Typing marks the open tab as changed (dot on the tab) until it is downloaded.
-document.getElementById('ed').addEventListener('input', function() {
+// Any change to the editor text: typing, Replace, and from app/main/editor.js Tab, undo
+// and redo. The first change to an example makes it a copy in My files while files are
+// kept (copyOnEdit, app/files/save.js). The tab shows a dot until the file is downloaded, or for a
+// file of a bound folder, until it is saved there.
+function editorChanged() {
+  if (activeTabKey && !isUserFile(activeTabKey) && filesKept()) copyOnEdit();
   let t = openTabs.find(x => x.key === activeTabKey);
   if (t && !t.dirty) { t.dirty = true; renderTabs(); }
+  folderEdited();
   scheduleAutosave();
-});
+}
+document.getElementById('ed').addEventListener('input', editorChanged);

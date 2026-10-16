@@ -85,6 +85,15 @@ a documented one.
 - New files must be added to `index.html` as a `<script>` or `<link>`
   tag carrying the current `?v=N` query string. The same goes for files
   that `howto/index.html` loads.
+- Everything the page keeps in the browser has a name that starts with
+  `workbench86`: the IndexedDB database `workbench86`
+  (`app/files/store.js`), the `localStorage` keys (`workbench86_theme`,
+  `workbench86_panel_sizes`, `workbench86_howto_lang`,
+  `workbench86_pending`) and the `BroadcastChannel`. The live site's
+  origin, natozenbilek.github.io, is shared with other sites.
+- Browser storage can be missing, or fail at any moment: blocked site data,
+  private windows, a full disk. The page then works as it would without it,
+  says so once, and never drops text the user typed.
 
 ## Pull request flow
 
@@ -128,7 +137,7 @@ release tags, and the public history does not have one commit per build.
 Bump the version in the same commit as the release, everywhere it appears:
 
 - the `?v=N` query string on every `<link>` and `<script>` tag in
-  `index.html` (39 of them at v18). If you forget, returning visitors
+  `index.html` (45 of them at v19). If you forget, returning visitors
   keep running the previously cached build, which is exactly what
   happened between v14 and v17;
 - `WB_VERSION` in `app/serial/core.js`, which heads the terminal's Copy
@@ -141,8 +150,8 @@ Bump the version in the same commit as the release, everywhere it appears:
 - the heading in `CHANGELOG.md`, which turns the "Unreleased" entries
   into `vN (date)`.
 
-To list these places, run `grep -rnE 'v=?18' index.html app/ howto/`
-with the old number in place of 18. Notes that tell what changed in an
+To list these places, run `grep -rnE 'v=?19' index.html app/ howto/`
+with the old number in place of 19. Notes that tell what changed in an
 older build keep their number.
 
 ## Code of conduct

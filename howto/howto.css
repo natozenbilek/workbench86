@@ -228,6 +228,8 @@ pre.codeblk { margin: 0; padding: 16px 20px; font-size: var(--f-code); line-heig
 .lay-table .tbl:not(.tbl-dense) th, .lay-table .tbl:not(.tbl-dense) td { padding: 13px 16px; }
 .tbl-dense { --f-table: 20px; }
 .tbl-dense th, .tbl-dense td { padding: 6px 12px; }
+/* the "All codes" cards, which hold up to eleven rows */
+.tbl-tight th, .tbl-tight td { padding: 4px 12px; }
 .tbl-small { --f-table: 21px; }
 .tbl-small td:nth-child(2) { width: auto; }
 .tbl-small td { white-space: nowrap; }
